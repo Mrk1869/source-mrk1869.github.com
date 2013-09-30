@@ -3,7 +3,7 @@ layout: post
 categories: blog
 language: japanese
 name: Hello, World
-tags: 雑記
+tags: Note
 keywords: Jekyll, ブログ, Mrk1869
 ---
 
