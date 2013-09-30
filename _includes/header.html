@@ -1,0 +1,12 @@
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+    {% if page.language == "english" %}
+    <a id="forkme_banner" href="/">Japanese</a>
+    {% else %}
+    <a id="forkme_banner" href="/en/aboutme/">English</a>
+    {% endif %}
+    <a href = "{% if page.language == "english" %}/en{% endif %}/"><h1 id="project_title">Markovnikov Laboratory</h1></a>
+    <!--    <h2 id="project_tagline"></h2> -->
+    </header>
+</div>

@@ -1,0 +1,11 @@
+<div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+        <div class="inner">
+            <ul class="nav">
+                <li {% if page.categories == "blog" %} class="active" {% endif %}><a href="{% if page.language == "english" %}/en{% endif%}/">Blog</a></li>
+                <li {% if page.categories == "applications" %} class="active" {% endif %}><a href="{% if page.language == "english" %}/en{% endif%}/applications/">Applications</a></li>
+                <li {% if page.categories == "aboutme" %} class="active" {% endif %}><a href="{% if page.language == "english" %}/en{% endif%}/aboutme/">About me</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
