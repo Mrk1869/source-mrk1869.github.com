@@ -6,6 +6,7 @@
     <div id="main_content_wrap" class="outer">
         {% include navbar.html %}
         <section id="main_content" class="inner">
+            <div class="sub_header"><p><i class="icon-tag"></i>{{ page.tag }}<a href="#"> 記事一覧</a></p></div>
             {% for post in page.posts %}
             <div class="article-body">
                 <div class="article-title">
