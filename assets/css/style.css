@@ -425,6 +425,7 @@ Twitter Bootstrap
     text-align:right;
     line-height:100%;
     font-size:15px;
+    font-weight:600;
 }
 
 .article-title{
@@ -451,7 +452,7 @@ Twitter Bootstrap
 }
 
 .static-body{
-    padding: 10px 10px 10px 10px;
+    padding: 5px 10px 10px 10px;
 }
 
 /*******************************************************************************
