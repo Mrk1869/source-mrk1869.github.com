@@ -7,5 +7,5 @@ descliption: Weblog by Mrk1869
 
 #permalink: /:category/:year-:month-:day/:title
 permalink: /:categories/:title/
-paginate: 5 # the number of post per page
+paginate: 3 # the number of post per page
 pygments: true

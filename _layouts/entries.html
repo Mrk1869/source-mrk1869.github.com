@@ -1,5 +1,9 @@
 ---
+title: 全記事一覧 | Markovnikov Laboratory
+name: entries
+language: japanese
 categories: blog
+keywords: Shoya, Ishimaru, Mrk1869
 ---
 
 <!DOCTYPE html>
@@ -11,7 +15,7 @@ categories: blog
         {% include navbar.html %}
         <section id="main_content" class="inner">
             {% include sub_header.html %}
-            {% for post in page.posts %}
+            {% for post in site.posts %}
             <div class="entries-body">
                 <div class="entries-title">
                     <a href="{{ post.url }}">{{ post.name }}</a>
@@ -24,8 +28,9 @@ categories: blog
                 </div>
             </div>
             {% endfor %}
-        </section>
-    </div> <!-- #main -->
+        </div>
+    </section>
+</div> <!-- #main -->
 </div> <!-- #main-container -->
 {% include footer.html %}
 </body>

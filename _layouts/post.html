@@ -1,5 +1,4 @@
 ---
-language: japanese
 categories: blog
 ---
 
@@ -11,7 +10,7 @@ categories: blog
     <div id="main_content_wrap" class="outer">
         {% include navbar.html %}
         <section id="main_content" class="inner">
-            <div class="sub_header"><p><i class="icon-pencil"></i> <a href="#">全記事一覧</a></p></div>
+            {% include sub_header.html %}
             <div class="article-body">
                 <div class="article-title">
                     <a href="{{ page.url }}">{{ page.name }}</a>
@@ -33,6 +32,18 @@ categories: blog
                 <a href="http://b.hatena.ne.jp/entry/{{ site.url }}{{ page.url }}" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
                 <div class="fb-like" data-href="{{ site.url }}{{ page.url }}" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
                 <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url}}{{ page.url }}" data-text="{{ page.name }} - Markovnikov Laboratory">Tweet</a>
+            </div>
+            <div class="pagenation">
+                {% if page.previous %}
+                <a href="{{ page.previous.url }}" class="previous"><button class="btn page-button">Previous</button></a>
+                {% else %}
+                <button class="btn disabled page-button">Previous</button>
+                {% endif %}
+                {% if page.next %}
+                <a href="{{ page.next.url }}" class="next"><button class="btn page-button">Next</button></a>
+                {% else %}
+                <button class="btn disabled page-button">Next</button>
+                {% endif %}
             </div>
         </section>
     </div> <!-- #main -->

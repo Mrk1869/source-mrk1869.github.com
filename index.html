@@ -7,7 +7,7 @@ categories: blog
 keywords: Shoya, Ishimaru, Mrk1869
 ---
 
-<div class="sub_header"><p><i class="icon-pencil"></i> <a href="#">全記事一覧</a></p></div>
+{% include sub_header.html %}
 {% for post in paginator.posts %}
 <div class="article-body">
     <div class="article-title">
@@ -29,20 +29,20 @@ keywords: Shoya, Ishimaru, Mrk1869
     <div class="fb-like" data-href="{{ site.url }}{{ post.url }}" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
     <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url}}{{ post.url }}" data-text="{{ post.name }}">Tweet</a>
 </div>
-
 {% endfor %}
-
-<!-- Pagination links -->
-<!--<div class="pagination">-->
-<!--    {% if paginator.previous_page %}-->
-<!--    <a href="/page{{ paginator.previous_page }}" class="previous">Previous</a>-->
-<!--    {% else %}-->
-<!--    <span class="previous">Previous</span>-->
-<!--    {% endif %}-->
-<!--    <span class="page_number ">Page: {{ paginator.page }} of {{ paginator.total_pages }}</span>-->
-<!--    {% if paginator.next_page %}-->
-<!--    <a href="/page{{ paginator.next_page }}" class="next">Next</a>-->
-<!--    {% else %}-->
-<!--    <span class="next ">Next</span>-->
-<!--    {% endif %}-->
-<!--</div>-->
+<div class="pagenation">
+    {% if paginator.previous_page %}
+        {% if paginator.previous_page == 1 %}
+            <a href="/" class="previous"><button class="btn page-button">Previous</button></a>
+        {% else %}
+            <a href="/page{{ paginator.previous_page }}" class="previous"><button class="btn page-button">Previous</button></a>
+        {% endif %}
+    {% else %}
+        <button class="btn disabled page-button">Previous</button>
+    {% endif %}
+    {% if paginator.next_page %}
+        <a href="/page{{ paginator.next_page }}" class="next"><button class="btn page-button">Next</button></a>
+    {% else %}
+        <button class="btn disabled page-button">Next</button>
+    {% endif %}
+</div>

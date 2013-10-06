@@ -9,7 +9,8 @@ module Jekyll
       raise 'name is null' unless @name
       self.read_yaml(File.join(base, '_layouts'), 'tag.html')
       self.data['title'] = "Entries of #{tag}"
-      self.data['posts'] = site.tags[tag]
+      # 新しいものから並べるためにreverseする
+      self.data['posts'] = site.tags[tag].reverse
       self.data['tag'] = tag
     end
   end

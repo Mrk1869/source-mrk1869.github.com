@@ -1,0 +1,12 @@
+{% if page.name == "entries" %}
+<div class="sub_header"><p><i class="icon-pencil"></i> <a href="/">最新の記事</a>　<i class="icon-tag"></i> <a href="#" class="tag-toggle">タグ一覧</a></p></div>
+{% else %}
+<div class="sub_header"><p><i class="icon-pencil"></i> <a href="/entries/">全記事一覧</a>　<i class="icon-tag"></i> <a href="#" class="tag-toggle">タグ一覧</a></p></div>
+{% endif%}
+<div class="tag-body">
+    <div class="tag-container">
+        {% for tag in site.tags %}
+        [<a href="/tag/{{ tag | first }}/">{{ tag | first }}</a>]
+        {% endfor %}
+    </div>
+</div>
