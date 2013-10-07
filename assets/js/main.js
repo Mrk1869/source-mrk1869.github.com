@@ -1,5 +1,5 @@
+// tag
 $(function(){
-  // tag
   var isTagOpened = false;
   $(".tag-toggle").on("click", function(){
     if(isTagOpened){
@@ -11,6 +11,7 @@ $(function(){
     }
     isTagOpened = !isTagOpened;
   });
-  // hatena ster
-  Hatena.Star.EntryLoader.headerTagAndClassName = ['div','hatena-star'];
 });
+
+// hatena ster
+Hatena.Star.EntryLoader.headerTagAndClassName = ['div','hatena-star'];
