@@ -14,4 +14,5 @@ $(function(){
 
   // hatena ster
   Hatena.Star.EntryLoader.headerTagAndClassName = ['div','hatena-star'];
+  $(".image-on-frame").css('visibility','visible').hide().fadeIn(800);
 });
