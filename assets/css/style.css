@@ -135,7 +135,7 @@ strong {
   font-weight: bold;
 }
 
-img :not(.hatena-star-star){
+img:not(.hatena-star-star):not(.hatena-star-add-button):not(.hatena-star-comment-button){
   position: relative;
   display: block;
   max-width: 90%;

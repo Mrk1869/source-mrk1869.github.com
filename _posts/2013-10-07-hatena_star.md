@@ -21,7 +21,7 @@ keywords: Jekyll, はてなスター
 </script>
 {% endhighlight %}
 
-Hatena.Star.EntryLoader.headerTagAndClassNameにaタグを内包するDOMを指定すると, その場所にリンク先のはてなスターが表示される.
+EntryLoader.headerTagAndClassNameにaタグを内包するDOMを指定すると, その場所にリンク先のはてなスターが表示される.
 
 ページ内のどこでも設置できるようにしたかったので, ハイパーリンクを設置した上で文字はdisplay:none;で消すという黒魔術を使ってみた.
 
