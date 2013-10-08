@@ -150,6 +150,13 @@ strong {
     -ms-box-shadow: 0 0 5px #ebebeb;
 }
 
+.image-trimmed-by-circle{
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    background-size: contain;
+}
+
 .image-fade{
     visibility: hidden;
 }
