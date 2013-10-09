@@ -8,8 +8,8 @@ module Jekyll
       self.process(@name)
       raise 'name is null' unless @name
       self.read_yaml(File.join(base, '_layouts'), 'tag.html')
-      self.data['title'] = "Entries of #{tag}"
-      # 新しいものから並べるためにreverseする
+      self.data['name'] = "Entries of #{tag}"
+      self.data['title'] = "entries"
       self.data['posts'] = site.tags[tag].reverse
       self.data['tag'] = tag
     end

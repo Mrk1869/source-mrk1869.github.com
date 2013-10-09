@@ -1,6 +1,4 @@
 ---
-title: entries
-name: 全記事一覧 | Markovnikov Laboratory
 language: japanese
 categories: blog
 keywords: Shoya, Ishimaru, Mrk1869
@@ -15,7 +13,7 @@ keywords: Shoya, Ishimaru, Mrk1869
         {% include navbar.html %}
         <section id="main_content" class="inner">
             {% include sub_header.html %}
-            {% for post in site.posts %}
+            {% for post in page.posts %}
             <div class="entries-body">
                 <div class="entries-title hatena-star">
                     <a href="{{ post.url }}">{{ post.name }}</a>
