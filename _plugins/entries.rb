@@ -8,8 +8,6 @@ module Jekyll
       self.process(@name)
       raise 'name is null' unless @name
       self.read_yaml(File.join(base, '_layouts'), 'entries.html')
-      self.data['title'] = "entries"
-      self.data['name'] = "全記事一覧 | Markovnikov Laboratory"
       self.data['posts'] = site.posts.reverse
     end
   end
