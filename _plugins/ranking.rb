@@ -11,7 +11,7 @@ module Jekyll
     def initialize(site, base, dir)
       @site, @base, @dir = site, base, dir
       @name = 'index.html'
-      @posts_with_score = []
+      @posts, @posts_with_score = [], []
 
       self.process(@name)
       raise 'name is null' unless @name
@@ -30,38 +30,28 @@ module Jekyll
           score = 0
           url = site.config['url'] + post.url
 
-          ## hatena
+          # hatena 文字列で返ってくる. 0は""
           uri = "http://api.b.st-hatena.com/entry.count?url=#{url}"
           body = Net::HTTP.get_response(URI.parse(uri)).body
-          # scoreは文字列で返ってくる. 0は"".
-          if body != ""
-            score = score + WEIGHT_OF_HATENA * body.to_i
-          end
+          score = body != "" ? score + WEIGHT_OF_HATENA * body.to_i : score
 
-          ## facebook
+          # facebook jsonで返ってくる. 0は0.
           uri = "http://graph.facebook.com/#{url}"
           body = Net::HTTP.get_response(URI.parse(uri)).body
-          # scoreはjsonで返ってくる. 0は0.
           json = JSON.parse(body)
-          if json['shares']
-            score = score + WEIGHT_OF_FACEBOOK * json['shares']
-          end
+          score = json['shares'] ? score + WEIGHT_OF_FACEBOOK * json['shares'] : score
 
-          ## tweet
+          # tweet jsonで返ってくる. 0は0.
           uri = "http://urls.api.twitter.com/1/urls/count.json?url=#{url}"
           body = Net::HTTP.get_response(URI.parse(uri)).body
-          # scoreはjsonで返ってくる. 0は0.
           json = JSON.parse(body)
-          if json['count']
-            score = score + WEIGHT_OF_TWITTER * json['count']
-          end
+          score = json['count'] ? score + WEIGHT_OF_TWITTER * json['count'] : score
 
           @posts_with_score << {"post" => post, "score" => score}
           puts "finished loading #{post.title}..#{score}"
         end
 
         ## sort
-        @posts = []
         @posts_with_score.sort_by{|val| val['score']}.reverse.each do |entry|
           @posts << entry['post']
         end
