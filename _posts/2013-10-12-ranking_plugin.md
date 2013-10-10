@@ -20,10 +20,10 @@ require 'json'
 
 url = URL_OF_YOUR_ENTRY
 
-# hatena 文字列で返ってくる. 0は""
+# hatena 文字列で返ってくる. 0は"".
 uri = "http://api.b.st-hatena.com/entry.count?url=#{url}"
 body = Net::HTTP.get_response(URI.parse(uri)).body
-score = body != "" body.to_i : 0
+score = body != "" ? body.to_i : 0
 
 # facebook jsonで返ってくる. 0は0.
 uri = "http://graph.facebook.com/#{url}"
@@ -35,7 +35,7 @@ score = json['shares'] ? json['shares'] : 0
 uri = "http://urls.api.twitter.com/1/urls/count.json?url=#{url}"
 body = Net::HTTP.get_response(URI.parse(uri)).body
 json = JSON.parse(body)
-score = json['count'] ? score + json['count'] : 0
+score = json['count'] ? json['count'] : 0
 
 {% endhighlight %}
 

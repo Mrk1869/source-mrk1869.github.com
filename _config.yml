@@ -4,6 +4,7 @@ product_url: http://mrk1869.com
 title: Markovnikov Laboratory
 author: Shoya Ishimaru
 descliption: Weblog by Mrk1869
+markdown: kramdown
 
 #permalink: /:category/:year-:month-:day/:title
 permalink: /:categories/:title/
