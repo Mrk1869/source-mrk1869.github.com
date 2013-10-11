@@ -2,9 +2,17 @@
 <div id="header_wrap" class="outer">
     <header class="inner">
     {% if page.language == "english" %}
-    <a id="forkme_banner" href="/">Japanese</a>
+        {% if page.categories == "en/blog" %}
+            <a id="forkme_banner" href="/">Japanese</a>
+        {% else %}
+        <a id="forkme_banner" href="/{{ page.categories }}/">Japanese</a>
+        {% endif %}
     {% else %}
-    <a id="forkme_banner" href="/en/aboutme/">English</a>
+        {% if page.categories == "blog" %}
+            <a id="forkme_banner" href="/en/">English</a>
+        {% else %}
+            <a id="forkme_banner" href="/en/{{ page.categories }}/">English</a>
+        {% endif %}
     {% endif %}
     <a href = "{% if page.language == "english" %}/en{% endif %}/"><h1 id="project_title">Markovnikov Laboratory</h1></a>
     <!--    <h2 id="project_tagline"></h2> -->
