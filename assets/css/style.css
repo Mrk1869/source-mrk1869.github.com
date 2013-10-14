@@ -150,6 +150,38 @@ strong {
     -ms-box-shadow: 0 0 5px #ebebeb;
 }
 
+.image-on-frame-small{
+    position: relative;
+    display: block;
+    max-width: 60%;
+    padding: 5px;
+    margin: 10px auto 10px auto;
+    border: 1px solid #ebebeb;
+
+    box-shadow: 0 0 5px #ebebeb;
+    -webkit-box-shadow: 0 0 5px #ebebeb;
+    -moz-box-shadow: 0 0 5px #ebebeb;
+    -o-box-shadow: 0 0 5px #ebebeb;
+    -ms-box-shadow: 0 0 5px #ebebeb;
+}
+
+.image-center{
+    position: relative;
+    display: block;
+    max-width: 90%;
+    padding: 5px;
+    margin: 10px auto 10px auto;
+}
+
+.image-center-small{
+    position: relative;
+    display: block;
+    max-width: 60%;
+    padding: 5px;
+    margin: 10px auto 10px auto;
+}
+
+
 .image-trimmed-by-circle{
     border-radius: 50%;
     -webkit-border-radius: 50%;

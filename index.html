@@ -32,18 +32,19 @@ keywords: Shoya, Ishimaru, Mrk1869
 </div>
 {% endfor %}
 <div class="pagenation">
-    {% if paginator.previous_page %}
-        {% if paginator.previous_page == 1 %}
-            <a href="/" class="previous"><button class="btn page-button">Previous</button></a>
-        {% else %}
-            <a href="/page{{ paginator.previous_page }}" class="previous"><button class="btn page-button">Previous</button></a>
-        {% endif %}
+    {% if paginator.next_page %}
+        <a href="/page{{ paginator.next_page }}" class="previous"><button class="btn page-button">Previous</button></a>
     {% else %}
         <button class="btn disabled page-button">Previous</button>
     {% endif %}
-    {% if paginator.next_page %}
-        <a href="/page{{ paginator.next_page }}" class="next"><button class="btn page-button">Next</button></a>
+    {% if paginator.previous_page %}
+        {% if paginator.previous_page == 1 %}
+            <a href="/" class="next"><button class="btn page-button">Next</button></a>
+        {% else %}
+            <a href="/page{{ paginator.previous_page }}" class="next"><button class="btn page-button">Next</button></a>
+        {% endif %}
     {% else %}
         <button class="btn disabled page-button">Next</button>
     {% endif %}
+
 </div>
