@@ -438,7 +438,8 @@ Twitter Bootstrap
 
 [class^="icon-"],
 [class*=" icon-"] {
-  vertical-align: middle;
+    margin-top: 0px;
+    vertical-align: middle;
 }
 
 #main_content_wrap{
@@ -677,4 +678,14 @@ Small Device Styles
   .image-on-frame{
       max-width:90%;
   }
+
+  .image-on-frame-medium{
+      max-width:80%;
+  }
+
+  [class^="icon-"],
+  [class*=" icon-"] {
+    vertical-align: text-top;
+}
+
 }
