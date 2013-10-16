@@ -304,6 +304,34 @@ form {
   padding: 20px;
 }
 
+@font-face {
+    font-family: 'LigatureSymbols';
+    src: url('/assets/font/LigatureSymbols.eot');
+    src: url('/assets/font/LigatureSymbols.eot?#iefix') format('embedded-opentype'),
+         url('/assets/font/LigatureSymbols.woff') format('woff'),
+         url('/assets/font/LigatureSymbols.ttf') format('truetype'),
+         url('/assets/font/LigatureSymbols.svg#LigatureSymbols') format('svg');
+    src: url('/assets/font/LigatureSymbols.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.lsf, .lsf-icon:before {
+    font-family: 'LigatureSymbols';
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+       -moz-font-smoothing: antialiased;
+        -ms-font-smoothing: antialiased;
+         -o-font-smoothing: antialiased;
+            font-smoothing: antialiased;
+}
+
+.lsf-icon:before {
+    content: attr(title);
+    margin-right: .3em;
+    font-size: 130%;
+}
+
 /*******************************************************************************
 Full-Width Styles
 *******************************************************************************/
@@ -432,7 +460,7 @@ Full-Width Styles
 }
 
 .footer-icon{
-    margin: 0px 5px 0px 5px;
+    padding: 5px;
     opacity: 0.8;
     width: 60px;
     filter: alpha(opacity=80);
