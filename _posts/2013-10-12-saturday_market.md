@@ -2,12 +2,12 @@
 layout: post
 categories: blog
 language: japanese
-name: Satureday Market
+name: Saturday Market
 tags: Note Germany Photo
-keywords: ドイツ, Satureday Market
+keywords: ドイツ, Saturday Market
 ---
 
-土曜の朝は教会近くの広場でSatureday Marketが開催されていて, 新鮮な野菜, 果物, 卵, あと花やチーズやソーセージも買える.
+土曜の朝は教会近くの広場でSaturday Marketが開催されていて, 新鮮な野菜, 果物, 卵, あと花やチーズやソーセージも買える.
 
 <img src="/assets/content-image/2013-10-12%2010.09.34.jpg" class="image-on-frame image-fade">
 
