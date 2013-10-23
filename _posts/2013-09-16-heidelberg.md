@@ -7,7 +7,7 @@ tags: Sightseeing Germany Photo
 keywords: ハイデルベルク, 観光
 ---
 
-古城や学生牢, 古い街並みで有名なハイデルベルクを観光しました.
+古城や学生牢で有名なハイデルベルクを観光しました。
 
 <img src="/assets/content-image/IMGP1273.JPG" class="image-on-frame image-fade">
 

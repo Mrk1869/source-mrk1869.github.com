@@ -7,11 +7,11 @@ tags: Jekyll Ruby
 keywords: Jekyll, はてな, facebook, twitter
 ---
 
-各記事のはてなブックマーク数・Facebookいいね数・tweet数を取得してスコアの高い順にソートするプラグインを書いた.
+各記事のはてなブックマーク数・Facebookいいね数・tweet数を取得してスコアの高い順にソートするプラグインを書いた。
 
 [ranking.rb](https://github.com/Mrk1869/source-mrk1869.github.com/blob/master/_plugins/ranking.rb)
 
-それぞれ数値を取得するためのapiと取り出し方は以下のとおり.
+それぞれ数値を取得するためのapiと取り出し方は以下のとおり。
 
 {% highlight ruby %}
 
@@ -39,7 +39,7 @@ score = json['count'] ? json['count'] : 0
 
 {% endhighlight %}
 
-buildの度に取得すると記事を書く際に不便なので, jekyll server に --drafts オプションをつけているときは評価をスキップする. --draftsオプションが付いているかどうかは
+buildの度に取得すると記事を書く際に不便なので、jekyll server に --drafts オプションをつけているときは評価をスキップする。--draftsオプションが付いているかどうかは
 
 {% highlight ruby %}
 
@@ -47,4 +47,4 @@ site.config['show_drafts']
 
 {% endhighlight %}
 
-を確認すれば良い.
+を確認すれば良い。

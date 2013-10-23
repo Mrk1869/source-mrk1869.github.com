@@ -7,7 +7,7 @@ tags: Note
 keywords: Jekyll, ブログ, Mrk1869
 ---
 
-jekyllで書くブログのテストです.<br>
+jekyllで書くブログのテストです。<br>
 シンタックスハイライトのテスト
 
 {% highlight ruby %}

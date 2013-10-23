@@ -7,7 +7,7 @@ tags: Note Germany Photo
 keywords: ドイツ, Saturday Market
 ---
 
-土曜の朝は教会近くの広場でSaturday Marketが開催されていて, 新鮮な野菜, 果物, 卵, あと花やチーズやソーセージも買える.
+土曜の朝は教会近くの広場でSaturday Marketが開催されていて、新鮮な野菜、果物、卵、あと花やチーズやソーセージも買える。
 
 <img src="/assets/content-image/2013-10-12%2010.09.34.jpg" class="image-on-frame image-fade">
 
@@ -19,4 +19,6 @@ keywords: ドイツ, Saturday Market
 
 <img src="/assets/content-image/2013-10-12%2010.05.41.jpg" class="image-on-frame image-fade">
 
-Neuer Wein(発酵途中のワイン)を買って帰った. 1リットル1ユーロ. 計り売りでポリケースに入ってでてきた.
+Neuer Wein(発酵途中のワイン)を買って帰った。
+1リットル1ユーロ。
+計り売りでポリケースに入ってでてきた。
