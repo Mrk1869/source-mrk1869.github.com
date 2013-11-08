@@ -3,7 +3,7 @@ layout: post
 categories: blog
 language: japanese
 name: ダイデスハイムを観光しました
-tags: Sightseeing Germany Photo
+tags: Sightseeing Photo
 keywords: ダイデスハイム, 観光, ニューワイン
 ---
 

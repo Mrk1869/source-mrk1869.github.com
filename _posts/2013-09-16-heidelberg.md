@@ -3,7 +3,7 @@ layout: post
 categories: blog
 language: japanese
 name: ハイデルベルクを観光しました
-tags: Sightseeing Germany Photo
+tags: Sightseeing Photo
 keywords: ハイデルベルク, 観光
 ---
 

@@ -474,6 +474,11 @@ a:hover .footer-icon{
     filter: alpha(opacity=100);
 }
 
+.injection-center{
+    text-align:center;
+    font-weight:600;
+}
+
 
 /*******************************************************************************
 Twitter Bootstrap

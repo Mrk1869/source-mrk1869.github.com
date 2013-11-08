@@ -3,7 +3,7 @@ layout: post
 categories: blog
 language: japanese
 name: Asian Food
-tags: Note Germany
+tags: Note
 keywords: ドイツ, インスタントラーメン, カイザースラウテルン
 ---
 

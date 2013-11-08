@@ -3,7 +3,7 @@ layout: post
 categories: blog
 language: japanese
 name: こちらの生活にもずいぶん慣れた
-tags: Note Germany
+tags: Note
 keywords: ドイツ, 留学
 ---
 ドイツで暮らし始めて1週間が経った。

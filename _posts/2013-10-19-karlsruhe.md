@@ -3,8 +3,8 @@ layout: post
 categories: blog
 language: japanese
 name: 司法の都カールスルーエ
-tags: Sightseeing Germany Photo
-keywords: サンプル, これはサンプル
+tags: Sightseeing Photo
+keywords: カールスルーエ, 観光
 ---
 
 今日はカールスルーエを観光しました。

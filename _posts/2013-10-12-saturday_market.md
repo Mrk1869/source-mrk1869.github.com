@@ -3,7 +3,7 @@ layout: post
 categories: blog
 language: japanese
 name: Saturday Market
-tags: Note Germany Photo
+tags: Note Photo
 keywords: ドイツ, Saturday Market
 ---
 

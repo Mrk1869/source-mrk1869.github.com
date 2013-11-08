@@ -3,7 +3,7 @@ layout: post
 categories: blog
 language: japanese
 name: ピザを焼く
-tags: Note Germany
+tags: Note
 keywords: ピザ, ドイツ
 ---
 
