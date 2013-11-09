@@ -724,16 +724,14 @@ Small Device Styles
   }
 
   .image-on-frame{
-      max-width:90%;
+      max-width:96%;
   }
 
   .image-on-frame-medium{
       max-width:85%;
   }
-
-  [class^="icon-"],
-  [class*=" icon-"] {
-    vertical-align: text-top;
-}
+  .image-on-frame-small{
+      max-width:75%;
+  }
 
 }
