@@ -611,6 +611,10 @@ Twitter Bootstrap
     display: none;
 }
 
+#zenback #zenback-widget .zenback-module-content {
+    font-size: 13px;
+}
+
 /*******************************************************************************
 Small Device Styles
 *******************************************************************************/
