@@ -19,15 +19,14 @@ keywords: モン・サン・ミッシェル, 観光
 
 <img src="https://dl.dropboxusercontent.com/u/12208857/img/msm03.JPG" class="image-on-frame image-fade">
 
-城壁の内側は店が立ち並び観光客で賑わっています。
 
 <img src="https://dl.dropboxusercontent.com/u/12208857/img/msm04.JPG" class="image-on-frame-small image-fade">
 
-おみやげ屋やレストランが連なるお洒落なところです。
+城壁の内側は店が立ち並び観光客で賑わう。
 
 <img src="https://dl.dropboxusercontent.com/u/12208857/img/msm11.JPG" class="image-on-frame image-fade">
 
-日本人観光客が多いため、店の看板に日本語が多く使われています。メニューの表記はフランス語、英語、日本語の順。これには驚きました。店員さんも少し喋れたりします。
+日本人観光客が多いため、メニューはフランス語、英語、日本語表記。これには驚きました。店員さんも少し喋れたりします。
 
 <img src="https://dl.dropboxusercontent.com/u/12208857/img/msm12.JPG" class="image-on-frame image-fade">
 
@@ -59,9 +58,9 @@ keywords: モン・サン・ミッシェル, 観光
 
 <img src="https://dl.dropboxusercontent.com/u/12208857/img/msm23.JPG" class="image-on-frame image-fade">
 
-ライトアップされたモン・サン・ミッシェル。
+夜のモン・サン・ミッシェル。
 
-翌日、朝日に照らされるモン・サン・ミッシェルを見に出かけました。
+翌日は日出の時間に合わせて出かけました。
 
 <img src="https://dl.dropboxusercontent.com/u/12208857/img/msm31.JPG" class="image-on-frame image-fade">
 
@@ -69,7 +68,7 @@ keywords: モン・サン・ミッシェル, 観光
 
 <img src="https://dl.dropboxusercontent.com/u/12208857/img/msm32.JPG" class="image-on-frame image-fade">
 
-20分の道を半分くらい歩いたところ。ぼんやり明るくなってきた。
+徒歩20分の道を半分くらい進んだところ。ぼんやり明るくなってきた。
 
 <img src="https://dl.dropboxusercontent.com/u/12208857/img/msm33.JPG" class="image-on-frame image-fade">
 
