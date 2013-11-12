@@ -9,7 +9,7 @@ keywords: Google Games
 
 11/24(土)グーグル株式会社主催/株式会社アカリク企画運営のGoogle Gmaes in Kyotoに参加してきました。
 
-<img src="/assets/content-image/google_slooProImg_20121125010559.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/google_slooProImg_20121125010559.jpg" class="image-on-frame">
 
 Google Gamesとは「Googler(Googleで働く人たち)の出題するクイズやパズルに挑戦することでGoogleの文化に触れる」というイベントです。告知文は以下のとおり。
 
@@ -21,19 +21,19 @@ Google Gamesとは「Googler(Googleで働く人たち)の出題するクイズ�
 
 #### クイズ！パズル！コーディング！
 
-<img src="/assets/content-image/google_slooProImg_20121125010549.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/google_slooProImg_20121125010549.jpg" class="image-on-frame">
 
 京都での開催でしたが関西圏外からも含め80名ほどの学生が参加しました。これから5人1組のチームに分かれてクイズやパズルに挑戦です。みんな気合入ってます。
 
 #### 休憩
 
-<img src="/assets/content-image/google_slooProImg_20121125010608.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/google_slooProImg_20121125010608.jpg" class="image-on-frame">
 
 頭を使ったらおなかがすいた！ということで休憩時間には軽食が振舞われました。
 
 #### レゴチャレンジ
 
-<img src="/assets/content-image/google_slooProImg_20121125010604.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/google_slooProImg_20121125010604.jpg" class="image-on-frame">
 
 クイズやパズル、コーディングときて最後の問題はレゴチャレンジ。始まるまでは「レゴで一体何するんだろう」って思っていたけれど、きちんとした評価基準があってがっつり競技でした。このレゴチャレンジが一番楽しかった。
 

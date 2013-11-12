@@ -16,6 +16,6 @@ TwitterやFacebookは時差の関係でこちらが見たい時間帯にフィ�
 
 研究所のみんなに休日は普段どうやって過ごしているかと聞いた。ハイキングや旅行に行くとのこと。休日を利用していろんなところに出かけてみたい。先週は早速、[ダイデスハイム](/blog/deidesheim/)と[ケルン](/blog/cologne/)に行った。
 
-<img src="/assets/content-image/2013-10-07%2012.39.22-2.jpg" class="image-on-frame-medium image-fade">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/2013-10-07%2012.39.22-2.jpg" class="image-on-frame-medium image-fade">
 
 昼から美味しいビールが飲める。最高。

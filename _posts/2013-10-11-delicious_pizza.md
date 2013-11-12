@@ -13,6 +13,6 @@ keywords: ピザ, ドイツ
 
 電子レンジ不可のピザが存在するのを知らず、それを長時間加熱し続けたのが原因だった。翌日にはオーブンレンジを買いに行って、懲りずにオーブンで二枚目を焼いた。それ以来、ピザを焼く時は調理法を念入りにチェックしている。
 
-<img src="/assets/content-image/2013-10-10%2011.51.56.jpg" class="image-on-frame-medium image-fade">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/2013-10-10%2011.51.56.jpg" class="image-on-frame-medium image-fade">
 
 いま思うとあの大きさで電子レンジ10分はないよなぁ。

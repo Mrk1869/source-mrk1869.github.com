@@ -13,7 +13,7 @@ keywords: はてなインターン2012
 6週間という長きにわたるインターンのなかで何をして、何をみて、何を得たのか。<br>
 そして2013年のインターンへの応募を考えている方へのアドバイスを綴ります。
 
-<img src="/assets/content-image/hatena_image1.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/hatena_image1.jpg" class="image-on-frame">
 
 参加のきっかけとなった過年度インターンの方のエントリはこちら
 
@@ -42,7 +42,7 @@ keywords: はてなインターン2012
 
 **11:00 Webアプリケーション開発に必要な基礎知識の講義**
 
-<img src="/assets/content-image/hatena_image2.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/hatena_image2.jpg" class="image-on-frame">
 
 10:30に出社して、午前はインプットの時間。<br>
 Webアプリケーションを開発する上で必要な知識や、はてなのサービスを支えるフレームワーク、インフラ、デザインに関する講義が行われます。講義項目は以下のとおり。
@@ -59,7 +59,7 @@ Webアプリケーションを開発する上で必要な知識や、はてな�
 
 **・14:00 昼食**
 
-<img src="/assets/content-image/hatena_image3.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/hatena_image3.jpg" class="image-on-frame">
 
 14:00から1時間は昼休憩です。お昼ははてな自慢のまかないランチをいただきます。とても美味しい！！それにメニューは日替わりなので全く飽きません。[まかない日記](http://d.hatena.ne.jp/macanai/)にてレシピも公開中。毎日写真を撮りました。
 
@@ -71,7 +71,7 @@ Webアプリケーションを開発する上で必要な知識や、はてな�
 
 **・15:00 実習**
 
-<img src="/assets/content-image/hatena_image4.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/hatena_image4.jpg" class="image-on-frame">
 
 午後からはアウトプットの時間です。
 午前の講義をもとにした課題が出されるので、午後からはその課題をこなすフェイズにうつります。課題提出の締切は翌日の朝10時。皆黙々と作業を進めます。参加者2名に対し1名のメンターの方にスタンバイしていただいており、躓いた時はすぐにアドバイスを頂くことができます。[id:nobuoka](http://vividcode.hatenablog.com/)さん 最後まで付き合ってくださり本当にありがとうございました。
@@ -80,7 +80,7 @@ Webアプリケーションを開発する上で必要な知識や、はてな�
 
 **・19:00 定時**
 
-<img src="/assets/content-image/hatena_image5.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/hatena_image5.jpg" class="image-on-frame">
 
 インターンシップの定時は19時ですが、課題制作が間に合わなかったりもっと機能を実装したいと思うひとはオフィスに残って作業を続けます。会議室奥には通称「畳部屋」と呼ばれるリラックススペースがあります。ここではメンバーが黙々とコードを書いていると思えば、互いに教え合ったり、ときに脆弱性を攻撃しあったり… 和気藹々とプログラミングすることができました。
 
@@ -117,7 +117,7 @@ Webアプリケーションを開発する上で必要な知識や、はてな�
 
 インターン期間中の成果に関しては、最終日に成果発表会という形で各々のチームがプレゼンを行い、投票によって順位がつけられました。結果は6位/6チームで残念ながら最下位。悔しい。
 
-<img src="/assets/content-image/hatena_image6.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/hatena_image6.jpg" class="image-on-frame">
 
 以上が、6週間のインターン期間中の過ごし方でした。
 
@@ -127,7 +127,7 @@ Webアプリケーションを開発する上で必要な知識や、はてな�
 
 #### ■筋の良い技術・良いWebサービスを作る方法を身につけられる
 
-<img src="/assets/content-image/hatena_image7.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/hatena_image7.jpg" class="image-on-frame">
 
 １つ目は言わずもがな、Webアプリケーションを開発する上で必要な技術と企画手法を身に付けるための入口が開けたこと。
 
@@ -140,7 +140,7 @@ Webアプリケーションを開発する上で必要な知識や、はてな�
 
 #### ■エンジニアとして働くことはどういうことかを知ることができる
 
-<img src="/assets/content-image/hatena_image8.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/hatena_image8.jpg" class="image-on-frame">
 
 僕は目標とする職業を研究者かエンジニアのどちらにするか決めかねていて、「Web系の会社でエンジニアとして働くってどういうことなんだろう」という疑問に答えを見つけるべくはてなのインターンに参加しました。
 
@@ -152,7 +152,7 @@ Webアプリケーションを開発する上で必要な知識や、はてな�
 
 #### ■技術的に思考的にとがった同年代のプログラマに出会える
 
-<img src="/assets/content-image/hatena_image9.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/hatena_image9.jpg" class="image-on-frame">
 
 はてなには全国から意識の高い学生からのインターン応募が寄せられ、選考を通過してオフィスに集まったメンバーは技術的に、思考的に、あるいは性格的にとがった人ばかりです。そんな人達に囲まれて2週間ないし6週間過ごすのは非常に刺激的な経験でした。
 
@@ -182,12 +182,12 @@ Webアプリケーションを開発する上で必要な知識や、はてな�
 
 #### おわりに
 
-<img src="/assets/content-image/hatena_image10.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/hatena_image10.jpg" class="image-on-frame">
 
 講師やメンターとしてお世話になったはてな社員の皆さん。<br>
 本当に楽しかったです。ありがとうございました！！
 
-<img src="/assets/content-image/hatena_image11.jpg" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/hatena_image11.jpg" class="image-on-frame">
 
 6週間を共にしたインターン実践コース・研究コースのみんな。<br>
 またどこかで会いましょう！！

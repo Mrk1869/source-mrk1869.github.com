@@ -9,7 +9,7 @@ keywords: Paletta, HSV, カラーパレット, 顕色系
 
 [Paletta - HSV Color palette for every Programmer](http://paletta.mrk1869.com)
 
-<img src="https://lh6.googleusercontent.com/-80-9QsmVnHk/UlF2X_mV5gI/AAAAAAAAAg4/1mXXbW7zZ_o/s720/paletta_code.png" class="image-on-frame">
+<img src="https://dl.dropboxusercontent.com/u/12208857/img/paletta_code.png" class="image-on-frame">
 
 #### 新機能
 
