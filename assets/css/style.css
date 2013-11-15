@@ -619,11 +619,9 @@ Twitter Bootstrap
 Small Device Styles
 *******************************************************************************/
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 450px) {
   body {
     font-size:14px;
-    text-align:justify;
-    text-justify:inter-ideograph;
   }
 
   #downloads {
@@ -633,10 +631,6 @@ Small Device Styles
   .inner {
     min-width: 280px;
     max-width: 480px;
-  }
-
-  #project_title {
-  font-size: 32px;
   }
 
   h1 {
@@ -670,6 +664,11 @@ Small Device Styles
     font-size: 11px;
   }
 
+  #project_title {
+    font-size: 32px;
+    text-align:left;
+  }
+
   .article-body{
     padding: 30px 10px 10px 10px;
     margin: 0px 5px 20px 5px;
@@ -677,6 +676,9 @@ Small Device Styles
 
   .article-content{
     padding: 5px 0px 20px 0px;
+    text-align:justify;
+    text-justify:inter-ideograph;
+
   }
 
   .article-title{
