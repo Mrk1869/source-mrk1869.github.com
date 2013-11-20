@@ -81,15 +81,18 @@ h2 {
 }
 
 h3 {
+  font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
   font-size: 24px;
 }
 
 h4 {
+  font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
   font-size: 21px;
 }
 
 h5 {
-  font-size: 18px;
+  font-family: 'Lucida Grande', 'Calibri', Helvetica, Arial, sans-serif;
+  font-size: 16px;
 }
 
 h6 {
