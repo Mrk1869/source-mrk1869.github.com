@@ -212,7 +212,7 @@ strong {
 }
 
 pre, code {
-    width: 100%;
+  width: 100%;
   color: #222;
   background-color: #fff;
 
@@ -742,5 +742,10 @@ Small Device Styles
   .image-on-frame-small{
       max-width:75%;
   }
+
+  .image-trimmed-by-circle{
+    padding:0px;
+}
+
 
 }
