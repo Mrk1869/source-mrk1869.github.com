@@ -5,6 +5,12 @@ language: japanese
 name: 司法の都カールスルーエ
 tags: Sightseeing Photo
 keywords: カールスルーエ, 観光
+relations:
+  - cologne
+  - heidelberg
+  - zurich
+  - deidesheim
+  - london
 ---
 
 今日はカールスルーエを観光しました。

@@ -5,6 +5,12 @@ language: japanese
 name: ダイデスハイムを観光しました
 tags: Sightseeing Photo
 keywords: ダイデスハイム, 観光, ニューワイン
+relations:
+  - cologne
+  - heidelberg
+  - karlsruhe
+  - zurich
+  - london
 ---
 
 Neuer Wein(発酵途中のワイン)を求めてダイデスハイムを観光しました。

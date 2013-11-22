@@ -5,6 +5,8 @@ language: japanese
 name: コードからベースカラーを指定できるようになりました
 tags: Paletta Application
 keywords: Paletta, HSV, カラーパレット, 顕色系
+relations:
+ - Paletta
 ---
 
 [Paletta - HSV Color palette for every Programmer](http://paletta.mrk1869.com)

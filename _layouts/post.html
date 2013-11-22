@@ -19,34 +19,43 @@ categories: blog
                     {{ page.date | date_to_string }}
                 </div>
                 {% if page.tags != nil %}
-                <div class="article-tag">
+                    <div class="article-tag">
                     {% for tag in page.tags %}
-                    <span class="lsf">tag</span>
-                    <a href="/tag/{{ tag }}/">{{ tag }}</a>
+                        <span class="lsf">tag</span>
+                        <a href="/tag/{{ tag }}/">{{ tag }}</a>
                     {% endfor %}
-                </div>
+                    </div>
                 {% endif %}
                 <div class="article-content">
                     {{ content }}
                 </div>
-                <a href="http://b.hatena.ne.jp/entry/{{ site.url }}{{ page.url }}" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-                <div class="fb-like" data-href="{{ site.url }}{{ page.url }}" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-                <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url}}{{ page.url }}" data-text="{{ page.name }}">Tweet</a>
-                <div class="hatena-star"><a href="{{ site.url }}{{ page.url }}" style="display: none;">hatena</a></div>
-                <!-- X:S ZenBackWidget -->
-                <div id="zenback-widget-loader"></div><script type="text/javascript">!function(d,i){if(!d.getElementById(i)){var r=Math.ceil((new Date()*1)*Math.random());var j=d.createElement("script");j.id=i;j.async=true;j.src="//w.zenback.jp/v1/?base_uri=http%3A//mrk1869.com&nsid=116997042131223895%3A%3A116997050989577961&rand="+r;d.body.appendChild(j);}}(document,"zenback-widget-js");</script>
-                <!-- X:E ZenBackWidget -->
+                <div class="article-relations">
+                    {% if page.relations %}
+                        <h5><span class="lsf">check</span> 関連記事</h5>
+                        <ul>
+                        {% for relation in page.relations %}
+                            <li><a href="/blog/{{relation}}/" class="linkedTitle">Now loading..</a></li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="article-socialbox">
+                    <a href="http://b.hatena.ne.jp/entry/{{ site.url }}{{ page.url }}" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+                    <div class="fb-like" data-href="{{ site.url }}{{ page.url }}" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url}}{{ page.url }}" data-text="{{ page.name }}">Tweet</a>
+                    <div class="hatena-star"><a href="{{ site.url }}{{ page.url }}" style="display: none;">hatena</a></div>
+                </div>
             </div>
             <div class="pagenation">
                 {% if page.previous %}
-                <a href="{{ page.previous.url }}" class="previous"><button class="btn page-button">Previous</button></a>
+                    <a href="{{ page.previous.url }}" class="previous"><button class="btn page-button">Previous</button></a>
                 {% else %}
-                <button class="btn disabled page-button">Previous</button>
+                    <button class="btn disabled page-button">Previous</button>
                 {% endif %}
                 {% if page.next %}
-                <a href="{{ page.next.url }}" class="next"><button class="btn page-button">Next</button></a>
+                    <a href="{{ page.next.url }}" class="next"><button class="btn page-button">Next</button></a>
                 {% else %}
-                <button class="btn disabled page-button">Next</button>
+                    <button class="btn disabled page-button">Next</button>
                 {% endif %}
             </div>
         </section>

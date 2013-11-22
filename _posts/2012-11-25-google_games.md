@@ -5,6 +5,10 @@ language: japanese
 name: GoogleGamesに参加して人生変わった
 tags: Note
 keywords: Google Games
+relations:
+  - hatena_intern
+  - paperboy
+  - DFKI
 ---
 
 11/24(土)グーグル株式会社主催/株式会社アカリク企画運営のGoogle Gmaes in Kyotoに参加してきました。

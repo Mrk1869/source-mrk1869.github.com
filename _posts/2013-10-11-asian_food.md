@@ -5,6 +5,10 @@ language: japanese
 name: Asian Food
 tags: Note
 keywords: ドイツ, インスタントラーメン, カイザースラウテルン
+relations:
+  - life_in_germany
+  - blau
+  - DFKI
 ---
 
 Asian Foodを取り扱う店があるという話を聞いて、街のスーパーまで買い物に出かけた。

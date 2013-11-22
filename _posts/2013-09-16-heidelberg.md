@@ -5,6 +5,12 @@ language: japanese
 name: ハイデルベルクを観光しました
 tags: Sightseeing Photo
 keywords: ハイデルベルク, 観光
+relations:
+  - deidesheim
+  - paris
+  - mont_saint_michel
+  - london
+  - deidesheim
 ---
 
 古城や学生牢で有名なハイデルベルクを観光しました。

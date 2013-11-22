@@ -5,6 +5,9 @@ language: japanese
 name: Jekyllにはてなスター導入した
 tags: Jekyll
 keywords: Jekyll, はてなスター
+relations:
+  - ranking_plugin
+  - ToJekyll
 ---
 
 承認欲求を満たすためにはてなスターを導入した。

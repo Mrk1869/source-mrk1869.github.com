@@ -5,6 +5,11 @@ language: japanese
 name: Saturday Market
 tags: Note Photo
 keywords: ドイツ, Saturday Market
+relations:
+  - life_in_germany
+  - blau
+  - DFKI
+  - heidelberg
 ---
 
 土曜の朝は教会近くの広場でSaturday Marketが開催されていて、新鮮な野菜、果物、卵、あと花やチーズやソーセージも買える。

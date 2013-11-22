@@ -5,6 +5,12 @@ language: japanese
 name: ヴェルサイユ宮殿
 tags: Sightseeing Photo
 keywords: ベルサイユ宮殿, 観光
+relations:
+  - paris
+  - mont_saint_michel
+  - london
+  - karlsruhe
+  - heidelberg
 ---
 
 フランス滞在最終日はパリ南西に位置するヴェルサイユ宮殿を観光しました。パリ市内からは急行鉄道RERを使うと1時間弱で到着します。

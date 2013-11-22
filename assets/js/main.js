@@ -21,4 +21,22 @@ $(function(){
   // twitter
   $(".twitter-tweet").addClass('tw-align-center');
 
+  // getTitleofLinkedPage
+  var $titles = $(".linkedTitle");
+  $titles.each(function(i){
+    var title = "";
+    $.ajax({
+      type:'GET',
+      url:$(this).attr("href"),
+      dataType:'html',
+      success:function(data, textStatus, jqXHR){
+        var title = data.match(/<title>(.*) - Red Magic Manuscripts<\/title>/)[1];
+        if(title != ""){
+          $($titles[i]).text(title);
+        }else{
+          $($titles[i]).parent('li').remove();
+        }
+      }
+    });
+  });
 });

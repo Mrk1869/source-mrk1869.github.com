@@ -5,6 +5,12 @@ language: japanese
 name: モン・サン・ミッシェル
 tags: Sightseeing Photo
 keywords: モン・サン・ミッシェル, 観光
+relations:
+ - paris
+ - mont_saint_michel
+ - london
+ - zurich
+ - versailles
 ---
 
 パリからTGVでレンヌ、それからバスでモン・サン・ミッシェルまで移動しました。

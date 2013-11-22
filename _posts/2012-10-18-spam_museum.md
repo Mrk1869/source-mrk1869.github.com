@@ -5,6 +5,12 @@ language: japanese
 name: メイワクメールをワクワクに変えるSpam Museum
 tags: Application
 keywords: Spam Museum
+relations:
+  - Paletta
+  - swiper
+  - quuize
+  - kotodama
+  - racolta
 ---
 
 メイワクメールをワクワクに変える。<br>

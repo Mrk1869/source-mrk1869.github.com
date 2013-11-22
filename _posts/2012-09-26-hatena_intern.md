@@ -5,6 +5,9 @@ language: japanese
 name: はてなのサマーインターンに参加しました
 tags: Note
 keywords: はてなインターン2012
+relations:
+  - paperboy
+  - google_games
 ---
 
 
