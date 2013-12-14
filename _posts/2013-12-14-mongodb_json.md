@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 name: MongoDBのObjectID型をJSONに変換する[pymongo]
 tags: Python MongoDB
-keywords: Go, Vim
+keywords: MongoDB, Python, JSON
 ---
 
 MongoDBから条件に合うオブジェクトを取り出して, エンコードされたJSONを返すapiを作成しようとしたところ, つまずいたのでメモ.
