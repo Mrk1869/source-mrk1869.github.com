@@ -1,3 +1,6 @@
 [submodule "_site"]
 	path = _site
 	url = git@github.com:Mrk1869/mrk1869.github.com.git
+[submodule "assets/js/mystar"]
+	path = assets/js/mystar
+	url = git@github.com:Mrk1869/CustomStar.git
