@@ -607,7 +607,7 @@ Twitter Bootstrap
 .tag-body{
     background-color:#ffffff;
     border-radius:3px;
-    padding: 20px 20px 18px 20px    ;
+    padding: 20px 20px 18px 20px;
     margin: 0px 0px 20px 0px;
     box-shadow: 0 0 10px rgba(0,0,0,.1);
     display:none;
@@ -622,9 +622,16 @@ Twitter Bootstrap
     font-size: 13px;
 }
 
-.hatena-star-star{
-    border-radius:4px;
+.hatena-star-user{
+    border-radius: 4px;
+    z-index: 1;
 }
+
+.hatena-star-star{
+    z-index: 10;
+    background-color:#ffffff;
+}
+
 
 /*******************************************************************************
 Small Device Styles
