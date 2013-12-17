@@ -7,6 +7,7 @@ tags: Paletta Application
 keywords: Paletta, HSV, カラーパレット, 顕色系
 relations:
  - Paletta
+ - long_shadow
 ---
 
 [Paletta - HSV Color palette for every Programmer](http://paletta.mrk1869.com)
