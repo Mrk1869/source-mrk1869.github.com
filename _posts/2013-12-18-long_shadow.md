@@ -5,11 +5,11 @@ language: japanese
 name: 5分で完成！イラレで作るロングシャドウアイコン
 tags: Illustrator
 keywords: ロングシャドウ, イラレ, アイコン, 作成
+eyecatch: https://dl.dropboxusercontent.com/u/12208857/img/long_shadow00.png
 relations:
 - Paletta
 - paletta_code
 ---
-
 
 フラットデザインの台頭と素材サイトの恩恵によって、アプリのデザインにかかる工数はどんどん削減されていく傾向にあります。今回はそれらを組み合わせることで、ノンデザイナーでもさくっと作れるロングシャドウアイコンの作成方法をお伝えします。
 

@@ -21,7 +21,11 @@
     <meta property="og:title" content="{{ page.name }}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-    <meta property="og:image" content="{{ site.url }}/assets/img/icon_laptop.png">
+    {% if page.eyecatch  %}
+        <meta property="og:image" content="{{ page.eyecatch }}">
+    {% else %}
+        <meta property="og:image" content="{{ site.url }}/assets/img/icon_laptop.png">
+    {% endif %}
     <link rel="alternate" type="application/rss+xml" title="Red Magic Manuscripts" href="{{ site.url }}/feed.xml">
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
     <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css">
