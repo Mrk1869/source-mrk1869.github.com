@@ -21,7 +21,7 @@
     <meta property="og:title" content="{{ page.name }}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-    {% if page.eyecatch  %}
+    {% if page.eyecatch  != nil %}
         <meta property="og:image" content="{{ page.eyecatch }}">
     {% else %}
         <meta property="og:image" content="{{ site.url }}/assets/img/icon_laptop.png">
