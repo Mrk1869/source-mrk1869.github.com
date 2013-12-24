@@ -243,7 +243,7 @@ pre, code {
 pre {
   width: 100%;
   margin: 3px 0px 3px 0px;
-  padding: 10px 5px 10px 5px;
+  padding: 10px 0px 10px 3px;
   box-shadow: 0 0 4px rgba(0,0,0,.1);
   overflow: auto;
 }
