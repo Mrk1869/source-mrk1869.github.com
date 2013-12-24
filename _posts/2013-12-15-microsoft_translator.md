@@ -22,7 +22,7 @@ Windows accountでのサインインを求められるので、持っていな�
 Python用のSDKがGitHubで公開されているので[リポジトリ](https://github.com/openlabs/Microsoft-Translator-Python-API)をcloneします。
 
 {% highlight bash %}
-git clone git@github.com:openlabs/Microsoft-Translator-Python-API.git
+$ git clone git@github.com:openlabs/Microsoft-Translator-Python-API.git
 {% endhighlight %}
 
 セットアップスクリプトを実行します.
