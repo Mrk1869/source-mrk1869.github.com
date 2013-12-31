@@ -229,8 +229,8 @@ strong {
 
 pre, code {
   width: 100%;
-  color: #fff;
-  background-color: #2a2924;
+  color: #2a2924;
+  background-color: #fff;
 
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
   font-size: 12px;
@@ -255,8 +255,8 @@ code {
 }
 
 pre code {
-  color: #fff;
-  background-color: #2a2924;
+  color: #2a2924;
+  background-color: #fff;
 
   display: block;
   box-shadow: none;
