@@ -44,4 +44,18 @@ PRAMと呼ばれる不揮発メモリに保存されたシステムの設定(指
 
 {% endhighlight %}
 
-すると3度目の起動音が鳴るとともに、画面が正常に表示されます。
+PRAMリセットがかかり、画面が正常に表示されます。
+
+**3.SMCリセット**
+
+PRAMリセットで解決しない場合は、照明や電源周りのトラブルである可能性があるため、SMCリセットを行います。
+
+[Intel-based Macs：SMC (システム管理コントローラ) のリセット](http://support.apple.com/kb/ht3964?viewlocale=ja_JP)
+
+{% highlight bash %}
+
+本体の電源を切り、MagSafe電源アダプタをMacに接続します。
+shift + control + option キーを押しながら電源ボタンを押し続けます。
+電源アダプタのLEDの色が変わったらボタンから手を離し、再度電源を入れます。
+
+{% endhighlight %}
