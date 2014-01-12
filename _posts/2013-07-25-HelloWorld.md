@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: Hello, World
 tags: Note
 keywords: Jekyll, ブログ, Mrk1869

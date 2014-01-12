@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: コードからベースカラーを指定できるようになりました
 tags: Paletta Application
 keywords: Paletta, HSV, カラーパレット, 顕色系

@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: ハイデルベルクを観光しました
 tags: Sightseeing Photo
 keywords: ハイデルベルク, 観光

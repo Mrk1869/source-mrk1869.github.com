@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: 産業の中心地フランクフルト
 tags: Sightseeing Photo
 keywords: Sightseeing

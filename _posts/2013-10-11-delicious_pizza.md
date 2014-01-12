@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: ピザを焼く
 tags: Note
 keywords: ピザ, ドイツ

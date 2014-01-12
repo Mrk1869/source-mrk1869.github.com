@@ -2,6 +2,7 @@
 layout: post
 categories: en/blog
 language: english
+room: coffee
 name: Hello, Glass.
 tags: GoogleGlass
 keywords: Google Glass

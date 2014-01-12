@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: Mac起動後の画面が真っ暗
 tags: TroubleShooting
 keywords: Mac, ディスプレイ, 認識しない, 真っ暗, 起動

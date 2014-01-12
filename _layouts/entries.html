@@ -17,7 +17,7 @@ keywords: Shoya, Ishimaru, Mrk1869
         <section id="main_content" class="inner">
             {% include sub_header.html %}
             {% for post in page.posts %}
-            <div class="entries-body">
+                <div class="entries-body {{ post.room }}">
                 <div class="entries-title">
                     <a href="{{ post.url }}">{{ post.name }}</a>
                 </div>

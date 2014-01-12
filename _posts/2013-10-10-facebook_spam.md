@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: スパムアカウントからの友達申請をブロックした
 tags: Note
 keywords: facebook, 友達申請, スパム, ブロック

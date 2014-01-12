@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: Saturday Market
 tags: Note Photo
 keywords: ドイツ, Saturday Market

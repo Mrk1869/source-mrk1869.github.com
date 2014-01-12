@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: server
 name: メイワクメールをワクワクに変えるSpam Museum
 tags: Application
 keywords: Spam Museum

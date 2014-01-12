@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: server
 name: Jekyllの記事を人気順にソートする
 tags: Jekyll Ruby
 keywords: Jekyll, はてな, facebook, twitter

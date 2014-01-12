@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: 司法の都カールスルーエ
 tags: Sightseeing Photo
 keywords: カールスルーエ, 観光

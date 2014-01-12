@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: ヴェルサイユ宮殿
 tags: Sightseeing Photo
 keywords: ベルサイユ宮殿, 観光

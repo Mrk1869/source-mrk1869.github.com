@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: Asian Food
 tags: Note
 keywords: ドイツ, インスタントラーメン, カイザースラウテルン

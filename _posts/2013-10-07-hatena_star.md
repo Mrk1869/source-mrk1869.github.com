@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: server
 name: Jekyllにはてなスター導入した
 tags: Jekyll
 keywords: Jekyll, はてなスター

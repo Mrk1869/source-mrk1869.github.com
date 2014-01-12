@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: こちらの生活にもずいぶん慣れた
 tags: Note
 keywords: ドイツ, 留学

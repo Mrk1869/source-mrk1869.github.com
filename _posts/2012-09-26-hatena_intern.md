@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: はてなのサマーインターンに参加しました
 tags: Note
 keywords: はてなインターン2012

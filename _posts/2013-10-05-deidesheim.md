@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: ダイデスハイムを観光しました
 tags: Sightseeing Photo
 keywords: ダイデスハイム, 観光, ニューワイン

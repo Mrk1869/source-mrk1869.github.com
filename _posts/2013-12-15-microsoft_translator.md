@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: server
 name: PythonでMicrosoft Translator APIを使ってみる
 tags: Python
 keywords: Python, Microsoft Translator API, 自動翻訳

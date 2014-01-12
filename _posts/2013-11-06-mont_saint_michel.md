@@ -2,6 +2,7 @@
 layout: post
 categories: blog
 language: japanese
+room: coffee
 name: モン・サン・ミッシェル
 tags: Sightseeing Photo
 keywords: モン・サン・ミッシェル, 観光
