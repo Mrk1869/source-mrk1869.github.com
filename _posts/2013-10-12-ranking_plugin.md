@@ -8,7 +8,7 @@ tags: Jekyll Ruby
 keywords: Jekyll, はてな, facebook, twitter
 relations:
   - hatena_star
-  - TOJekyll
+  - ToJekyll
 ---
 
 各記事のはてなブックマーク数・Facebookいいね数・tweet数を取得してスコアの高い順にソートするプラグインを書いた。

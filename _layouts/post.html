@@ -17,7 +17,7 @@ categories: blog
                     <a href="{{ page.url }}">{{ page.name }}</a>
                 </div>
                 <div class="article-date">
-                    {{ page.date | date_to_string }}
+                    {{ page.date | date: "%-d %B %Y"}}
                 </div>
                 {% if page.tags != nil %}
                     <div class="article-tag">
@@ -49,14 +49,14 @@ categories: blog
             </div>
             <div class="pagenation">
                 {% if page.previous %}
-                    <a href="{{ page.previous.url }}" class="previous"><button class="btn page-button">Previous</button></a>
+                    <a href="{{ page.previous.url }}" class="previous"><button class="btn page-button"><span class="lsf">left</span> Previous</button></a>
                 {% else %}
-                    <button class="btn disabled page-button">Previous</button>
+                    <button class="btn disabled page-button"><span class="lsf">left</span> Previous</button>
                 {% endif %}
                 {% if page.next %}
-                    <a href="{{ page.next.url }}" class="next"><button class="btn page-button">Next</button></a>
+                    <a href="{{ page.next.url }}" class="next"><button class="btn page-button">Next <span class="lsf">right</span></button></a>
                 {% else %}
-                    <button class="btn disabled page-button">Next</button>
+                    <button class="btn disabled page-button">Next <span class="lsf">right</span></button>
                 {% endif %}
             </div>
         </section>

@@ -6,13 +6,16 @@ room: server
 name: Jekyllのカテゴリ内で「次の記事」ボタンを設置する
 tags: Jekyll Ruby
 keywords: カテゴリ, 次の記事, 前の記事, jekyll
+relations:
+  - runking_plugin
+  - hatena_star
 ---
 
 Jekyllではpage.previous, page.next要素に前の記事/次の記事が格納されているので、前の記事/次の記事へ誘導するボタンがすぐに作れる。しかしこの前の記事/次の記事はタグやカテゴリを無視して時系列に引っ張ってくるので、あるカテゴリ内で前へ前へといった誘導ができない。
 
 例えばこのブログでは日本語の記事をblog, 英語の記事をen/blogというカテゴリで管理しているので、英語の記事を読んでいる間は英語の記事だけを取得したいと思う。
 
-調べたところDavid Straußさんがプラグインを作成してで公開されていて、結構良さそう。
+調べたところDavid Straußさんがプラグインを作成されていて、結構良さそう。
 
 [Category Aware Previous And Next For Jekyll Posts](http://stravid.com/en/category-aware-previous-and-next-for-jekyll-posts/)
 
