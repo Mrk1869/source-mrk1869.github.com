@@ -518,6 +518,9 @@ a:hover .footer-icon{
     height: 100%;
 }
 
+.fb_iframe_widget{
+    top: -7px;
+}
 
 /*******************************************************************************
 Twitter Bootstrap
