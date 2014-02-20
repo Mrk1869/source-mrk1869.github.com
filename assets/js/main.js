@@ -1,4 +1,5 @@
 $(function(){
+
   // tag
   var isTagOpened = false;
   $(".tag-toggle").on("click", function(){
@@ -10,6 +11,16 @@ $(function(){
       $(".tag-body").slideToggle();
     }
     isTagOpened = !isTagOpened;
+  });
+
+  // entry fade
+  $(".entries-body").hover(function(){
+    rollIn($(this));
+  }, function(){
+    rollOut($(this));
+  });
+  $(".entries-body").click(function(){
+    rollOut($(this));
   });
 
   // hatena ster
@@ -40,3 +51,14 @@ $(function(){
     });
   });
 });
+
+function rollIn(body){
+  body.stop().animate({backgroundColor:"#386ca5", color:"#ffffff"}, 150);
+  body.children(".entries-title").stop().animate({color:"#ffffff"}, 150);
+}
+
+function rollOut(body){
+  body.stop().animate({backgroundColor:"#ffffff", color:"#333333"}, 200);
+  body.children(".entries-title").stop().animate({color:"#007edf"}, 200);
+}
+
