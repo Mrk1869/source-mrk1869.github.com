@@ -15,7 +15,7 @@ module Jekyll
 
       self.process(@name)
       raise 'name is null' unless @name
-      self.read_yaml(File.join(base, '_layouts'), 'ranking.html')
+      self.read_yaml(File.join(base, '_layouts'), 'entries.html')
 
       # 強引だけどここでオフライン検知
       begin
@@ -62,6 +62,7 @@ module Jekyll
       end
 
       self.data['posts'] = @posts
+      self.data['page_name'] = "人気の記事"
 
     end
 

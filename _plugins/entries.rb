@@ -9,6 +9,7 @@ module Jekyll
       raise 'name is null' unless @name
       self.read_yaml(File.join(base, '_layouts'), 'entries.html')
       self.data['posts'] = site.posts.reverse
+      self.data['page_name'] = "全記事一覧"
     end
   end
 

@@ -7,9 +7,10 @@ module Jekyll
 
       self.process(@name)
       raise 'name is null' unless @name
-      self.read_yaml(File.join(base, '_layouts'), 'tag.html')
+      self.read_yaml(File.join(base, '_layouts'), 'entries.html')
       self.data['posts'] = site.tags[tag].reverse
       self.data['tag'] = tag
+      self.data['page_name'] = "tag:"+tag
     end
   end
 

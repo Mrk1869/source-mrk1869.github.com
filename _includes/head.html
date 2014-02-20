@@ -9,8 +9,8 @@
         {% else %}
             <title>Page{{ paginator.page }} - Markovnikov Laboratory</title>
         {% endif %}
-    {% elsif page.title == "tag" %}
-        <title>tag:{{ page.tag }} - Markovnikov Laboratory</title>
+    {% elsif page.name == "entries" %}
+        <title>{{ page.page_name }} - Markovnikov Laboratory</title>
     {% else %}
         <title>{{ page.name }} - Markovnikov Laboratory</title>
     {% endif %}
