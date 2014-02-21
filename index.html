@@ -35,17 +35,17 @@ keywords: Shoya, Ishimaru, Mrk1869, Markovnikov Laboratory
 {% endfor %}
 <div class="pagenation">
     {% if paginator.next_page %}
-        <a href="/page{{ paginator.next_page }}" class="previous"><button class="btn page-button"><span class="lsf">left</span> Previous</button></a>
+        <div class="page-button"><a href="/page{{ paginator.next_page }}"></a><span class="lsf">left</span> Previous</div>
     {% else %}
-        <button class="btn disabled page-button"><span class="lsf">left</span> Previous</button>
+        <div class="page-button-disabled"><span class="lsf">left</span> Previous</div>
     {% endif %}
     {% if paginator.previous_page %}
         {% if paginator.previous_page == 1 %}
-            <a href="/" class="next"><button class="btn page-button">Next <span class="lsf">right</span></button></a>
+            <div class="page-button"><a href="/"></a>Next <span class="lsf">right</span></div>
         {% else %}
-            <a href="/page{{ paginator.previous_page }}" class="next"><button class="btn page-button">Next <span class="lsf">right</span></button></a>
+            <div class="page-button"><a href="/page{{ paginator.previous_page }}"></a>Next <span class="lsf">right</span></div>
         {% endif %}
     {% else %}
-        <button class="btn disabled page-button">Next <span class="lsf">right</span></button>
+        <div class="page-button-disabled">Next <span class="lsf">right</span></div>
     {% endif %}
 </div>

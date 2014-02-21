@@ -49,14 +49,14 @@ categories: blog
             </div>
             <div class="pagenation">
                 {% if page.previous %}
-                    <a href="{{ page.previous.url }}" class="previous"><button class="btn page-button"><span class="lsf">left</span> Previous</button></a>
+                    <div class="page-button"><a href="{{ page.previous.url }}"></a><span class="lsf">left</span> Previous</div>
                 {% else %}
-                    <button class="btn disabled page-button"><span class="lsf">left</span> Previous</button>
+                    <div class="page-button-disabled"><span class="lsf">left</span> Previous</div>
                 {% endif %}
                 {% if page.next %}
-                    <a href="{{ page.next.url }}" class="next"><button class="btn page-button">Next <span class="lsf">right</span></button></a>
+                    <div class="page-button"><a href="{{ page.next.url }}"></a>Next <span class="lsf">right</span></div>
                 {% else %}
-                    <button class="btn disabled page-button">Next <span class="lsf">right</span></button>
+                    <div class="page-button-disabled">Next <span class="lsf">right</span></div>
                 {% endif %}
             </div>
         </section>

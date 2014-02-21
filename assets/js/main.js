@@ -23,6 +23,16 @@ $(function(){
     rollOut($(this));
   });
 
+  $(".page-button").hover(function(){
+    rollIn($(this));
+  }, function(){
+    rollOut($(this));
+  });
+  $(".page-button").click(function(){
+    rollOut($(this));
+  });
+
+
   // hatena ster
   Hatena.Star.EntryLoader.headerTagAndClassName = ['div','hatena-star'];
 
