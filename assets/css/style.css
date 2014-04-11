@@ -834,7 +834,6 @@ Small Device Styles
       margin: 1px;
   }
 
-
   .image-on-frame{
       max-width:96%;
   }
@@ -851,8 +850,12 @@ Small Device Styles
   }
 
   .navbar .nav li a{
-      font-size:12px;
-      padding:10px 5px;
+      font-size:13px;
+      padding:10px 8px;
+  }
+
+  .navbar ul li{
+      padding-left:2px;
   }
 
 
