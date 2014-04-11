@@ -848,7 +848,12 @@ Small Device Styles
 
   .image-trimmed-by-circle{
     padding:0px;
-}
+  }
+
+  .navbar .nav li a{
+      font-size:12px;
+      padding:10px 5px;
+  }
 
 
 }
