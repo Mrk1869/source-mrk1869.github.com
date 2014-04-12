@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: coffee
 name: Saturday Market
-tags: Note Photo
+tags: Note
 keywords: ドイツ, Saturday Market
 relations:
   - life_in_germany

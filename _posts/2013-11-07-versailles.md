@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: coffee
 name: ヴェルサイユ宮殿
-tags: Sightseeing Photo
+tags: Sightseeing
 keywords: ベルサイユ宮殿, 観光
 relations:
   - paris

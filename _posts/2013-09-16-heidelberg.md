@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: coffee
 name: ハイデルベルクを観光しました
-tags: Sightseeing Photo
+tags: Sightseeing
 keywords: ハイデルベルク, 観光
 relations:
   - deidesheim

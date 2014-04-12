@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: coffee
 name: 司法の都カールスルーエ
-tags: Sightseeing Photo
+tags: Sightseeing
 keywords: カールスルーエ, 観光
 relations:
   - cologne

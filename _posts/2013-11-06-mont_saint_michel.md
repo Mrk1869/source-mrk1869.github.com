@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: coffee
 name: モン・サン・ミッシェル
-tags: Sightseeing Photo
+tags: Sightseeing
 keywords: モン・サン・ミッシェル, 観光
 relations:
  - paris
