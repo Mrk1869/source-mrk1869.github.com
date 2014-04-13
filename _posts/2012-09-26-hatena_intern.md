@@ -165,7 +165,8 @@ Webアプリケーションを開発する上で必要な知識や、はてな�
 
 #### 3.悔しさのなかで見たもの
 
-{% tweet https://twitter.com/Mrk1869/statuses/235380954674376704 %}
+<blockquote class="twitter-tweet" lang="en"><p>インプットが膨大で付いて行くのに必死で、アウトプットの余裕はまだ無い。RT <a href="https://twitter.com/chocoman777">@chocoman777</a>: Mrk1869oiyaoiiiインターンは全力でやるつもりです、自分のポテンシャルをアウトプットする機会であると言われてるけどインプットだけになってしまいそうな不安はあります！</p>&mdash; Shoya Ishimaru (@Mrk1869) <a href="https://twitter.com/Mrk1869/statuses/235380954674376704">August 14, 2012</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ここまでの内容を読んでいただくともうお分かりかもしれませんが、僕はかなりの負けず嫌いです。基礎課程の成果発表会で内心「このひとには勝ちたい！」思ったひとに負けて、実践過程の成果発表会でもかなりの票差で負けました。そこには圧倒的な技術力の差がありました。
 
