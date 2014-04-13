@@ -29,7 +29,7 @@ keywords: インターネット闇市, internet black market, トランスメデ
 
 <img src="https://dl.dropboxusercontent.com/u/12208857/img/black04.jpg" class="image-on-frame">
 
-ドイツの著作権管理団体であるGEMAに対する抗議ステッカー。ドイツでは有名どころの楽曲の著作権をGEMAが管理していて、コンテンツを配信するにGEMAに対して使用料を払う必要がある。その値段がとても高く、YouYubeは支払いを拒否しているため、ドイツのYouTubeではこの画面が出て再生できない動画がたくさんある。
+ドイツの著作権管理団体であるGEMAに対する抗議ステッカー。ドイツでは有名どころの楽曲の著作権をGEMAが管理していて、コンテンツを配信するにGEMAに対して使用料を払う必要がある。その値段がとても高く、YouTubeは支払いを拒否しているため、ドイツのYouTubeではこの画面が出て再生できない動画がたくさんある。
 
 <img src="https://dl.dropboxusercontent.com/u/12208857/img/black05.jpg" class="image-on-frame">
 
