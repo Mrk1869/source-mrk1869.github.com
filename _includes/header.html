@@ -1,22 +1,9 @@
 <!-- HEADER -->
 <div id="header_wrap" class="outer">
     <header class="inner">
-    {% if page.language == "english" %}
-        {% if page.categories == "en/blog" %}
-            <a id="forkme_banner" href="/">Japanese</a>
-        {% else %}
-            <a id="forkme_banner" href="/{{ page.categories }}/">Japanese</a>
-        {% endif %}
-    {% else %}
-        {% if page.categories == "blog" %}
-            <a id="forkme_banner" href="/en/">English</a>
-        {% else %}
-            <a id="forkme_banner" href="/en/{{ page.categories }}/">English</a>
-        {% endif %}
-    {% endif %}
     <div id="title_container">
     <a href = "{% if page.language == "english" %}/en{% endif %}/"><h1 id="project_title">Shoya Ishimaru's Blog</h1></a>
-    <span id="sub_title">A weblog about Technology and Daily Life</span>
+    <span id="sub_title">A weblog about <span style="color:#FF007E">Technology</span> and <span style="color:#9BE518">Daily Life</span></span>
     </div>
     </header>
 </div>
