@@ -2,3 +2,4 @@
 *.swp
 _drafts/
 .tweet-cache/
+.sass-cache/
