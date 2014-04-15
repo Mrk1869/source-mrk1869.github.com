@@ -399,16 +399,28 @@ Full-Width Styles
 }
 
 #project_title {
-  margin: 10px 0px 0px 0px;
-  padding: 0px 0px 0px 85px;
+  margin: 5px 0px 0px 0px;
+  padding: 0px 0px 0px 90px;
   color: #fff;
   font-size: 40px;
   font-weight: 700;
   line-height: 120%;
   text-shadow: #111 0px 0px 10px;
+}
+
+#sub_title {
+  padding: 0px 0px 0px 90px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 120%;
+  text-shadow: #111 0px 0px 10px;
+}
+
+#title_container{
   background-image: url(/assets/img/icon_white.png);
   background-repeat: no-repeat;
-  background-size: 70px;
+  background-size: 80px;
   background-position: left center;
 }
 
@@ -442,7 +454,7 @@ Full-Width Styles
 
 .tar_download_link {
   display: block;
-  float: right;
+  float: rig;
   width: 90px;
   height:70px;
   text-indent: -5000px;
@@ -713,6 +725,24 @@ Twitter Bootstrap
 Small Device Styles
 *******************************************************************************/
 
+@media screen and (max-width: 550px) {
+  #project_title {
+    padding: 5px 0px 0px 80px;
+    font-size: 30px;
+    line-height:100%;
+    text-align:left;
+  }
+
+  #sub_title{
+    padding: 0px 0px 0px 80px;
+    font-size: 15px;
+  }
+
+  #title_container{
+      background-size: 70px;
+  }
+}
+
 @media screen and (max-width: 450px) {
   body {
     font-size:14px;
@@ -759,8 +789,19 @@ Small Device Styles
   }
 
   #project_title {
-    font-size: 32px;
+    padding: 5px 0px 0px 60px;
+    font-size: 22px;
+    line-height:100%;
     text-align:left;
+  }
+
+  #sub_title{
+    padding: 0px 0px 0px 60px;
+    font-size: 11px;
+  }
+
+  #title_container{
+      background-size: 52px;
   }
 
   .article-body{
@@ -817,10 +858,6 @@ Small Device Styles
       font-size: 16px;
   }
 
-  #project_title {
-      line-height:100%;
-  }
-
   .page-button{
       width: 41%;
       font-size: 16px;
@@ -858,6 +895,5 @@ Small Device Styles
   .navbar ul li{
       padding-left:2px;
   }
-
 
 }
