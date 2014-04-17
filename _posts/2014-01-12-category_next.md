@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: server
 name: Jekyllのカテゴリ内で「次の記事」ボタンを設置する
-tags: Jekyll Ruby
+tags: Programming
 keywords: カテゴリ, 次の記事, 前の記事, jekyll
 relations:
   - ranking_plugin

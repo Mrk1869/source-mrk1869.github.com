@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: server
 name: 5分で完成！イラレで作るロングシャドウアイコン
-tags: Illustrator
+tags: Design
 keywords: ロングシャドウ, イラレ, アイコン, 作成
 eyecatch: https://dl.dropboxusercontent.com/u/12208857/img/long_shadow00.png
 relations:

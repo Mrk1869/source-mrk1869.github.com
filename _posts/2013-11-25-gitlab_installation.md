@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: server
 name: GitLab 6.0をインストールする
-tags: Linux
+tags: Infrastructure
 keywords: GitLab, Git, インストール, セットアップ
 ---
 

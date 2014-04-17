@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: server
 name: Jekyllの記事を人気順にソートする
-tags: Jekyll Ruby
+tags: Programming
 keywords: Jekyll, はてな, facebook, twitter
 relations:
   - hatena_star

@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: coffee
 name: はてなのサマーインターンに参加しました
-tags: Note
+tags: Event Note
 keywords: はてなインターン2012
 relations:
   - paperboy

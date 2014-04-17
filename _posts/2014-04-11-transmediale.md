@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: coffee
 name: トランスメディアーレに行ってきました
-tags: Event
+tags: Event Note
 keywords: トランスメディアーレ, ベルリン
 ---
 

@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: server
 name: メイワクメールをワクワクに変えるSpam Museum
-tags: Application
+tags: ReleaseNote
 keywords: Spam Museum
 relations:
   - Paletta

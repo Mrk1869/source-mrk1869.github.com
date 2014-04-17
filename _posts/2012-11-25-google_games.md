@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: coffee
 name: GoogleGamesに参加して人生変わった
-tags: Note
+tags: Event Note
 keywords: Google Games
 relations:
   - hatena_intern

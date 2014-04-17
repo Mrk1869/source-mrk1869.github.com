@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: coffee
 name: コードからベースカラーを指定できるようになりました
-tags: Paletta Application
+tags: ReleaseNote
 keywords: Paletta, HSV, カラーパレット, 顕色系
 relations:
  - Paletta

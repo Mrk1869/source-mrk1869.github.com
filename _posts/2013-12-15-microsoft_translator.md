@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: server
 name: PythonでMicrosoft Translator APIを使ってみる
-tags: Python
+tags: Programming
 keywords: Python, Microsoft Translator API, 自動翻訳
 ---
 

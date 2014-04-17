@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: server
 name: MongoDBのObjectID型をJSONに変換する[pymongo]
-tags: Python MongoDB
+tags: Programming
 keywords: MongoDB, Python, JSON
 ---
 

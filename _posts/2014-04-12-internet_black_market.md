@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: coffee
 name: 石と空気を買いにベルリンまで行った話[インターネット闇市]
-tags: Event
+tags: Event Note
 keywords: インターネット闇市, internet black market, トランスメディアーレ
 ---
 

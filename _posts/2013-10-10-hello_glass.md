@@ -4,7 +4,7 @@ categories: en/blog
 language: english
 room: coffee
 name: Hello, Glass.
-tags: GoogleGlass
+tags: Note
 keywords: Google Glass
 ---
 

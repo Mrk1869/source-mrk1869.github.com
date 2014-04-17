@@ -4,7 +4,7 @@ categories: blog
 language: japanese
 room: server
 name: Jekyllにはてなスター導入した
-tags: Jekyll
+tags: Programming
 keywords: Jekyll, はてなスター
 relations:
   - ranking_plugin
