@@ -387,11 +387,6 @@ Full-Width Styles
 
 #header_wrap {
   background: #212121;
-  background: -moz-linear-gradient(top, #373737, #212121);
-  background: -webkit-linear-gradient(top, #373737, #212121);
-  background: -ms-linear-gradient(top, #373737, #212121);
-  background: -o-linear-gradient(top, #373737, #212121);
-  background: linear-gradient(top, #373737, #212121);
 }
 
 #header_wrap .inner {
@@ -551,14 +546,14 @@ Twitter Bootstrap
 
 .navbar-inverse .navbar-inner {
     background-color: #212121;
-    background-image: -moz-linear-gradient(top, #222222, #111111);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#212121), to(#111111));
-    background-image: -webkit-linear-gradient(top, #212121, #111111);
-    background-image: -o-linear-gradient(top, #212121, #111111);
-    background-image: linear-gradient(to bottom, #212121, #111111);
+    background-image: -moz-linear-gradient(top, #212121, #212121);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#212121), to(#212121));
+    background-image: -webkit-linear-gradient(top, #212121, #212121);
+    background-image: -o-linear-gradient(top, #212121, #212121);
+    background-image: linear-gradient(to bottom, #212121, #212121);
     background-repeat: repeat-x;
     border-color: #212121;
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff212121', endColorstr='#ff111111', GradientType=0);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff212121', endColorstr='#ff212121', GradientType=0);
     border-radius:0px;
     border:none;
 }
