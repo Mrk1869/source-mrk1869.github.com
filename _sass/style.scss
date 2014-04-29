@@ -265,8 +265,13 @@ pre code {
 blockquote {
   color: #666;
   margin-bottom: 20px;
-  padding: 0 0 0 20px;
+  padding: 0 0 0 10px;
   border-left: 3px solid #bbb;
+}
+
+blockquote p{
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 ul, ol, dl {
