@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+        
+            <title>Page8 - Shoya Ishimaru's Blog</title>
+        
+    
+    
+    <meta name="keywords" content="Shoya, Ishimaru, Mrk1869, Markovnikov Laboratory">
+    <meta name="author" href="https://plus.google.com/u/0/102413339779614193497/posts">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    <meta name="google-site-verification" content="sFx-iJWT2iihts7-5wK7CnR03-MymfWXmn_7KNoyIz0" />
+    <meta property="og:title" content="Shoya Ishimaru's Blog">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="http://mrk1869.com/page8/index.html">
+    
+        <meta property="og:image" content="http://mrk1869.com/assets/img/icon_laptop.png">
+    
+    <link rel="alternate" type="application/rss+xml" title="Shoya Ishimaru's Blog" href="http://mrk1869.com/feed.xml">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script type="text/javascript" src="/assets/js/jquery.1.10.2.min.js"></script>
+    <script type="text/javascript" src="/assets/js/jquery.color.js"></script>
+    <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/assets/js/mystar/star.js"></script>
+    <script type="text/javascript">Hatena.Star.Token = 'd2f3ada92845cdc5beeb7325518464d39adf9e88';</script>
+    <script src="/assets/js/main.js"></script>
+    <link rel="shortcut icon" href="http://mrk1869.com/assets/img/favicon.ico">
+    </head>
+
+<body>
+<!-- HEADER -->
+<div id="header_wrap" class="outer">
+    <header class="inner">
+    <div id="title_container">
+    <a href = "/"><h1 id="project_title">Shoya Ishimaru's Blog</h1></a>
+    <span id="sub_title">A weblog about <span style="color:#FF007E">Technology</span> and <span style="color:#9BE518">Daily Life</span></span>
+    </div>
+    </header>
+</div>
+
+<div id="main-container">
+    <div id="main_content_wrap" class="outer">
+        <div class="navbar navbar-inverse">
+    <div class="navbar-inner">
+        <div class="inner">
+            <ul class="nav">
+                <li  class="active"><a href="/entries/">Blog</a></li>
+                <li ><a href="/applications/">Applications</a></li>
+                <li ><a href="/publications/">Publications</a></li>
+                <li ><a href="/aboutme/">About me</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <section id="main_content" class="inner">
+            <div class="sub_header"><p><span class="lsf">list</span> <a href="/entries/">全記事一覧</a>  <span class="lsf">crown</span> <a href="/ranking/">人気の記事</a>  <span class="lsf">tag</span> <a href="#" class="tag-toggle">タグ一覧</a></p></div>
+<div class="tag-body">
+    <div class="tag-container">
+        
+        [<a href="/tag/Event/">Event</a>]
+        
+        [<a href="/tag/Note/">Note</a>]
+        
+        [<a href="/tag/ReleaseNote/">ReleaseNote</a>]
+        
+        [<a href="/tag/Sightseeing/">Sightseeing</a>]
+        
+        [<a href="/tag/Programming/">Programming</a>]
+        
+        [<a href="/tag/Infrastructure/">Infrastructure</a>]
+        
+        [<a href="/tag/Design/">Design</a>]
+        
+    </div>
+</div>
+
+
+<div class="article-body">
+    <div class="article-title">
+        <a href="/blog/gitlab_installation/">GitLab 6.0をインストールする</a>
+    </div>
+    <div class="article-date">
+        25 November 2013
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Infrastructure/">Infrastructure</a>
+        
+    </div>
+    <div class="article-content">
+        <p><a href="http://gitlab.org/">GitLab</a>とはGitHubクローンのひとつで、ソースコードの管理やコードレビュー、複数人でのプロジェクト開発を円滑にするツールです。<a href="https://github.com/">GitHub</a>との違いは、無料でプライベート(非公開の)リポジトリをいくつでも作ることができる点と、社外・学外のサーバーに機密情報を含むデータを預ける必要がない点にあります。(GitHub Enterpriseとの比較は割愛)</p>
+
+<p>今回は大学の計算機にGit/GitLab環境を構築したので、その手順メモを記しました。<a href="https://github.com/gitlabhq/gitlabhq/blob/6-0-stable/doc/install/installation.md">インストールガイド</a>を参考に、redisの起動など足りないところを補完してあります。<br />GitLabのインストール方法はバージョンによって少しずつ異なります。6.1, 6.2はsidekiqの立ち上げに問題があるので、2013年11月現在は6.0を導入するのが最善かと思われます。</p>
+
+<h4 id="span-classlsfsetupspan-"><span class="lsf">setup</span> 環境</h4>
+<ul>
+  <li>Debian 6.0.8</li>
+  <li>GitLab 6.0</li>
+  <li>git 1.8.4</li>
+  <li>python 2.6.6</li>
+  <li>ruby 2.0.0</li>
+  <li>redis 2.6.10</li>
+  <li>mysql 14.14</li>
+  <li>nginx 0.7.67</li>
+</ul>
+
+<h4 id="section">1. 導入準備 (必要に応じて)</h4>
+<p>GitLabを導入する前に、sudoコマンド、エディタ(Vim)、Git、Python、Ruby、MySQLをインストールします。既にインストールしている場合は<strong>手順2</strong>まで読み飛ばしてください。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># run as root!</span>
+apt-get update -y
+apt-get upgrade -y
+apt-get install sudo -y
+</code></pre></div>
+
+<h4 id="vim">1.1. Vimインストール</h4>
+
+<p>Vimをインストールして、標準のエディタとして設定。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Install Vim</span>
+sudo apt-get install -y vim
+sudo update-alternatives --set editor /usr/bin/vim.basic
+</code></pre></div>
+
+<h4 id="git">1.2. Gitインストール</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Install git</span>
+sudo apt-get install -y git-core
+
+<span class="c"># Make sure Git is version 1.7.10 or higher, for example 1.7.12 or 1.8.4</span>
+git --version
+</code></pre></div>
+
+<p>Gitのバージョンが1.7.10より小さい場合は以下の手順でアップデート</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Remove packaged Git</span>
+sudo apt-get remove git-core
+
+<span class="c"># Install dependencies</span>
+sudo apt-get install -y libcurl4-openssl-dev libexpat1-dev gettext libz-dev libssl-dev build-essential
+
+<span class="c"># Download and compile from source</span>
+<span class="nb">cd</span> /tmp
+curl --progress https://git-core.googlecode.com/files/git-1.8.4.1.tar.gz <span class="p">|</span> tar xz
+<span class="nb">cd </span>git-1.8.4.1/
+make <span class="nv">prefix</span><span class="o">=</span>/usr/local all
+
+<span class="c"># Install into /usr/local/bin</span>
+sudo make <span class="nv">prefix</span><span class="o">=</span>/usr/local install
+</code></pre></div>
+
+<p>※Gitを/usr/local/bin/gitにインストールしたので、<strong>手順8</strong>でconfig/gitlab.ymlを編集するときにbin_pathを/usr/local/bin/gitに書き換えること。</p>
+
+<h4 id="python">1.3. Pythonインストール</h4>
+
+<p>“python2”でpython2.xが起動するように設定する。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Install python</span>
+sudo apt-get install -y python
+
+<span class="c"># Make sure that Python is 2.5+ (3.x is not supported at the moment)</span>
+python --version
+
+<span class="c"># If it&#39;s Python 3 you might need to install Python 2 separately</span>
+sudo apt-get install -y python2.7
+
+<span class="c"># Make sure you can access Python via python2</span>
+python2 --version
+
+<span class="c"># If you get a &quot;command not found&quot; error create a link to the python binary</span>
+sudo ln -s /usr/bin/python /usr/bin/python2
+
+<span class="c"># For reStructuredText markup language support install required package:</span>
+sudo apt-get install -y python-docutils
+</code></pre></div>
+
+<h4 id="ruby-">1.4. Ruby インストール</h4>
+
+<p>システムデフォルトのRubyは1.9.3より古い可能性大なのでアップデート。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Remove the old Ruby 1.8 if present</span>
+sudo apt-get remove ruby1.8
+
+<span class="c"># Download and compile from source</span>
+mkdir /tmp/ruby <span class="o">&amp;&amp;</span> <span class="nb">cd</span> /tmp/ruby
+curl --progress ftp://ftp.ruby-lang.org/pub/ruby/2.0/ruby-2.0.0-p353.tar.gz <span class="p">|</span> tar xz
+<span class="nb">cd </span>ruby-2.0.0-p353
+./configure --disable-install-rdoc
+
+<span class="c"># Install ruby</span>
+make
+sudo make install
+</code></pre></div>
+
+<p>Bandlerインストール</p>
+
+<div class="highlight"><pre><code class="bash">sudo gem install bundler --no-ri --no-rdoc
+</code></pre></div>
+
+<h4 id="mysql">1.5 MySQLインストール</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Install the database packages</span>
+sudo apt-get install -y mysql-server mysql-client libmysqlclient-dev
+
+<span class="c"># Secure your installation.</span>
+sudo mysql_secure_installation
+</code></pre></div>
+
+<p>GitLab用にユーザとデータベースを作成</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Login to MySQL</span>
+mysql -u root -p
+
+<span class="c"># do not type the &#39;mysql&gt;&#39;, this is part of the prompt</span>
+<span class="c"># change $password in the command below to a real password you pick</span>
+mysql&gt; CREATE USER <span class="s1">&#39;gitlab&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;$password&#39;</span><span class="p">;</span>
+
+<span class="c"># Create the GitLab production database</span>
+mysql&gt; CREATE DATABASE IF NOT EXISTS <span class="sb">`</span>gitlabhq_production<span class="sb">`</span> DEFAULT CHARACTER SET <span class="sb">`</span>utf8<span class="sb">`</span> COLLATE <span class="sb">`</span>utf8_unicode_ci<span class="sb">`</span><span class="p">;</span>
+
+<span class="c"># Grant the GitLab user necessary permissions on the table.</span>
+mysql&gt; GRANT SELECT, LOCK TABLES, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON <span class="sb">`</span>gitlabhq_production<span class="sb">`</span>.* TO <span class="s1">&#39;gitlab&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+
+<span class="c"># Quit the database session</span>
+mysql&gt; <span class="se">\q</span>
+</code></pre></div>
+
+<h4 id="git-1">2. Gitユーザの作成</h4>
+
+<div class="highlight"><pre><code class="bash">sudo adduser --disabled-login --gecos <span class="s1">&#39;GitLab&#39;</span> git
+</code></pre></div>
+
+<p>以降の手順はGitユーザで行います。</p>
+
+<h4 id="section-1">3. 必要パッケージのインストール</h4>
+
+<div class="highlight"><pre><code class="bash">sudo apt-get install -y build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl openssh-server redis-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev logrotate
+</code></pre></div>
+
+<h4 id="gitlab-shell">4. GitLab shellインストール</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="nb">cd</span> /home/git
+
+<span class="c"># Clone gitlab shell</span>
+sudo -u git -H git clone https://github.com/gitlabhq/gitlab-shell.git
+
+<span class="c"># Go to gitlab-shell dir</span>
+<span class="nb">cd </span>gitlab-shell
+
+<span class="c"># switch to right version</span>
+sudo -u git -H git checkout v1.7.0
+</code></pre></div>
+
+<p>config.yml.exampleをもとにconfig.ymlを作成して、http://localhost/のところをGitLabをセットアップするURL(例: http://YOUR_DOMAIN.COM)に書き換える。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Copy config.yml from config.yml.example</span>
+sudo -u git -H cp config.yml.example config.yml
+
+<span class="c"># Edit config and replace gitlab_url</span>
+<span class="c"># with something like &#39;http://YOUR_DOMAIN.COM/&#39;</span>
+sudo -u git -H editor config.yml
+</code></pre></div>
+
+<p>hostsのlocalhostにYOUR_DMAIN.COMを追記する。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Edit hosts</span>
+sudo vim /etc/hosts
+
+<span class="c"># Add a new hosts setting like this</span>
+127.0.0.1    YOUR_DOMAIN.COM
+</code></pre></div>
+
+<p>インストール</p>
+
+<div class="highlight"><pre><code class="bash">sudo -u git -H ./bin/install
+</code></pre></div>
+
+<h4 id="gitlab">5. GitLabインストール</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="nb">cd</span> /home/git
+
+<span class="c"># Clone GitLab repository</span>
+sudo -u git -H git clone https://github.com/gitlabhq/gitlabhq.git gitlab
+
+<span class="c"># Go to gitlab dir</span>
+<span class="nb">cd</span> /home/git/gitlab
+
+<span class="c"># Checkout to stable release</span>
+sudo -u git -H git checkout 6-0-stable
+
+<span class="c"># Make sure GitLab can write to the log/ and tmp/ directories</span>
+sudo chown -R git log/
+sudo chown -R git tmp/
+sudo chmod -R u+rwX log/
+sudo chmod -R u+rwX tmp/
+
+<span class="c"># Create directory for satellites</span>
+sudo -u git -H mkdir /home/git/gitlab-satellites
+
+<span class="c"># Create directories for sockets/pids and make sure GitLab can write to them</span>
+sudo -u git -H mkdir tmp/pids/
+sudo -u git -H mkdir tmp/sockets/
+sudo chmod -R u+rwX  tmp/pids/
+sudo chmod -R u+rwX  tmp/sockets/
+
+<span class="c"># Create public/uploads directory otherwise backup will fail</span>
+sudo -u git -H mkdir public/uploads
+sudo chmod -R u+rwX  public/uploads
+
+<span class="c"># Configure Git global settings for git user, useful when editing via web</span>
+<span class="c"># Edit user.email according to what is set in gitlab.yml</span>
+sudo -u git -H git config --global user.name <span class="s2">&quot;GitLab&quot;</span>
+sudo -u git -H git config --global user.email <span class="s2">&quot;gitlab@localhost&quot;</span>
+sudo -u git -H git config --global core.autocrlf input
+</code></pre></div>
+
+<p>config/gitlab.yml.exampleをもとにconfig/gitlab.ymlを作成して、localhostのところをGitLabをセットアップするURLに編集する。gitのインストール先をusr/local/bin/gitに変更した場合はgit bin_pathも書き換える。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Copy the example GitLab config</span>
+sudo -u git -H cp config/gitlab.yml.example config/gitlab.yml
+
+<span class="c"># Make sure to change &quot;localhost&quot; to the fully-qualified domain name of your</span>
+<span class="c"># host serving GitLab where necessary</span>
+sudo -u git -H editor config/gitlab.yml
+</code></pre></div>
+
+<p>config/unicorn.rb.example config/unicorn.rbを作成して編集する。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Copy the example Unicorn config</span>
+sudo -u git -H cp config/unicorn.rb.example config/unicorn.rb
+
+<span class="c"># Enable cluster mode if you expect to have a high load instance</span>
+<span class="c"># Ex. change amount of workers to 3 for 2GB RAM server</span>
+sudo -u git -H editor config/unicorn.rb
+</code></pre></div>
+
+<h4 id="mysql-1">6. MySQLとの接続確認</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Mysql</span>
+sudo -u git cp config/database.yml.mysql config/database.yml
+
+<span class="c"># Make sure to update username/password in config/database.yml.</span>
+<span class="c"># You only need to adapt the production settings (first part).</span>
+<span class="c"># If you followed the database guide then please do as follows:</span>
+<span class="c"># Change &#39;secure password&#39; with the value you have given to $password</span>
+<span class="c"># You can keep the double quotes around the password</span>
+sudo -u git -H editor config/database.yml
+
+<span class="c"># Make config/database.yml readable to git only</span>
+sudo -u git -H chmod o-rwx config/database.yml
+</code></pre></div>
+
+<h4 id="gem">7. Gemインストール</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="nb">cd</span> /home/git/gitlab
+
+sudo -u git -H bundle install --deployment --without development <span class="nb">test </span>postgres aws
+</code></pre></div>
+
+<h4 id="section-2">8. データベース初期化</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Type &#39;yes&#39; to create the database.</span>
+sudo -u git -H bundle <span class="nb">exec </span>rake gitlab:setup <span class="nv">RAILS_ENV</span><span class="o">=</span>production
+</code></pre></div>
+
+<h4 id="section-3">9. 起動ファイル導入</h4>
+
+<div class="highlight"><pre><code class="bash">sudo rm /etc/init.d/gitlab
+sudo curl --output /etc/init.d/gitlab https://raw.github.com/gitlabhq/gitlabhq/6-0-stable/lib/support/init.d/gitlab
+sudo chmod +x /etc/init.d/gitlab
+</code></pre></div>
+
+<p>サーバー起動時にGitLabが自動起動するよう設定</p>
+
+<div class="highlight"><pre><code class="bash">sudo update-rc.d gitlab defaults 21
+</code></pre></div>
+
+<h4 id="redis">10. Redis起動</h4>
+
+<div class="highlight"><pre><code class="bash">sudo /etc/init.d/redis-server start
+</code></pre></div>
+
+<h4 id="gitlab-1">11. GitLabの起動</h4>
+
+<div class="highlight"><pre><code class="bash">/etc/init.d/gitlab start
+</code></pre></div>
+
+<p>停止と再起動は下記の通り。</p>
+
+<div class="highlight"><pre><code class="bash">/etc/init.d/gitlab stop
+/etc/init.d/gitlab restart
+</code></pre></div>
+
+<h4 id="nginx">12. Nginx(リバースプロキシ)の設定</h4>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Install nginx</span>
+sudo apt-get install -y nginx
+</code></pre></div>
+
+<p>gitlab用設定ファイルの導入</p>
+
+<div class="highlight"><pre><code class="bash">sudo cp lib/support/nginx/gitlab /etc/nginx/sites-available/gitlab
+sudo ln -s /etc/nginx/sites-available/gitlab /etc/nginx/sites-enabled/gitlab
+
+<span class="c"># Change YOUR_SERVER_FQDN to the fully-qualified</span>
+<span class="c"># domain name of your host serving GitLab.</span>
+sudo editor /etc/nginx/sites-available/gitlab
+</code></pre></div>
+
+<p>Nginx再起動</p>
+
+<div class="highlight"><pre><code class="bash">sudo /etc/init.d/nginx restart
+</code></pre></div>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/gitlab_ss.png" class="image-on-frame image-center" /></p>
+
+<p>以上の設定でhttp://YOUR_DOMAIN.COM/でGitLabへアクセスできます。
+管理者アカウントの初期設定は下記のとおりです。</p>
+<pre>
+User: admin@local.host
+Pass: 5iveL!fe
+</pre>
+
+<h4 id="section-4">トラブルシューティング</h4>
+
+<h5 id="span-classlsfcheckspan-httpsgit-clone"><span class="lsf">check</span> httpsプロトコルでgit cloneできない</h5>
+
+<div class="highlight"><pre><code class="bash">git config –global http.sslVerify <span class="nb">false</span>
+</code></pre></div>
+
+<p>を実行して、証明書チェックを外す。<br />
+参考：<a href="http://319ring.net/blog/archives/1164">GIT:リポジトリにHTTPSでアクセスしてみる - 自転車で通勤しましょ♪ブログ</a></p>
+
+<h5 id="span-classlsfcheckspan-cant-save-project-please-try-again-later"><span class="lsf">check</span> Can’t save project. Please try again later</h5>
+
+<p>redis-serverをアップデートする</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nb">echo</span> <span class="s2">&quot;deb http://backports.debian.org/debian-backports squeeze-backports main&quot;</span> &gt;&gt; /etc/apt/sources.list
+apt-get update
+apt-get -t squeeze-backports install redis-server
+</code></pre></div>
+
+<p>参考：<a href="https://github.com/gitlabhq/gitlabhq/issues/3328">“Can’t save project. Please try again later” - GitHub issues</a></p>
+
+<h5 id="span-classlsfcheckspan-502-bad-gateway-"><span class="lsf">check</span> 502 Bad Gateway ページが見つからない</h5>
+
+<p>タイムアウト値を30から180くらいに変更する</p>
+
+<div class="highlight"><pre><code class="bash">sudo -u git -H editor config/unicorn.rb
+</code></pre></div>
+
+<p>参考：<a href="http://stackoverflow.com/questions/18501406/502-bad-gateway-from-nginx-for-large-gitlab-fork">502 Bad Gateway from Nginx for large GitLab fork - stackoverflow</a></p>
+
+<h5 id="span-classlsfcheckspan-gitlab-shell-self-check-failed"><span class="lsf">check</span> gitlab-shell self-check failed</h5>
+
+<p>virtual hostsの設定を取りこぼしてないか確認する</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># Edit hosts</span>
+sudo vim /etc/hosts
+
+<span class="c"># Add a new hosts setting like this</span>
+127.0.0.1    YOUR_DOMAIN.COM
+</code></pre></div>
+
+<h5 id="span-classlsfcheckspan-"><span class="lsf">check</span> その他の問題解決</h5>
+
+<p>おかしいなと思ったら、以下のコマンドを実行。<br />
+エラーメッセージから原因を見つけて修復する。</p>
+
+<p><strong>・インストール情報の表示</strong></p>
+
+<div class="highlight"><pre><code class="bash">sudo -u git -H bundle <span class="nb">exec </span>rake gitlab:env:info <span class="nv">RAILS_ENV</span><span class="o">=</span>production
+</code></pre></div>
+
+<p>成功例</p>
+<pre>
+System information
+System:         Debian 6.0.8
+Current User:   git
+Using RVM:      yes
+RVM Version:    1.24.4
+Ruby Version:   2.0.0p353
+Gem Version:    2.0.14
+Bundler Version:1.3.5
+Rake Version:   10.1.0
+
+GitLab information
+Version:        6.0.2
+Revision:       10b0b8f
+Directory:      /home/git/gitlab
+DB Adapter:     mysql2
+URL:            http://YOUR_DOMAIN.COM
+HTTP Clone URL: http://YOUR_DOMAIN.COM/some-project.git
+SSH Clone URL:  git@YOUR_DOMAIN.COM:some-project.git
+Using LDAP:     no
+Using Omniauth: no
+
+GitLab Shell
+Version:        1.7.0
+Repositories:   /home/git/repositories/
+Hooks:          /home/git/gitlab-shell/hooks/
+Git:            /usr/bin/git
+</pre>
+
+<p><strong>・起動確認</strong></p>
+
+<div class="highlight"><pre><code class="bash">sudo -u git -H bundle <span class="nb">exec </span>rake gitlab:check <span class="nv">RAILS_ENV</span><span class="o">=</span>production
+</code></pre></div>
+
+<p>成功例</p>
+<pre>
+Checking Environment ...
+
+Git configured for git user? ... yes
+Has python2? ... yes
+python2 is supported version? ... yes
+
+Checking Environment ... Finished
+
+Checking GitLab Shell ...
+
+GitLab Shell version &gt;= 1.7.9 ? ... OK (1.7.9)
+Repo base directory exists? ... yes
+Repo base directory is a symlink? ... no
+Repo base owned by git:git? ... yes
+Repo base access is drwxrws---? ... yes
+update hook up-to-date? ... yes
+update hooks in repos are links: ... can't check, you have no projects
+Running /home/git/gitlab-shell/bin/check
+Check GitLab API access: OK
+Check directories and files:
+        /home/git/repositories: OK
+        /home/git/.ssh/authorized_keys: OK
+        /usr/bin/redis-cli: OK
+gitlab-shell self-check successful
+
+Checking GitLab Shell ... Finished
+
+Checking Sidekiq ...
+
+Running? ... yes
+Number of Sidekiq processes ... 1
+
+Checking Sidekiq ... Finished
+
+Checking GitLab ...
+
+Database config exists? ... yes
+Database is SQLite ... no
+All migrations up? ... yes
+GitLab config exists? ... yes
+GitLab config outdated? ... no
+Log directory writable? ... yes
+Tmp directory writable? ... yes
+Init script exists? ... yes
+Init script up-to-date? ... yes
+projects have namespace: ... can't check, you have no projects
+Projects have satellites? ... can't check, you have no projects
+Redis version &gt;= 2.0.0? ... yes
+Your git bin path is "/usr/bin/git"
+Git version &gt;= 1.7.10 ? ... yes (1.8.3)
+
+Checking GitLab ... Finished
+
+</pre>
+
+<p>6.2で転けて、6.1で転けて、ここまで設定するのに3日かかった…</p>
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/gitlab_installation/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/gitlab_installation/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/gitlab_installation/" data-text="GitLab 6.0をインストールする">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/gitlab_installation/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
+<div class="article-body">
+    <div class="article-title">
+        <a href="/blog/writing/">文章を書く習慣をつけようと思う</a>
+    </div>
+    <div class="article-date">
+        12 November 2013
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Note/">Note</a>
+        
+    </div>
+    <div class="article-content">
+        <h4 id="section">経緯</h4>
+
+<p>留学を始めて1ヶ月が経った。新しい文化に触れた諸々の気持ちを記録しておこうとエディタを起動するのだけれど、言葉が思うように出てこない。振り返ればこちらに渡ってから日本語の文章を書く機会がなかったし、脳が錆び付いてきたのかもしれない。これはまずいぞと思ったので、今日から文章を書く習慣をつけることにした。</p>
+
+<h4 id="section-1">取り組み</h4>
+
+<p>良い文章を書くための訓練として「<a href="http://www.amazon.co.jp/gp/product/4087200566/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=4087200566&amp;linkCode=as2&amp;tag=mrk1869-22">ホンモノの文章力 (集英社新書)</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=mrk1869-22&amp;l=as2&amp;o=9&amp;a=4087200566" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を読む。僕が日本から持ってきた唯一の本だ。高校生の頃に出会って以来、志望理由書や科学論文を書くとき、プレゼンの構成を考えるときに度々この本を開いている。</p>
+
+<p>この本には綺麗な日本語とはなんたるやといった理論や考察が書かれているわけではない。記されているのは、「採点者の目を引く」「書き手の印象や個性を際立たせる」ための型やノウハウである。このような(いわゆる受験テクニックとも言える)邪道スキルを身につけていくうちに、気付けばホンモノの文章力がついているというのがこの本の面白さである。</p>
+
+<p>普段なら必要な項だけ探してさっと目を通すのだけれど、もう一度始めから読み返して、書きたい欲を高めてから、たくさん文章を書いていこうと思う。</p>
+
+<p>あと「<a href="http://mogmog.hateblo.jp/entries/2013/11/04">最近文章が書けなくて困ってる - インターネットもぐもぐ</a>」と同じ現象で、このごろ集中力が極端に落ちている。本をしっかり読もうと思う。Kindleがあれば何処にいたって日本語の本が読める。今日「山月記」を読んで、改めて活字っていいなぁと実感した。</p>
+
+<h4 id="section-2">ここまで書くまでに</h4>
+
+<p>時間がかかったけれど、自分の考えを文章にすることで、最近抱えていた靄々を解消することができた気がする。なるほど、変に気負わずにまず書き始めることが大事なんだ。</p>
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/writing/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/writing/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/writing/" data-text="文章を書く習慣をつけようと思う">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/writing/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
+<div class="article-body">
+    <div class="article-title">
+        <a href="/blog/versailles/">ヴェルサイユ宮殿</a>
+    </div>
+    <div class="article-date">
+        7 November 2013
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Sightseeing/">Sightseeing</a>
+        
+    </div>
+    <div class="article-content">
+        <p>フランス滞在最終日はパリ南西に位置するヴェルサイユ宮殿を観光しました。パリ市内からは急行鉄道RERを使うと1時間弱で到着します。</p>
+
+<p class="injection-center">ヴェルサイユ宮殿</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/versailles02.JPG" class="image-on-frame image-fade" /></p>
+
+<p>ヴェルサイユ宮殿は、ルイ14世が建造した宮殿である。そのため、フランス絶対王政の象徴的建造物ともいわれる。ルイ14世をはじめとした王族と、その臣下が共に住むヴェルサイユ宮殿においては、生活のすべてが絶対王政の実現のために利用され、その結果さまざまなルール、エチケット、マナーがうまれた。-Wikipediaより引用</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/versailles03.JPG" class="image-on-frame image-fade" /></p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/versailles04.JPG" class="image-on-frame image-fade" /></p>
+
+<p class="injection-center">鏡の回廊</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/versailles05.JPG" class="image-on-frame image-fade" /></p>
+
+<p class="injection-center">王妃の寝室</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/versailles06.JPG" class="image-on-frame image-fade" /></p>
+
+<p class="injection-center">メルクリウスの間</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/versailles07.JPG" class="image-on-frame image-fade" /></p>
+
+<p class="injection-center">庭園</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/versailles08.JPG" class="image-on-frame image-fade" /></p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/versailles09.JPG" class="image-on-frame image-fade" /></p>
+
+<p>ベルサイユ宮殿を観光した後は、パリ東駅から発車するICEに乗ってドイツに帰りました。今回の旅はこれで終わりです。</p>
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/versailles/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/versailles/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/versailles/" data-text="ヴェルサイユ宮殿">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/versailles/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
+<div class="pagenation">
+    
+        <div class="page-button"><a href="/page9"></a><span class="lsf">left</span> Previous</div>
+    
+    
+        
+            <div class="page-button"><a href="/page7"></a>Next <span class="lsf">right</span></div>
+        
+    
+</div>
+
+        </section>
+    </div> <!-- #main -->
+</div> <!-- #main-container -->
+<!-- FOOTER  -->
+<div id="footer_wrap" class="outer" align="center">
+    <footer class="inner">
+        <a href = "https://github.com/Mrk1869"><img src="/assets/img/icon_github.png" class="footer-icon"></a>
+        <a href = "https://twitter.com/Mrk1869"><img src="/assets/img/icon_twitter.png" class="footer-icon"></a>
+        <a href = "https://docs.google.com/forms/d/1oEXmb1m7QMJeorhI99NFCTKlXcQ0O5AP4B9qoaDmcl8/viewform"><img src="/assets/img/icon_mail.png" class="footer-icon"></a>
+        <a href = "http://mrk1869.com/feed.xml"><img src="/assets/img/icon_rss.png" class="footer-icon"></a><br>
+        <p>© <a href="https://plus.google.com/102413339779614193497?rel=author" style="color:#f2f2f2">Shoya Ishimaru</a> 2013-2014</a></p>
+    </footer>
+</div>
+<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1918944-8']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</body>
+</html>

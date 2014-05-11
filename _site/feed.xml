@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title></title>
+        <description></description>
+        <link>http://mrk1869.com</link>
+        <atom:link href="http://mrk1869.com/feed.xml" rel="self" type="application/rss+xml" />
+        
+            <item>
+                <title>Grunt+BowerでつくるWebアプリケーションひな形</title>
+                <description>&lt;p&gt;ハッカソンに参加するときとか、ちょっとしたWebサイトをつくるときとか、アプリケーションのテンプレートを持っていると開発にかかる時間を大きく短縮できる。特にbootstrapやjQueryをダウンロードして、過去のリソースを切り貼りして…という作業を毎回行うのは面倒なので、自分用のWebアプリケーションひな形を作成した。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Mrk1869/updraft&quot;&gt;Mrk1869/updraft&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;tornadoのひな形なのでupdraft(上昇気流)と呼んでいるけど、main.pyを変更すれば静的なサイトやsinatraのプロジェクトでも利用できる。&lt;/p&gt;
+
+&lt;h4 id=&quot;span-classlsfcheckspan-features&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;check&lt;/span&gt; Features&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;bootstrap, jQuery, backbone, underscoreのセットアップ&lt;/li&gt;
+  &lt;li&gt;Gruntを使ったcoffee scriptとsassの自動コンパイル&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;span-classlsfsetupspan-require&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; Require&lt;/h4&gt;
+
+&lt;p&gt;bower, grunt, coffee, sassを使うので、インストールしていなければ準備が必要。npmコマンドが使えない場合は、導入はNodeとパッケージ管理システム(Macの場合はHomebrewなど)について勉強してからのほうがいいかもしれない。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install -g bower
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install -g grunt-cli
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install -g coffee-script
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem install sass
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;span-classlsfsetupspan-installation&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; Installation&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/Mrk1869/updraft&quot;&gt;Mrk1869/updraft&lt;/a&gt; からデータをダウンロードしてきたら、そのディレクトリに入って&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;# 必要なパッケージをインストール&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install
+
+&lt;span class=&quot;c&quot;&gt;# bootstrapなどをダウンロードしてassets/以下に配置する&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;grunt bower:install
+
+&lt;span class=&quot;c&quot;&gt;# coffee, sassの監視を開始する&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;grunt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;これでひな形の準備は完了です。&lt;/p&gt;
+
+&lt;p&gt;以下は補足説明。&lt;/p&gt;
+
+&lt;h4 id=&quot;span-classlsfcodespan-bowerjson&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;code&lt;/span&gt; bower.json&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;updraft&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&amp;quot;version&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;0.0.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&amp;quot;description&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;Web application template&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&amp;quot;license&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;MIT&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&amp;quot;ignore&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;**/.*&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&amp;quot;node_modules&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&amp;quot;bower_components&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&amp;quot;test&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&amp;quot;tests&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&amp;quot;devDependencies&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;bootstrap&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;~3.1.1&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;backbone&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;~1.1.2&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;underscore&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;~1.6.0&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;jquery&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;~2.1.1&amp;quot;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&amp;quot;exportsOverride&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//main fileが設定されていないライブラリをassetsにコピーするための設定&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;bootstrap&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&amp;quot;js&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;dist/js/bootstrap.min.js&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&amp;quot;css&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;dist/css/bootstrap.min.css&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;backbone&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&amp;quot;js&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;backbone.js&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;underscore&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&amp;quot;js&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;underscore.js&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&amp;quot;jquery&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;s2&quot;&gt;&amp;quot;js&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;dist/jquery.min.js&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Bowerとはフロントエンド用のパッケージマネージャ。jQueryやTwitterBootstrapなどの定番ライブラリを、サイトを巡回することなく下記のようなコマンドで集めてくることができる。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower install jquery
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;しかしbowerでインストールしたライブラリはbower_components以下の複雑な場所に配置されるため、それらを扱いやすい場所(assets/ lib/など)にコピーしたい。そこでGruntを使う。コピーの対象となるファイルをmain fileとして設定していないライブラリもあるので、コメント部のようにjs, cssファイルの場所を指定する必要がある。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://yosuke-furukawa.hatenablog.com/entry/2013/06/01/173308&quot;&gt;参考: Bower入門(基礎編) - from scratch&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;span-classlsfcodespan-gruntfilejs&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;code&lt;/span&gt; Gruntfile.js&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;js&quot;&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;initConfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// bowerでインストールしたライブラリをassets以下に置く&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;bower&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;targetDir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;./assets&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;layout&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;byType&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;install&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;verbose&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;cleanTargetDir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;nx&quot;&gt;cleanBowerDir&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// sassのコンパイル&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;sass&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;assets/_scss/*.scss&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;assets/css/style.css&amp;#39;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// coffeeのコンパイル&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;coffee&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;compile&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;assets/_coffee/*.coffee&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;dest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;assets/js/script.js&amp;#39;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// sassとcoffeeの更新を監視する&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;scss&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;assets/_scss/*.scss&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;sass&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;coffee&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;assets/_coffee/*.coffee&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;tasks&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;coffee&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loadNpmTasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;grunt-bower-task&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loadNpmTasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;grunt-contrib-watch&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loadNpmTasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;grunt-contrib-sass&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loadNpmTasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;grunt-contrib-coffee&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;sass&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;coffee&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;watch&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;grunt-bower-taskによってライブラリをコピーする。はじめの方にあるbower:installはそれに関する設定。grunt-contrib-watchによってsassとcoffeeの更新を検知して、sass:compile, coffee:compileタスクを実行するよう設定している。&lt;/p&gt;
+
+&lt;h4 id=&quot;section&quot;&gt;5/11 追記&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://d.hatena.ne.jp/naoya/20130504/1367640512&quot;&gt;昨今の自分用Webアプリケーションひな形その2 - Grunt - naoyaのはてなダイアリー&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;を参考に、Gruntfileをcoffeeに書きなおしました。また、Procfileを作成して&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;application: python main.py --port&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;8000 --debug&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;True
+grunt: grunt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;foreman startでgruntとtornadoが起動するようにしました。&lt;/p&gt;
+</description>
+                <pubDate>Fri, 09 May 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/updraft/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/updraft/</guid>
+            </item>
+        
+            <item>
+                <title>2014年におけるMac TeX環境</title>
+                <description>&lt;p&gt;TeXの環境、あまりに情報が多すぎて、自分がどの設定でインストールしたのか忘れてしまう。
+特に古い情報だとソフトウェアのバージョンの違いでハマるので、2014年5月現在のモダンなTeX環境を記しておく。&lt;/p&gt;
+
+&lt;h4 id=&quot;mactex&quot;&gt;1. MacTex&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://tug.org/mactex/&quot;&gt;MacTeXをダウンロード&lt;/a&gt;してインストール。コンパイルに使うコマンドや便利なGUIツールを一括してセットアップしてくれる。コマンドからTexファイルをコンパイルするための設定はこれで完了。&lt;/p&gt;
+
+&lt;h4 id=&quot;texshop&quot;&gt;2. TeXShop&lt;/h4&gt;
+
+&lt;p&gt;MacTex(2013)にパッケージされているTexShopのバージョンは古いため、最新のものに置き換える必要がある。まず&lt;a href=&quot;http://pages.uoregon.edu/koch/texshop/&quot;&gt;TeXShop3をダウンロード&lt;/a&gt;する。次に/Applications/TeX/に存在するTexShopを削除して新しいものを置く。&lt;/p&gt;
+
+&lt;p&gt;TexShopを起動したら、環境設定を行う。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/mac_tex.png&quot; class=&quot;image-on-frame-medium&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;左下の設定プロファイルをpTex(ptex2pdf)に変更する。(チームで文字コードをShift-JISに統一するルールがない場合に限り)エンコーディングのデフォルトをUTF-8にしておくとよい。&lt;/p&gt;
+
+&lt;p&gt;以上です。&lt;/p&gt;
+
+&lt;h4 id=&quot;section&quot;&gt;おまけ&lt;/h4&gt;
+
+&lt;p&gt;TexShopはタイプセットボタンで簡単に結果出力できるし、仕上がりと見比べなら執筆しやすい。一方で、集中してがっつり書きたいときは使い慣れたエディタが執筆に適していると思う。
+だからTexで論文を書くときは、書き始めはVim、推敲はTexShop、と使い分けている。&lt;/p&gt;
+
+&lt;p&gt;Vimで書いているときはコマンドからコンパイルするので、一連の処理をまとめたスクリプトを用意している。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# default file name&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;paper&amp;quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# get file name from parameter&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;    &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# make .dvi and .pdf file&lt;/span&gt;
+platex &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.tex
+pbibtex &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.aux
+platex &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.tex
+dvipdfmx -p a4 &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.dvi
+
+&lt;span class=&quot;c&quot;&gt;# preview&lt;/span&gt;
+open &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.pdf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;あと研究室秘伝のテンプレートファイルは往々にしてShift-JISだったりするので、UTF-8に変換してから使うようにしている。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;iconv -s -f SHIFT_JIS -t UTF-8 paper.sty &amp;gt; paper_utf8.sty
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://mizchi.hatenablog.com/entry/2014/01/20/090957&quot;&gt;参考: markdown-&amp;gt;TeXの変換だけで卒論を仕上げるのに便利だったツール10個まとめ - mizchi’s blog&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;上記コマンドで変換したのち、円マークをバックスラッシュに置換する。&lt;/p&gt;
+
+</description>
+                <pubDate>Sat, 03 May 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/mac_tex/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/mac_tex/</guid>
+            </item>
+        
+            <item>
+                <title>Quick Response</title>
+                <description>&lt;p&gt;メールをできるだけ早く返すように心がけている。そう思うようになったきっかけは「&lt;a href=&quot;http://book-mrk1869.tumblr.com/post/83999920951&quot;&gt;MITメディアラボ  魔法のイノベーション・パワー&lt;/a&gt;」という本のなかのこの一節。簡潔な返事が良い。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;ある日の午後、私はリハビリ・セッションを終えた母親に会うためにリハビリ病棟の食堂で待っているあいだ、ヒュー・ハーにメールを送った。「ヒュー、この高齢化社会で、お年寄りの転倒を減らすことができれば、これまでのがん研究なんかよりもずっと、人々の生活向上に貢献できると思うんだけれどね。ぜひその方法を考えるべきだ」&lt;br /&gt;
+すぐにヒューからメールが返ってきた。「今スキー中。あとで考えてみる」&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;時間のかかるタスクを含むメールが来た時を考える。タスクをすべて終わらせてか返信すると、時間がかかってよくない。こちらのメールが届くまで相手の作業を止めていることもあるので、自分がそれらにいつ取り掛かれるか、今どれくらい終えているのかを先に知らせるべきである。手がふさがっている場合は読んだことだけ伝えることも大切だと考えている。&lt;/p&gt;
+
+&lt;p&gt;また、返信が遅れるとこんなスパイラルに陥ってしまうことがある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;メールが来る--&amp;gt;返信が遅れる--&amp;gt;遅れたぶん, きちんとした文章で返信しよう--&amp;gt;文面悩む--&amp;gt;返信が遅れる--&amp;gt;(繰り返し)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;進捗報告の遅延と同じである。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;進捗どうですか--&amp;gt;報告が遅れる--&amp;gt;遅れたぶん, 期待値を上回る成果を出してから報告しよう--&amp;gt;成果まだ足りない--&amp;gt;報告が遅れる--&amp;gt;(繰り返し)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;誰かを待たせることで、自分の中で(勝手に)期待値を上げてしまうのよくない。&lt;/p&gt;
+
+&lt;p&gt;一方で、最近は(物理的にも社会的にも)窓口が増えて、取りこぼしてしまう連絡も増えた。ということで、送ってから2日ほど経っても何の連絡がない場合は、見逃している可能性が高いので遠慮なく催促してください。&lt;/p&gt;
+</description>
+                <pubDate>Tue, 29 Apr 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/quick_response/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/quick_response/</guid>
+            </item>
+        
+            <item>
+                <title>心に響いた一節を、いつでも読み返せるように。</title>
+                <description>&lt;p&gt;Web上に自分用の本棚を作った。&lt;a href=&quot;http://book-mrk1869.tumblr.com&quot;&gt;self.bookShelf&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/book_shelf.png&quot; class=&quot;image-on-frame-medium&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;作ったというと聞こえはいいけれど、投稿機能はTumblrがやってくれているので、実際のところCSSを書いただけです。&lt;/p&gt;
+
+&lt;h4 id=&quot;section&quot;&gt;機能&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;気に入った一節をTumblrから投稿する。後日いい感じに振り返ることができる。&lt;/li&gt;
+  &lt;li&gt;ページ中央のシャッフルボタンを押すと、過去の投稿がランダムに表示される。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;動機&lt;/h4&gt;
+
+&lt;p&gt;本、読み終えると本棚にしまうんだけど、「あの一節が読みたい」といった衝動に駆られてあとから引っ張りだすことがよくある。内容を前後に行ったり来たりしながら目的の一節を探すので、本の内容に引き込まれてずいぶん時間を奪われる。気に入ったところだけスクラップしておいて、いつでも短時間で読み返せるようにしたいと考えた。&lt;/p&gt;
+
+&lt;p&gt;また、先日I-siteなんばにある&lt;a href=&quot;http://opu.is-library.jp/&quot;&gt;まちライブラリー&lt;/a&gt;を訪れたこともあって、自分が読んだ本の記録をどこかに残してみたいと思った。&lt;/p&gt;
+
+&lt;p&gt;というのが建前で&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;少し休養をとっていた時期があって、その間にたくさんの本を読んだ。&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://memo.sanographix.net/post/82160791768&quot;&gt;大体いい感じになるKeynoteテンプレート「Azusa」作った&lt;/a&gt;という記事を読んで、3色で構成されたWebページを作りたいと思っていた。&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://pplog.net&quot;&gt;pplog - ゆるふわインターネットにポエムを刻もう&lt;/a&gt;を見てから、クリックしたりマウスオーバーしたときにぐるぐる回るボタンを使ってみたかった。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;という理由で作ってみた。&lt;/p&gt;
+</description>
+                <pubDate>Mon, 28 Apr 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/book_shelf/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/book_shelf/</guid>
+            </item>
+        
+            <item>
+                <title>Eclipseの環境設定まとめ</title>
+                <description>&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/eclipse01.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;新しくWorkspaceを切ったあとにしている環境設定の備忘録です。EclipseでJavaを書く環境を想定して、Preference(環境設定) から行える設定を上から順に紹介します。&lt;/p&gt;
+
+&lt;h4 id=&quot;span-classlsfsetupspan-&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; カラースキームを変更する&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/eclipse02.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;定番のカラースキームが揃っているEclipse Color Themesプラグインが便利。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;[導入方法]&lt;/strong&gt;&lt;br /&gt;
+Help &amp;gt; Install New Softwareを開いてWork with: に以下を入力する。&lt;/p&gt;
+
+&lt;pre&gt;
+http://eclipse-color-theme.github.com/update/
+&lt;/pre&gt;
+
+&lt;p&gt;検索結果にEclipce Color Themeが表示されるので、チェックボックスをOnにして、画面の指示に従ってインストールする。&lt;/p&gt;
+
+&lt;h4 id=&quot;span-classlsfsetupspan-utf-8&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; 文字コードをUTF-8へ変更する&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/eclipse03.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;SJISで書いて残念な感じにならないように。&lt;/p&gt;
+
+&lt;h4 id=&quot;span-classlsfsetupspan--1&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; インデントをスペースに固定する&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/eclipse04.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Java &amp;gt; Code Style &amp;gt; Formatterより。デフォルトだとハードタブになっている。チームのコーディング規約に合わせて新しいProfileを作成する。&lt;/p&gt;
+
+&lt;h4 id=&quot;span-classlsfsetupspan--2&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; 補完機能を強調する&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/eclipse05.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Auto activation triggers for Javaの欄を&lt;/p&gt;
+
+&lt;pre&gt;
+.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_
+&lt;/pre&gt;
+
+&lt;p&gt;に変更して、”.”以外が入力された時も自動的に補完候補が表示されるようにする。また、Auto activation delay[ms]の値を小さくして、補完候補が表示されるまでの遅延時間を短くする。&lt;/p&gt;
+
+&lt;h4 id=&quot;span-classlsfsetupspan--3&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; ファイル保存時にコードを整形する&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/eclipse06.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ファイル保存をトリガーにコードをフォーマットする。Organize importsにチェックを入れておくと不要なインポートを削除してくれてとっても便利。&lt;/p&gt;
+</description>
+                <pubDate>Thu, 17 Apr 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/eclipse/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/eclipse/</guid>
+            </item>
+        
+            <item>
+                <title>石と空気を買いにベルリンまで行った話[インターネット闇市]</title>
+                <description>&lt;blockquote&gt;
+  &lt;p&gt;自由の国インターネットとは名ばかり、ほらリジェクトだとか、ほら違法化だとか、&lt;br /&gt;
+あんまり自由じゃなくなって来ている今日このごろ。&lt;br /&gt;
+そこで、あえて人と人とが直接プロトコルする、そんなフリマを開催します！&lt;br /&gt;
+インターネットに病み（ヤミ）続けるぼくらに、手と手の触れ合う生あたたかいデータを直リンク！！&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;インターネットにまつわるあれこれを売買する「明るい闇市」としてネット上を賑わせた&lt;a href=&quot;http://idpw.org/fest/blackmarket/&quot;&gt;インターネット闇市&lt;/a&gt;が、なんと国境を超えてドイツ・ベルリンで開催されました。これは行くしかない。開催日は2/2, トランスメディアーレの最終日でした。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black01.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;鉄の骨組みむき出しの会場にところ狭しと並ぶ机。怪しげな商品。これは闇です。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black02.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;インターネットポルノ。画像データのバイナリ列を額に入れて販売している。(手作業で)正確に打ち込めば再生される。入力を間違えたらグリッチするのかな。高くて買えなかった…&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black03.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;インターネットくじ引き。1ユーロで5個のWebサイトが当たりました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black04.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ドイツの著作権管理団体であるGEMAに対する抗議ステッカー。ドイツでは有名どころの楽曲の著作権をGEMAが管理していて、コンテンツを配信するにGEMAに対して使用料を払う必要がある。その値段がとても高く、YouTubeは支払いを拒否しているため、ドイツのYouTubeではこの画面が出て再生できない動画がたくさんある。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black05.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;通貨を買った。使い方がわからず、となりのギャンブルブースで全額賭けたらあっという間になくなってしまった。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black06.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;インターネット上に出回っているスパムメールを手紙で再現するという、Heartful SPAM。「ジェントルマン山下」とかありますね。&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; lang=&quot;en&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://twitter.com/Mrk1869&quot;&gt;@Mrk1869&lt;/a&gt; どもー！ヤミ市で会ったスパム売ってたあれです！まさかSPAM MUSEUMの人に会えるとは思ってなかったです！！&lt;/p&gt;&amp;mdash; ノガミカツキ (@z7z7z7z7z7z7z7) &lt;a href=&quot;https://twitter.com/z7z7z7z7z7z7z7/statuses/431362233981874176&quot;&gt;February 6, 2014&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;スパムメール収集家として、先越された！悔しい！っていう感じ。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black07.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;インターネットおじさんです。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black08.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;「&lt;a href=&quot;http://idpw.org/porto/w/000001/&quot;&gt;どうでもいいね！&lt;/a&gt;」の開発者さんから、MacBookAirAir(MBAから排出された空気(採取した位置情報付き)と大量のステッカーを買いました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black09.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;今回の目的はこれ。石を買うこと。そこらへんにある石を採取して、3Dスキャンしたデータモデルと一緒に販売している。「IPv6は枯渇しない。地上にあるすべての石にIPアドレスをふっても大丈夫らしい。」という話を聞いて思いついたとのこと。(&lt;a href=&quot;https://www.youtube.com/watch?v=mjWJsE7B1cs#t=290&quot;&gt;Back streets of the Internet - YouTube&lt;/a&gt;より) おもしろいなー&lt;/p&gt;
+
+&lt;p&gt;インターネット闇市、面白いものが買えるというよりは、それを思いついた経緯とかその人のインターネットに対する考え方とかを聞けるのが楽しい。次回は自分も出店してみたい。&lt;/p&gt;
+</description>
+                <pubDate>Sat, 12 Apr 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/internet_black_market/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/internet_black_market/</guid>
+            </item>
+        
+            <item>
+                <title>トランスメディアーレに行ってきました</title>
+                <description>&lt;p&gt;メディアアートの祭典、&lt;a href=&quot;http://www.transmediale.de/&quot;&gt;トランスメディアーレ&lt;/a&gt;に行ってきました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/transmediale01.jpg&quot; class=&quot;image-on-frame-small&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;開催期間は1/30から2/2までの4日間。2/1の展示とトーク、2/2の&lt;a href=&quot;/blog/internet_black_market/&quot;&gt;インターネット闇市&lt;/a&gt;に参加しました。会場はHaus der Kultured der Welt(ドイツ・ベルリン)です。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/transmediale02.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/transmediale03.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;留学中2度目のベルリン。辺りは雪に包まれ、川が凍るほど寒い。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/transmediale11.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;測量器を覗きこんで、遠くの紙に書かれた小さな字を読む。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/transmediale12.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;48時間で作品を完成させるArt Hack Dayがプレイベントとして開催され、80人以上のArtistやHackerが参加したとのこと。Art Hack Dayで制作された作品や日本の&lt;a href=&quot;http://jmaf-promote.jp/global/18.html&quot;&gt;メディア芸術祭から出展された作品&lt;/a&gt;が展示されていました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/transmediale21.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;アーティストトークの様子。トークは&lt;a href=&quot;https://www.youtube.com/channel/UC3enqTa8dIP9YhhMqNWZZ1A&quot;&gt;YouTubeで公開されています&lt;/a&gt;。&lt;/p&gt;
+</description>
+                <pubDate>Fri, 11 Apr 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/transmediale/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/transmediale/</guid>
+            </item>
+        
+            <item>
+                <title>イタリア旅行記2[ローマ]</title>
+                <description>&lt;p&gt;イタリア南部を観光したあとは、鉄道でローマへ移動。&lt;a href=&quot;http://allabout.co.jp/gm/gc/7407/&quot;&gt;ローマ旅行のモデルコース - All About&lt;/a&gt;を参考にしながら、一日かけて有名どころを巡りました。どこも観光客で賑わっていました。&lt;/p&gt;
+
+&lt;p class=&quot;injection-center&quot;&gt;コロッセオ&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma01.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma02.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma03.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;古代ローマ帝国時代の巨大な円形闘技場跡。地上にあるのはアリーナと観客席。当時は中央のむき出しになっているところにも床が敷かれていて、全体がアリーナになっていた。地下には倉庫や猛獣の檻、奴隷牢がありました。&lt;/p&gt;
+
+&lt;p class=&quot;injection-center&quot;&gt;サンタ・マリア・コスメディアン教会 真実の口&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma11.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;有名ですね。手を入れるには列に並ぶ必要があるのですが(日本人ばかりだった…)、回転率がやたら早くてすぐに順番が回ってきました。教会ではカップルが結婚式をあげていました。&lt;/p&gt;
+
+&lt;p class=&quot;injection-center&quot;&gt;バチカン市国&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma31.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;旧市街からバスで移動してバチカン市国へ。
+サン・ピエトロ大聖堂は圧巻で、広場を取り囲むように配置されている聖人像はどれも立派でした。&lt;/p&gt;
+
+&lt;p class=&quot;injection-center&quot;&gt;トレビの泉&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma21.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma22.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;バチカンを出た後は地下鉄に乗ってトレビの泉へ。
+泉に背を向けてコインを投げると願いが叶うという言い伝えがあり、投げる枚数によって願いも異なる。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma23.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;観光客がたくさん。&lt;/p&gt;
+
+&lt;p class=&quot;injection-center&quot;&gt;ローマの町並み&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma41.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;スペイン広場近くの展望台はローマの旧市街が見渡せる絶景スポット。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma42.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma43.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ローマの路地は、日本やドイツに比べて綺麗なわけじゃないけれど、どこか風情がありました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma44.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ホテルのオーナーに勧められて、近くのお店でボンゴレビアンコを食べた。
+オーナーからは「だぶんぼったくられるけど、俺がサイン書いておけば正規の値段で食べられるから」といってよく分からない紙を渡されました。
+イタリアはなんでもありだなぁとつくづく思う。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/roma51.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;帰りの飛行機から見えた雪一面のアルプス。
+写真には収まりきらない美しさがありました。&lt;/p&gt;
+</description>
+                <pubDate>Tue, 08 Apr 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/roma/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/roma/</guid>
+            </item>
+        
+            <item>
+                <title>イタリア旅行記1[ナポリ・イタリア南部]</title>
+                <description>&lt;p&gt;イタリア旅行の初日は宿をナポリにとって、南部を観光しました。&lt;/p&gt;
+
+&lt;p&gt;今回イタリアへ飛んだ一番の目的はアマルフィを訪れること。&lt;a href=&quot;http://www.geocities.jp/yamagami_italia/amalfi.html&quot;&gt;2005年夏・南イタリア旅行記～アマルフィ～&lt;/a&gt; を参考にして、ナポリからベスビオ周遊鉄道でソレントへ移動し、海岸に沿ってバスでアマルフィまで移動する計画を立てました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/italy_map_amalfi.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ところがソレントに到着してバスのチケットを買おうとしたところ、なんと崖崩れが原因でアマルフィに向かうバスがストップしているとのこと。
+アマルフィへ行きたいのだが他に手段はないかと駅員さんに聞くと「鉄道を乗り継いで海岸の反対側(サレルノ)に行けば、向こうのバスは走ってるかもね。」との返事。
+ポンペイまで引き返して、そこからトレニタリア(イタリア国鉄)でサレルノまで移動し、遠回りしてアマルフィまで向かうことになりました。&lt;/p&gt;
+
+&lt;p class=&quot;injection-center&quot;&gt;ポンペイ遺跡&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/naples01.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;鉄道乗換えのために立ち寄ったポンペイ。良い機会なので遺跡を観光することに。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/naples02.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;西暦79年(日本は弥生時代)にベスビオ火山の噴火で火山灰に埋もれたポンペイ。
+およそ1700年後にポンペイは発掘され、今では建造物や街区が古代ローマ当時のままの唯一の町として知られている。
+火山灰を主体とする火砕流堆積物には乾燥剤として用いられるシリカゲルに似た成分が含まれ、湿気を吸収した。この火山灰が町全体を隙間なく埋め尽くしたため、壁画や美術品の劣化が最小限に食い止められたのである。(&lt;a href=&quot;http://ja.wikipedia.org/wiki/%E3%83%9D%E3%83%B3%E3%83%9A%E3%82%A4&quot;&gt;Wikipedia&lt;/a&gt;より)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/naples04.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/naples05.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;十字に交差する小道を歩いていると、突然視界が開けて目の前に闘技場がそびえ立っている。この感覚はRPGのダンジョンを探索しているかのようで非常にワクワクしました。&lt;/p&gt;
+
+&lt;p class=&quot;injection-center&quot;&gt;マルゲリータ&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/naples11.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ずいぶん歩いてお腹が空いたので、遺跡を出たところでピッツァを食べました。本場のマルゲリータ。トマトがみずみずしくて、まさに絶品。生まれて初めてトマトをうまいと感じた。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/naples12.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;店員さんにピザを焼く釜の写真を撮っていいかと尋ねたところ「俺も写してくれるならいいよ」と快く承諾してくれた。今回の旅で出会ったイタリア人、みんな気さくすぎる。&lt;/p&gt;
+
+&lt;p class=&quot;injection-center&quot;&gt;アマルフィ海岸&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/naples21.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;紺碧の海、断崖絶壁、レモンの香り。
+残念ながらシーズンではなかったものの、アマルフィの美しさは評判どおりでした。
+また機会があれば、次は夏に訪れたい。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/naples22.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;アマルフィ大聖堂。綺麗な鐘の音が響く。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/naples23.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/naples24.jpg&quot; class=&quot;image-on-frame-small&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;無数の小道が張り巡らされており、うっかり迷子になりそうになる。
+街が特産品であるレモンの香りに包まれているのもいい。
+レモンリキュールを買って飲みました。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/naples31.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;ナポリへ帰った頃にはあたりは真っ暗。
+白い壁が特徴のアマルフィとは対照的に、ナポリは街全体が薄暗く、治安はよろしくない感じ。
+イタリアは南北で所得の格差が大きいのだという。
+滞在したホテルでは、出かけた隙にドアの鍵を壊されて部屋に侵入されるトラブルに遭いました。
+リュック一つで旅行していたので部屋には荷物を残しておらず被害はなかったのだけれど、恐ろしい思いをしました。&lt;/p&gt;
+</description>
+                <pubDate>Mon, 07 Apr 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/naples/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/naples/</guid>
+            </item>
+        
+            <item>
+                <title>文体にまつわる話</title>
+                <description>&lt;p&gt;ブログの文体、頻繁に変わるんだけど、書いてる時に頭に浮かぶ自然体な書き方で書くようにしてる。こんな感じに感情を出さず淡々とした文体にするとすらすら書けるし、あとで読み返しても恥ずかしくならない。一方で、多くの人に読んでもらいたい記事では「です・ます」を使ってる。句読点の位置を確認するし公開前に何度も読み返す。&lt;/p&gt;
+
+&lt;p&gt;EvernoteやDayOneには公開に至らなかった下書きがいくつか埋もれている。文体を特徴量に使えば文章の重要度でクラスタリングして発掘できるんじゃないかと思う。&lt;/p&gt;
+</description>
+                <pubDate>Tue, 25 Feb 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/various_styles/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/various_styles/</guid>
+            </item>
+        
+    </channel>
+</rss>
