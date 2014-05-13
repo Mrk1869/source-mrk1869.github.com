@@ -7,6 +7,73 @@
         <atom:link href="http://mrk1869.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>Chefのknife solo prepareで404</title>
+                <description>&lt;h4 id=&quot;section&quot;&gt;問題&lt;/h4&gt;
+
+&lt;p&gt;Chefでknife solo prepareがうまく実行されない。Chef 11.14.0.alpha.2のwgetで404が返ってくるのが問題。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;shoya@tornado&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;knife solo prepare dev_debian
+Bootstrapping Chef...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 15934  100 15934    0     0   2238      0  0:00:07  0:00:07 --:--:--  9674
+Downloading Chef 11.14.0.alpha.2 &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;debian...
+downloading https://www.opscode.com/chef/metadata?v&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;11.14.0.alpha.2&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;prerelease&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;nightlies&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;debian&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;6&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;x86_64
+  to file /tmp/install.sh.2565/metadata.txt
+trying wget...
+ERROR 404
+Unable to retrieve a valid package!
+Please file a bug report at http://tickets.opscode.com
+Project: Chef
+Component: Packages
+Label: Omnibus
+Version: 11.14.0.alpha.2
+
+Please detail your operating system &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;, version and any other relevant details
+Metadata URL: https://www.opscode.com/chef/metadata?v&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;11.14.0.alpha.2&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;prerelease&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;nightlies&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;debian&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;6&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;x86_64
+Generating node config &lt;span class=&quot;s1&quot;&gt;&amp;#39;nodes/dev_debian.json&amp;#39;&lt;/span&gt;...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;解決&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/23591190/knife-solo-prepare-fails&quot;&gt;Knife-solo prepare fails - stackoverflow&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;opscode(version 11.14.0.alpha.2)側の問題なので、オプションでchefのバージョンを指定してあげるといいよとの回答。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;shoya@tornado&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;knife solo prepare dev_debian --bootstrap-version 11.12.0
+Bootstrapping Chef...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 15934  100 15934    0     0   2345      0  0:00:06  0:00:06 --:--:-- 14026
+Downloading Chef 11.12.0 &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;debian...
+downloading https://www.opscode.com/chef/metadata?v&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;11.12.0&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;prerelease&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;nightlies&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;debian&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;6&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;x86_64
+  to file /tmp/install.sh.2608/metadata.txt
+trying wget...
+url    https://opscode-omnibus-packages.s3.amazonaws.com/debian/6/x86_64/chef_11.12.0-1_amd64.deb
+md5    e3cefe75258f5d737b729ed549cadfc5
+sha256    3707bb7781317ce2928378564b95675291b9c3daa10a879bc77bea1333c83a9b
+downloaded metadata file looks valid...
+downloading https://opscode-omnibus-packages.s3.amazonaws.com/debian/6/x86_64/chef_11.12.0-1_amd64.deb
+  to file /tmp/install.sh.2608/chef_11.12.0-1_amd64.deb
+trying wget...
+Comparing checksum with sha256sum...
+Installing Chef 11.12.0
+installing with dpkg...
+Selecting previously unselected package chef.
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Reading database ... 39953 files and directories currently installed.&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Unpacking chef &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;from .../chef_11.12.0-1_amd64.deb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ...
+Setting up chef &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;11.12.0-1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ...
+Thank you &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;installing Chef!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;新しいバージョンが提供されるまではこれが応急処置みたい。&lt;/p&gt;
+</description>
+                <pubDate>Tue, 13 May 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/chef_prepare/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/chef_prepare/</guid>
+            </item>
+        
+            <item>
                 <title>Grunt+BowerでつくるWebアプリケーションひな形</title>
                 <description>&lt;p&gt;ハッカソンに参加するときとか、ちょっとしたWebサイトをつくるときとか、アプリケーションのテンプレートを持っていると開発にかかる時間を大きく短縮できる。特にbootstrapやjQueryをダウンロードして、過去のリソースを切り貼りして…という作業を毎回行うのは面倒なので、自分用のWebアプリケーションひな形を作成した。&lt;/p&gt;
 
@@ -585,17 +652,6 @@ http://eclipse-color-theme.github.com/update/
                 <pubDate>Mon, 07 Apr 2014 00:00:00 +0900</pubDate>
                 <link>http://mrk1869.com/blog/naples/</link>
                 <guid isPermaLink="true">http://mrk1869.com/blog/naples/</guid>
-            </item>
-        
-            <item>
-                <title>文体にまつわる話</title>
-                <description>&lt;p&gt;ブログの文体、頻繁に変わるんだけど、書いてる時に頭に浮かぶ自然体な書き方で書くようにしてる。こんな感じに感情を出さず淡々とした文体にするとすらすら書けるし、あとで読み返しても恥ずかしくならない。一方で、多くの人に読んでもらいたい記事では「です・ます」を使ってる。句読点の位置を確認するし公開前に何度も読み返す。&lt;/p&gt;
-
-&lt;p&gt;EvernoteやDayOneには公開に至らなかった下書きがいくつか埋もれている。文体を特徴量に使えば文章の重要度でクラスタリングして発掘できるんじゃないかと思う。&lt;/p&gt;
-</description>
-                <pubDate>Tue, 25 Feb 2014 00:00:00 +0900</pubDate>
-                <link>http://mrk1869.com/blog/various_styles/</link>
-                <guid isPermaLink="true">http://mrk1869.com/blog/various_styles/</guid>
             </item>
         
     </channel>

@@ -83,6 +83,89 @@
 
 <div class="article-body">
     <div class="article-title">
+        <a href="/blog/chef_prepare/">Chefのknife solo prepareで404</a>
+    </div>
+    <div class="article-date">
+        13 May 2014
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Infrastructure/">Infrastructure</a>
+        
+    </div>
+    <div class="article-content">
+        <h4 id="section">問題</h4>
+
+<p>Chefでknife solo prepareがうまく実行されない。Chef 11.14.0.alpha.2のwgetで404が返ってくるのが問題。</p>
+
+<div class="highlight"><pre><code class="bash">shoya@tornado<span class="nv">$ </span>knife solo prepare dev_debian
+Bootstrapping Chef...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 15934  100 15934    0     0   2238      0  0:00:07  0:00:07 --:--:--  9674
+Downloading Chef 11.14.0.alpha.2 <span class="k">for </span>debian...
+downloading https://www.opscode.com/chef/metadata?v<span class="o">=</span>11.14.0.alpha.2<span class="p">&amp;</span><span class="nv">prerelease</span><span class="o">=</span><span class="nb">false</span><span class="p">&amp;</span><span class="nv">nightlies</span><span class="o">=</span><span class="nb">false</span><span class="p">&amp;</span><span class="nv">p</span><span class="o">=</span>debian<span class="p">&amp;</span><span class="nv">pv</span><span class="o">=</span>6<span class="p">&amp;</span><span class="nv">m</span><span class="o">=</span>x86_64
+  to file /tmp/install.sh.2565/metadata.txt
+trying wget...
+ERROR 404
+Unable to retrieve a valid package!
+Please file a bug report at http://tickets.opscode.com
+Project: Chef
+Component: Packages
+Label: Omnibus
+Version: 11.14.0.alpha.2
+
+Please detail your operating system <span class="nb">type</span>, version and any other relevant details
+Metadata URL: https://www.opscode.com/chef/metadata?v<span class="o">=</span>11.14.0.alpha.2<span class="p">&amp;</span><span class="nv">prerelease</span><span class="o">=</span><span class="nb">false</span><span class="p">&amp;</span><span class="nv">nightlies</span><span class="o">=</span><span class="nb">false</span><span class="p">&amp;</span><span class="nv">p</span><span class="o">=</span>debian<span class="p">&amp;</span><span class="nv">pv</span><span class="o">=</span>6<span class="p">&amp;</span><span class="nv">m</span><span class="o">=</span>x86_64
+Generating node config <span class="s1">&#39;nodes/dev_debian.json&#39;</span>...
+</code></pre></div>
+
+<h4 id="section-1">解決</h4>
+
+<p><a href="http://stackoverflow.com/questions/23591190/knife-solo-prepare-fails">Knife-solo prepare fails - stackoverflow</a></p>
+
+<p>opscode(version 11.14.0.alpha.2)側の問題なので、オプションでchefのバージョンを指定してあげるといいよとの回答。</p>
+
+<div class="highlight"><pre><code class="bash">shoya@tornado<span class="nv">$ </span>knife solo prepare dev_debian --bootstrap-version 11.12.0
+Bootstrapping Chef...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 15934  100 15934    0     0   2345      0  0:00:06  0:00:06 --:--:-- 14026
+Downloading Chef 11.12.0 <span class="k">for </span>debian...
+downloading https://www.opscode.com/chef/metadata?v<span class="o">=</span>11.12.0<span class="p">&amp;</span><span class="nv">prerelease</span><span class="o">=</span><span class="nb">false</span><span class="p">&amp;</span><span class="nv">nightlies</span><span class="o">=</span><span class="nb">false</span><span class="p">&amp;</span><span class="nv">p</span><span class="o">=</span>debian<span class="p">&amp;</span><span class="nv">pv</span><span class="o">=</span>6<span class="p">&amp;</span><span class="nv">m</span><span class="o">=</span>x86_64
+  to file /tmp/install.sh.2608/metadata.txt
+trying wget...
+url    https://opscode-omnibus-packages.s3.amazonaws.com/debian/6/x86_64/chef_11.12.0-1_amd64.deb
+md5    e3cefe75258f5d737b729ed549cadfc5
+sha256    3707bb7781317ce2928378564b95675291b9c3daa10a879bc77bea1333c83a9b
+downloaded metadata file looks valid...
+downloading https://opscode-omnibus-packages.s3.amazonaws.com/debian/6/x86_64/chef_11.12.0-1_amd64.deb
+  to file /tmp/install.sh.2608/chef_11.12.0-1_amd64.deb
+trying wget...
+Comparing checksum with sha256sum...
+Installing Chef 11.12.0
+installing with dpkg...
+Selecting previously unselected package chef.
+<span class="o">(</span>Reading database ... 39953 files and directories currently installed.<span class="o">)</span>
+Unpacking chef <span class="o">(</span>from .../chef_11.12.0-1_amd64.deb<span class="o">)</span> ...
+Setting up chef <span class="o">(</span>11.12.0-1<span class="o">)</span> ...
+Thank you <span class="k">for </span>installing Chef!
+</code></pre></div>
+
+<p>新しいバージョンが提供されるまではこれが応急処置みたい。</p>
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/chef_prepare/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/chef_prepare/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/chef_prepare/" data-text="Chefのknife solo prepareで404">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/chef_prepare/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
+<div class="article-body">
+    <div class="article-title">
         <a href="/blog/updraft/">Grunt+BowerでつくるWebアプリケーションひな形</a>
     </div>
     <div class="article-date">
@@ -338,52 +421,6 @@ open <span class="nv">$filename</span>.pdf
         <div class="fb-like" data-href="http://mrk1869.com/blog/mac_tex/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
         <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/mac_tex/" data-text="2014年におけるMac TeX環境">Tweet</a>
         <div class="hatena-star"><a href="http://mrk1869.com/blog/mac_tex/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/quick_response/">Quick Response</a>
-    </div>
-    <div class="article-date">
-        29 April 2014
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Note/">Note</a>
-        
-    </div>
-    <div class="article-content">
-        <p>メールをできるだけ早く返すように心がけている。そう思うようになったきっかけは「<a href="http://book-mrk1869.tumblr.com/post/83999920951">MITメディアラボ  魔法のイノベーション・パワー</a>」という本のなかのこの一節。簡潔な返事が良い。</p>
-
-<blockquote>
-  <p>ある日の午後、私はリハビリ・セッションを終えた母親に会うためにリハビリ病棟の食堂で待っているあいだ、ヒュー・ハーにメールを送った。「ヒュー、この高齢化社会で、お年寄りの転倒を減らすことができれば、これまでのがん研究なんかよりもずっと、人々の生活向上に貢献できると思うんだけれどね。ぜひその方法を考えるべきだ」<br />
-すぐにヒューからメールが返ってきた。「今スキー中。あとで考えてみる」</p>
-</blockquote>
-
-<p>時間のかかるタスクを含むメールが来た時を考える。タスクをすべて終わらせてか返信すると、時間がかかってよくない。こちらのメールが届くまで相手の作業を止めていることもあるので、自分がそれらにいつ取り掛かれるか、今どれくらい終えているのかを先に知らせるべきである。手がふさがっている場合は読んだことだけ伝えることも大切だと考えている。</p>
-
-<p>また、返信が遅れるとこんなスパイラルに陥ってしまうことがある。</p>
-
-<pre><code>メールが来る--&gt;返信が遅れる--&gt;遅れたぶん, きちんとした文章で返信しよう--&gt;文面悩む--&gt;返信が遅れる--&gt;(繰り返し)
-</code></pre>
-
-<p>進捗報告の遅延と同じである。</p>
-
-<pre><code>進捗どうですか--&gt;報告が遅れる--&gt;遅れたぶん, 期待値を上回る成果を出してから報告しよう--&gt;成果まだ足りない--&gt;報告が遅れる--&gt;(繰り返し)
-</code></pre>
-
-<p>誰かを待たせることで、自分の中で(勝手に)期待値を上げてしまうのよくない。</p>
-
-<p>一方で、最近は(物理的にも社会的にも)窓口が増えて、取りこぼしてしまう連絡も増えた。ということで、送ってから2日ほど経っても何の連絡がない場合は、見逃している可能性が高いので遠慮なく催促してください。</p>
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/quick_response/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/quick_response/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/quick_response/" data-text="Quick Response">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/quick_response/" style="display: none;">hatena</a></div>
     </div>
 </div>
 
