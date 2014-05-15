@@ -83,6 +83,52 @@
 
 <div class="article-body">
     <div class="article-title">
+        <a href="/blog/locate/">locateとupdatedbでファイルを高速検索</a>
+    </div>
+    <div class="article-date">
+        24 December 2013
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Infrastructure/">Infrastructure</a>
+        
+    </div>
+    <div class="article-content">
+        <p>シェル上でファイルを検索するときfindを使っていたのだけれど</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>find DIRECTORY -name <span class="s2">&quot;FILENAME&quot;</span>
+</code></pre></div>
+
+<p>locate コマンドを使ったほうが早くて便利だよと教えてもらった。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>locate <span class="s2">&quot;FILENAME&quot;</span>
+</code></pre></div>
+
+<p>locateはあらかじめ作成しておいたデータベースを使って検索するため、コマンドが叩かれる度に検索を実行するfindより早いらしい。</p>
+
+<p>データベースは定期的に更新されるが、下記のコマンドで手動で更新できる。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo updatedb
+</code></pre></div>
+
+<p>Mac OSXの場合は</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo /usr/libexec/locate.updatedb
+</code></pre></div>
+
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/locate/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/locate/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/locate/" data-text="locateとupdatedbでファイルを高速検索">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/locate/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
+<div class="article-body">
+    <div class="article-title">
         <a href="/blog/long_shadow/">5分で完成！イラレで作るロングシャドウアイコン</a>
     </div>
     <div class="article-date">
@@ -217,66 +263,6 @@
         <div class="fb-like" data-href="http://mrk1869.com/blog/microsoft_translator/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
         <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/microsoft_translator/" data-text="PythonでMicrosoft Translator APIを使ってみる">Tweet</a>
         <div class="hatena-star"><a href="http://mrk1869.com/blog/microsoft_translator/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/mongodb_json/">MongoDBのObjectID型をJSONに変換する[pymongo]</a>
-    </div>
-    <div class="article-date">
-        14 December 2013
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Programming/">Programming</a>
-        
-    </div>
-    <div class="article-content">
-        <p>MongoDBから条件に合うオブジェクトを取り出して, エンコードされたJSONを返すapiを作成しようとしたところ, つまずいたのでメモ.</p>
-
-<h4 id="section">問題</h4>
-
-<div class="highlight"><pre><code class="python"><span class="c"># DB接続確立</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">)</span>
-<span class="n">db</span> <span class="o">=</span> <span class="n">conn</span><span class="p">[</span><span class="s">&quot;restaurant&quot;</span><span class="p">]</span>
-
-<span class="c"># 取り出しとエンコード</span>
-<span class="n">item</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">restaurant</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s">&quot;date&quot;</span><span class="p">:</span><span class="s">&quot;13.12.2013&quot;</span><span class="p">})</span>
-<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-</code></pre></div>
-
-<p>実行結果:エラー</p>
-
-<div class="highlight"><pre><code class="python"><span class="ne">TypeError</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s">&#39;52aa539a86d00a0fac59fb10&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">JSON</span> <span class="n">serializable</span>
-</code></pre></div>
-
-<p>MongoDBから得られたオブジェクトをjsonモジュールのdumpus関数に直接渡すとエラーが生じる.
-この問題は, PythonのJSONモジュールがMongoDBの特殊なObjectID型をJSONに変換する方法を知らないことによる.</p>
-
-<h4 id="section-1">解決策</h4>
-
-<p>JSONエンコードする前にディクショナリから_idキーを削除する.</p>
-
-<div class="highlight"><pre><code class="python"><span class="c"># 取り出しとエンコード</span>
-<span class="n">item</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">restaurant</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s">&quot;date&quot;</span><span class="p">:</span><span class="s">&quot;13.12.2013&quot;</span><span class="p">})</span>
-<span class="k">del</span> <span class="n">item</span><span class="p">[</span><span class="s">&quot;_id&quot;</span><span class="p">]</span>
-<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
-</code></pre></div>
-
-<p>実行結果:正しくエンコードされる.</p>
-
-<h4 id="section-2">参考文献</h4>
-
-<p><a href="http://www.oreilly.co.jp/books/9784873115764/">O’Reilly Japan - 概説Tornado</a> MongoDBドキュメントとJSON</p>
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/mongodb_json/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/mongodb_json/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/mongodb_json/" data-text="MongoDBのObjectID型をJSONに変換する[pymongo]">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/mongodb_json/" style="display: none;">hatena</a></div>
     </div>
 </div>
 
