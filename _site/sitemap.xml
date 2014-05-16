@@ -238,7 +238,7 @@
     
     
     <url>
-        <loc>http://mrk1869.com/aboutme/</loc>
+        <loc>http://mrk1869.com/feed.xml</loc>
     </url>
     
     
@@ -246,7 +246,7 @@
     
     
     <url>
-        <loc>http://mrk1869.com/aboutme/jp/</loc>
+        <loc>http://mrk1869.com/aboutme/</loc>
     </url>
     
     
@@ -262,7 +262,7 @@
     
     
     <url>
-        <loc>http://mrk1869.com/feed.xml</loc>
+        <loc>http://mrk1869.com/publications/</loc>
     </url>
     
     
@@ -278,7 +278,7 @@
     
     
     <url>
-        <loc>http://mrk1869.com/publications/</loc>
+        <loc>http://mrk1869.com/aboutme/jp/</loc>
     </url>
     
     

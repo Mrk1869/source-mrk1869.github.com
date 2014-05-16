@@ -5,8 +5,10 @@ title: Shoya Ishimaru's Blog
 author: Shoya Ishimaru
 descliption: Weblog by Mrk1869
 markdown: kramdown
+highlighter: pygments
 
 #permalink: /:category/:year-:month-:day/:title
 permalink: /:categories/:title/
 paginate: 3 # the number of post per page
-pygments: true
+
+exclude: ["vender", "Gemfile", "Gemfile.lock"]

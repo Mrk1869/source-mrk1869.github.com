@@ -3,3 +3,5 @@
 _drafts/
 .tweet-cache/
 .sass-cache/
+vender/
+.bundle
