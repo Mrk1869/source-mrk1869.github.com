@@ -96,21 +96,25 @@
                 <div class="article-content">
                     <p>シェル上でファイルを検索するときfindを使っていたのだけれど</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>find DIRECTORY -name <span class="s2">&quot;FILENAME&quot;</span></code></pre></div>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>find DIRECTORY -name <span class="s2">&quot;FILENAME&quot;</span>
+</code></pre></div>
 
 <p>locate コマンドを使ったほうが早くて便利だよと教えてもらった。</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>locate <span class="s2">&quot;FILENAME&quot;</span></code></pre></div>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>locate <span class="s2">&quot;FILENAME&quot;</span>
+</code></pre></div>
 
 <p>locateはあらかじめ作成しておいたデータベースを使って検索するため、コマンドが叩かれる度に検索を実行するfindより早いらしい。</p>
 
 <p>データベースは定期的に更新されるが、下記のコマンドで手動で更新できる。</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo updatedb</code></pre></div>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo updatedb
+</code></pre></div>
 
 <p>Mac OSXの場合は</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo /usr/libexec/locate.updatedb</code></pre></div>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>sudo /usr/libexec/locate.updatedb
+</code></pre></div>
 
 
                 </div>

@@ -104,11 +104,13 @@
 
 <span class="c"># 取り出しとエンコード</span>
 <span class="n">item</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">restaurant</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s">&quot;date&quot;</span><span class="p">:</span><span class="s">&quot;13.12.2013&quot;</span><span class="p">})</span>
-<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></code></pre></div>
+<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</code></pre></div>
 
 <p>実行結果:エラー</p>
 
-<div class="highlight"><pre><code class="python"><span class="ne">TypeError</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s">&#39;52aa539a86d00a0fac59fb10&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">JSON</span> <span class="n">serializable</span></code></pre></div>
+<div class="highlight"><pre><code class="python"><span class="ne">TypeError</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s">&#39;52aa539a86d00a0fac59fb10&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">JSON</span> <span class="n">serializable</span>
+</code></pre></div>
 
 <p>MongoDBから得られたオブジェクトをjsonモジュールのdumpus関数に直接渡すとエラーが生じる.
 この問題は, PythonのJSONモジュールがMongoDBの特殊なObjectID型をJSONに変換する方法を知らないことによる.</p>
@@ -120,7 +122,8 @@
 <div class="highlight"><pre><code class="python"><span class="c"># 取り出しとエンコード</span>
 <span class="n">item</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">restaurant</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s">&quot;date&quot;</span><span class="p">:</span><span class="s">&quot;13.12.2013&quot;</span><span class="p">})</span>
 <span class="k">del</span> <span class="n">item</span><span class="p">[</span><span class="s">&quot;_id&quot;</span><span class="p">]</span>
-<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></code></pre></div>
+<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</code></pre></div>
 
 <p>実行結果:正しくエンコードされる.</p>
 

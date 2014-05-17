@@ -114,7 +114,8 @@
 <div class="highlight"><pre><code class="bash"><span class="nv">$ </span>npm install -g bower
 <span class="nv">$ </span>npm install -g grunt-cli
 <span class="nv">$ </span>npm install -g coffee-script
-<span class="nv">$ </span>gem install sass</code></pre></div>
+<span class="nv">$ </span>gem install sass
+</code></pre></div>
 
 <h4 id="span-classlsfsetupspan-installation"><span class="lsf">setup</span> Installation</h4>
 
@@ -127,7 +128,8 @@
 <span class="nv">$ </span>grunt bower:install
 
 <span class="c"># coffee, sassの監視を開始する</span>
-<span class="nv">$ </span>grunt</code></pre></div>
+<span class="nv">$ </span>grunt
+</code></pre></div>
 
 <p>これでひな形の準備は完了です。</p>
 
@@ -168,11 +170,13 @@
       <span class="s2">&quot;js&quot;</span><span class="o">:</span> <span class="s2">&quot;dist/jquery.min.js&quot;</span>
     <span class="p">}</span>
   <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
+<span class="p">}</span>
+</code></pre></div>
 
 <p>Bowerとはフロントエンド用のパッケージマネージャ。jQueryやTwitterBootstrapなどの定番ライブラリを、サイトを巡回することなく下記のようなコマンドで集めてくることができる。</p>
 
-<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>bower install jquery</code></pre></div>
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>bower install jquery
+</code></pre></div>
 
 <p>しかしbowerでインストールしたライブラリはbower_components以下の複雑な場所に配置されるため、それらを扱いやすい場所(assets/ lib/など)にコピーしたい。そこでGruntを使う。コピーの対象となるファイルをmain fileとして設定していないライブラリもあるので、コメント部のようにjs, cssファイルの場所を指定する必要がある。</p>
 
@@ -231,7 +235,8 @@
   <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-sass&#39;</span><span class="p">);</span>
   <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-coffee&#39;</span><span class="p">);</span>
   <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span>  <span class="p">[</span><span class="s1">&#39;sass&#39;</span><span class="p">,</span> <span class="s1">&#39;coffee&#39;</span><span class="p">,</span> <span class="s1">&#39;watch&#39;</span><span class="p">]);</span>
-<span class="p">};</span></code></pre></div>
+<span class="p">};</span>
+</code></pre></div>
 
 <p>grunt-bower-taskによってライブラリをコピーする。はじめの方にあるbower:installはそれに関する設定。grunt-contrib-watchによってsassとcoffeeの更新を検知して、sass:compile, coffee:compileタスクを実行するよう設定している。</p>
 
@@ -242,7 +247,8 @@
 <p>を参考に、Gruntfileをcoffeeに書きなおしました。また、Procfileを作成して</p>
 
 <div class="highlight"><pre><code class="bash">application: python main.py --port<span class="o">=</span>8000 --debug<span class="o">=</span>True
-grunt: grunt</code></pre></div>
+grunt: grunt
+</code></pre></div>
 
 <p>foreman startでgruntとtornadoが起動するようにしました。</p>
 

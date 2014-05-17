@@ -120,11 +120,13 @@
 <span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;http://urls.api.twitter.com/1/urls/count.json?url=</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="n">body</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">uri</span><span class="p">))</span><span class="o">.</span><span class="n">body</span>
 <span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
-<span class="n">score</span> <span class="o">=</span> <span class="n">json</span><span class="o">[</span><span class="s1">&#39;count&#39;</span><span class="o">]</span> <span class="p">?</span> <span class="n">json</span><span class="o">[</span><span class="s1">&#39;count&#39;</span><span class="o">]</span> <span class="p">:</span> <span class="mi">0</span></code></pre></div>
+<span class="n">score</span> <span class="o">=</span> <span class="n">json</span><span class="o">[</span><span class="s1">&#39;count&#39;</span><span class="o">]</span> <span class="p">?</span> <span class="n">json</span><span class="o">[</span><span class="s1">&#39;count&#39;</span><span class="o">]</span> <span class="p">:</span> <span class="mi">0</span>
+</code></pre></div>
 
 <p>buildの度に取得すると記事を書く際に不便なので、jekyll server に –drafts オプションをつけているときは評価をスキップする。–draftsオプションが付いているかどうかは</p>
 
-<div class="highlight"><pre><code class="ruby"><span class="n">site</span><span class="o">.</span><span class="n">config</span><span class="o">[</span><span class="s1">&#39;show_drafts&#39;</span><span class="o">]</span></code></pre></div>
+<div class="highlight"><pre><code class="ruby"><span class="n">site</span><span class="o">.</span><span class="n">config</span><span class="o">[</span><span class="s1">&#39;show_drafts&#39;</span><span class="o">]</span>
+</code></pre></div>
 
 <p>を確認すれば良い。</p>
 

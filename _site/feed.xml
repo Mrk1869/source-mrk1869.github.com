@@ -62,7 +62,8 @@ Version: 11.14.0.alpha.2
 
 Please detail your operating system &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;, version and any other relevant details
 Metadata URL: https://www.opscode.com/chef/metadata?v&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;11.14.0.alpha.2&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;prerelease&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;nightlies&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;debian&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;6&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;x86_64
-Generating node config &lt;span class=&quot;s1&quot;&gt;&amp;#39;nodes/dev_debian.json&amp;#39;&lt;/span&gt;...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+Generating node config &lt;span class=&quot;s1&quot;&gt;&amp;#39;nodes/dev_debian.json&amp;#39;&lt;/span&gt;...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;section-1&quot;&gt;解決&lt;/h4&gt;
 
@@ -93,7 +94,8 @@ Selecting previously unselected package chef.
 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Reading database ... 39953 files and directories currently installed.&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
 Unpacking chef &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;from .../chef_11.12.0-1_amd64.deb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ...
 Setting up chef &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;11.12.0-1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ...
-Thank you &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;installing Chef!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+Thank you &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;installing Chef!
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;新しいバージョンが提供されるまではこれが応急処置みたい。&lt;/p&gt;
 </description>
@@ -124,7 +126,8 @@ Thank you &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;installing Chef!&lt;/
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install -g bower
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install -g grunt-cli
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm install -g coffee-script
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem install sass&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gem install sass
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;span-classlsfsetupspan-installation&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; Installation&lt;/h4&gt;
 
@@ -137,7 +140,8 @@ Thank you &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;installing Chef!&lt;/
 &lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;grunt bower:install
 
 &lt;span class=&quot;c&quot;&gt;# coffee, sassの監視を開始する&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;grunt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;grunt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;これでひな形の準備は完了です。&lt;/p&gt;
 
@@ -178,11 +182,13 @@ Thank you &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;installing Chef!&lt;/
       &lt;span class=&quot;s2&quot;&gt;&amp;quot;js&amp;quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;dist/jquery.min.js&amp;quot;&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Bowerとはフロントエンド用のパッケージマネージャ。jQueryやTwitterBootstrapなどの定番ライブラリを、サイトを巡回することなく下記のようなコマンドで集めてくることができる。&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower install jquery&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bower install jquery
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;しかしbowerでインストールしたライブラリはbower_components以下の複雑な場所に配置されるため、それらを扱いやすい場所(assets/ lib/など)にコピーしたい。そこでGruntを使う。コピーの対象となるファイルをmain fileとして設定していないライブラリもあるので、コメント部のようにjs, cssファイルの場所を指定する必要がある。&lt;/p&gt;
 
@@ -241,7 +247,8 @@ Thank you &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;installing Chef!&lt;/
   &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loadNpmTasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;grunt-contrib-sass&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loadNpmTasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;grunt-contrib-coffee&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
   &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;default&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;sass&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;coffee&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;watch&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;grunt-bower-taskによってライブラリをコピーする。はじめの方にあるbower:installはそれに関する設定。grunt-contrib-watchによってsassとcoffeeの更新を検知して、sass:compile, coffee:compileタスクを実行するよう設定している。&lt;/p&gt;
 
@@ -252,7 +259,8 @@ Thank you &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;installing Chef!&lt;/
 &lt;p&gt;を参考に、Gruntfileをcoffeeに書きなおしました。また、Procfileを作成して&lt;/p&gt;
 
 &lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;application: python main.py --port&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;8000 --debug&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;True
-grunt: grunt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+grunt: grunt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;foreman startでgruntとtornadoが起動するようにしました。&lt;/p&gt;
 </description>
@@ -306,11 +314,13 @@ platex &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.tex
 dvipdfmx -p a4 &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.dvi
 
 &lt;span class=&quot;c&quot;&gt;# preview&lt;/span&gt;
-open &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.pdf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+open &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.pdf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;あと研究室秘伝のテンプレートファイルは往々にしてShift-JISだったりするので、UTF-8に変換してから使うようにしている。&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;iconv -s -f SHIFT_JIS -t UTF-8 paper.sty &amp;gt; paper_utf8.sty&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;iconv -s -f SHIFT_JIS -t UTF-8 paper.sty &amp;gt; paper_utf8.sty
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://mizchi.hatenablog.com/entry/2014/01/20/090957&quot;&gt;参考: markdown-&amp;gt;TeXの変換だけで卒論を仕上げるのに便利だったツール10個まとめ - mizchi’s blog&lt;/a&gt;&lt;/p&gt;
 
