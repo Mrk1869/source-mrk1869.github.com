@@ -278,7 +278,7 @@ grunt: grunt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/mac_tex.png&quot; class=&quot;image-on-frame-medium&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;左下の設定プロファイルをpTex(ptex2pdf)に変更する。(チームで文字コードをShift-JISに統一するルールがない場合に限り)エンコーディングのデフォルトをUTF-8にしておくとよい。&lt;/p&gt;
+&lt;p&gt;左下の設定プロファイルをpTex(ptex2pdf)に変更する。(お好みで)エンコーディングのデフォルトをUTF-8にしておく。&lt;/p&gt;
 
 &lt;p&gt;以上です。&lt;/p&gt;
 
