@@ -96,15 +96,15 @@
     </div>
     <div class="article-content">
         <p>TeXの環境、あまりに情報が多すぎて、自分がどの設定でインストールしたのか忘れてしまう。
-特に古い情報だとソフトウェアのバージョンの違いでハマるので、2014年5月現在のモダンなTeX環境を記しておく。</p>
+特に古い情報だとソフトウェアのバージョンの違いでハマるので、2014年5月現在のTeX環境を記しておく。</p>
 
-<h4 id="mactex">1. MacTex</h4>
+<h4 id="mactex">1. MacTeX</h4>
 
 <p><a href="http://tug.org/mactex/">MacTeXをダウンロード</a>してインストール。コンパイルに使うコマンドや便利なGUIツールを一括してセットアップしてくれる。コマンドからTexファイルをコンパイルするための設定はこれで完了。</p>
 
 <h4 id="texshop">2. TeXShop</h4>
 
-<p>MacTex(2013)にパッケージされているTexShopのバージョンは古いため、最新のものに置き換える必要がある。まず<a href="http://pages.uoregon.edu/koch/texshop/">TeXShop3をダウンロード</a>する。次に/Applications/TeX/に存在するTexShopを削除して新しいものを置く。</p>
+<p>MacTex(2013)にパッケージされているTeXShopのバージョンは古いため、最新のものに置き換える必要がある。まず<a href="http://pages.uoregon.edu/koch/texshop/">TeXShop3をダウンロード</a>する。次に/Applications/TeX/に存在するTeXShopを削除して新しいものを置く。</p>
 
 <p>TexShopを起動したら、環境設定を行う。</p>
 
@@ -117,7 +117,7 @@
 <h4 id="section">おまけ</h4>
 
 <p>TexShopはタイプセットボタンで簡単に結果出力できるし、仕上がりと見比べなら執筆しやすい。一方で、集中してがっつり書きたいときは使い慣れたエディタが執筆に適していると思う。
-だからTexで論文を書くときは、書き始めはVim、推敲はTexShop、と使い分けている。</p>
+だからTeXで論文を書くときは、書き始めはVim、推敲はTeXShop、と使い分けている。</p>
 
 <p>Vimで書いているときはコマンドからコンパイルするので、一連の処理をまとめたスクリプトを用意している。</p>
 
@@ -140,14 +140,13 @@ dvipdfmx -p a4 <span class="nv">$filename</span>.dvi
 <span class="c"># preview</span>
 open <span class="nv">$filename</span>.pdf</code></pre></div>
 
-<p>あと研究室秘伝のテンプレートファイルは往々にしてShift-JISだったりするので、UTF-8に変換してから使うようにしている。</p>
+<p>あと研究室秘伝のテンプレートファイルは往々にしてShift-JISだったりするので、UTF-8に変換してから使っている。
+変換後は円マークをバックスラッシュに置換する必要がある。</p>
 
-<div class="highlight"><pre><code class="bash">iconv -s -f SHIFT_JIS -t UTF-8 paper.sty &gt; paper_utf8.sty</code></pre></div>
+<div class="highlight"><pre><code class="bash">iconv -s -f SHIFT_JIS -t UTF-8 paper.tex &gt; paper_utf8.tex
+sed -e <span class="s1">&#39;s/¥/\\/g&#39;</span> paper_utf8.tex &gt; paper_out.tex</code></pre></div>
 
 <p><a href="http://mizchi.hatenablog.com/entry/2014/01/20/090957">参考: markdown-&gt;TeXの変換だけで卒論を仕上げるのに便利だったツール10個まとめ - mizchi’s blog</a></p>
-
-<p>上記コマンドで変換したのち、円マークをバックスラッシュに置換する。</p>
-
 
     </div>
     <div class="article-socialbox">
