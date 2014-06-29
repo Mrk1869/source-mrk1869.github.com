@@ -264,28 +264,28 @@ grunt: grunt&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
             <item>
                 <title>2014年におけるMac TeX環境</title>
                 <description>&lt;p&gt;TeXの環境、あまりに情報が多すぎて、自分がどの設定でインストールしたのか忘れてしまう。
-特に古い情報だとソフトウェアのバージョンの違いでハマるので、2014年5月現在のモダンなTeX環境を記しておく。&lt;/p&gt;
+特に古い情報だとソフトウェアのバージョンの違いでハマるので、2014年5月現在のTeX環境を記しておく。&lt;/p&gt;
 
-&lt;h4 id=&quot;mactex&quot;&gt;1. MacTex&lt;/h4&gt;
+&lt;h4 id=&quot;mactex&quot;&gt;1. MacTeX&lt;/h4&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://tug.org/mactex/&quot;&gt;MacTeXをダウンロード&lt;/a&gt;してインストール。コンパイルに使うコマンドや便利なGUIツールを一括してセットアップしてくれる。コマンドからTexファイルをコンパイルするための設定はこれで完了。&lt;/p&gt;
 
 &lt;h4 id=&quot;texshop&quot;&gt;2. TeXShop&lt;/h4&gt;
 
-&lt;p&gt;MacTex(2013)にパッケージされているTexShopのバージョンは古いため、最新のものに置き換える必要がある。まず&lt;a href=&quot;http://pages.uoregon.edu/koch/texshop/&quot;&gt;TeXShop3をダウンロード&lt;/a&gt;する。次に/Applications/TeX/に存在するTexShopを削除して新しいものを置く。&lt;/p&gt;
+&lt;p&gt;MacTex(2013)にパッケージされているTeXShopのバージョンは古いため、最新のものに置き換える必要がある。まず&lt;a href=&quot;http://pages.uoregon.edu/koch/texshop/&quot;&gt;TeXShop3をダウンロード&lt;/a&gt;する。次に/Applications/TeX/に存在するTeXShopを削除して新しいものを置く。&lt;/p&gt;
 
 &lt;p&gt;TexShopを起動したら、環境設定を行う。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/mac_tex.png&quot; class=&quot;image-on-frame-medium&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;左下の設定プロファイルをpTex(ptex2pdf)に変更する。(チームで文字コードをShift-JISに統一するルールがない場合に限り)エンコーディングのデフォルトをUTF-8にしておくとよい。&lt;/p&gt;
+&lt;p&gt;左下の設定プロファイルをpTex(ptex2pdf)に変更する。(お好みで)エンコーディングのデフォルトをUTF-8にしておく。&lt;/p&gt;
 
 &lt;p&gt;以上です。&lt;/p&gt;
 
 &lt;h4 id=&quot;section&quot;&gt;おまけ&lt;/h4&gt;
 
 &lt;p&gt;TexShopはタイプセットボタンで簡単に結果出力できるし、仕上がりと見比べなら執筆しやすい。一方で、集中してがっつり書きたいときは使い慣れたエディタが執筆に適していると思う。
-だからTexで論文を書くときは、書き始めはVim、推敲はTexShop、と使い分けている。&lt;/p&gt;
+だからTeXで論文を書くときは、書き始めはVim、推敲はTeXShop、と使い分けている。&lt;/p&gt;
 
 &lt;p&gt;Vimで書いているときはコマンドからコンパイルするので、一連の処理をまとめたスクリプトを用意している。&lt;/p&gt;
 
@@ -308,14 +308,13 @@ dvipdfmx -p a4 &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.dvi
 &lt;span class=&quot;c&quot;&gt;# preview&lt;/span&gt;
 open &lt;span class=&quot;nv&quot;&gt;$filename&lt;/span&gt;.pdf&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;あと研究室秘伝のテンプレートファイルは往々にしてShift-JISだったりするので、UTF-8に変換してから使うようにしている。&lt;/p&gt;
+&lt;p&gt;あと研究室秘伝のテンプレートファイルは往々にしてShift-JISだったりするので、UTF-8に変換してから使っている。
+変換後は円マークをバックスラッシュに置換する必要がある。&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;iconv -s -f SHIFT_JIS -t UTF-8 paper.sty &amp;gt; paper_utf8.sty&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;iconv -s -f SHIFT_JIS -t UTF-8 paper.tex &amp;gt; paper_utf8.tex
+sed -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;s/¥/\\/g&amp;#39;&lt;/span&gt; paper_utf8.tex &amp;gt; paper_out.tex&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://mizchi.hatenablog.com/entry/2014/01/20/090957&quot;&gt;参考: markdown-&amp;gt;TeXの変換だけで卒論を仕上げるのに便利だったツール10個まとめ - mizchi’s blog&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;上記コマンドで変換したのち、円マークをバックスラッシュに置換する。&lt;/p&gt;
-
 </description>
                 <pubDate>Sat, 03 May 2014 00:00:00 +0900</pubDate>
                 <link>http://mrk1869.com/blog/mac_tex/</link>
