@@ -83,6 +83,181 @@
 
 <div class="article-body">
     <div class="article-title">
+        <a href="/blog/updraft/">Grunt+BowerでつくるWebアプリケーションひな形</a>
+    </div>
+    <div class="article-date">
+        9 May 2014
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Programming/">Programming</a>
+        
+    </div>
+    <div class="article-content">
+        <p>ハッカソンに参加するときとか、ちょっとしたWebサイトをつくるときとか、アプリケーションのテンプレートを持っていると開発にかかる時間を大きく短縮できる。特にbootstrapやjQueryをダウンロードして、過去のリソースを切り貼りして…という作業を毎回行うのは面倒なので、自分用のWebアプリケーションひな形を作成した。</p>
+
+<p><a href="https://github.com/Mrk1869/updraft">Mrk1869/updraft</a></p>
+
+<p>tornadoのひな形なのでupdraft(上昇気流)と呼んでいるけど、main.pyを変更すれば静的なサイトやsinatraのプロジェクトでも利用できる。</p>
+
+<h4 id="span-classlsfcheckspan-features"><span class="lsf">check</span> Features</h4>
+
+<ul>
+  <li>bootstrap, jQuery, backbone, underscoreのセットアップ</li>
+  <li>Gruntを使ったcoffee scriptとsassの自動コンパイル</li>
+</ul>
+
+<h4 id="span-classlsfsetupspan-require"><span class="lsf">setup</span> Require</h4>
+
+<p>bower, grunt, coffee, sassを使うので、インストールしていなければ準備が必要。npmコマンドが使えない場合は、導入はNodeとパッケージ管理システム(Macの場合はHomebrewなど)について勉強してからのほうがいいかもしれない。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>npm install -g bower
+<span class="nv">$ </span>npm install -g grunt-cli
+<span class="nv">$ </span>npm install -g coffee-script
+<span class="nv">$ </span>gem install sass</code></pre></div>
+
+<h4 id="span-classlsfsetupspan-installation"><span class="lsf">setup</span> Installation</h4>
+
+<p><a href="https://github.com/Mrk1869/updraft">Mrk1869/updraft</a> からデータをダウンロードしてきたら、そのディレクトリに入って</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># 必要なパッケージをインストール</span>
+<span class="nv">$ </span>npm install
+
+<span class="c"># bootstrapなどをダウンロードしてassets/以下に配置する</span>
+<span class="nv">$ </span>grunt bower:install
+
+<span class="c"># coffee, sassの監視を開始する</span>
+<span class="nv">$ </span>grunt</code></pre></div>
+
+<p>これでひな形の準備は完了です。</p>
+
+<p>以下は補足説明。</p>
+
+<h4 id="span-classlsfcodespan-bowerjson"><span class="lsf">code</span> bower.json</h4>
+
+<div class="highlight"><pre><code class="js"><span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;updraft&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="s2">&quot;0.0.0&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Web application template&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;license&quot;</span><span class="o">:</span> <span class="s2">&quot;MIT&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;ignore&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s2">&quot;**/.*&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;node_modules&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;bower_components&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;test&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;tests&quot;</span>
+    <span class="p">],</span>
+  <span class="s2">&quot;devDependencies&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;bootstrap&quot;</span><span class="o">:</span> <span class="s2">&quot;~3.1.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;backbone&quot;</span><span class="o">:</span> <span class="s2">&quot;~1.1.2&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;underscore&quot;</span><span class="o">:</span> <span class="s2">&quot;~1.6.0&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;jquery&quot;</span><span class="o">:</span> <span class="s2">&quot;~2.1.1&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;exportsOverride&quot;</span><span class="o">:</span> <span class="p">{</span> <span class="c1">//main fileが設定されていないライブラリをassetsにコピーするための設定</span>
+    <span class="s2">&quot;bootstrap&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;js&quot;</span><span class="o">:</span> <span class="s2">&quot;dist/js/bootstrap.min.js&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;css&quot;</span><span class="o">:</span> <span class="s2">&quot;dist/css/bootstrap.min.css&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;backbone&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;js&quot;</span><span class="o">:</span> <span class="s2">&quot;backbone.js&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;underscore&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;js&quot;</span><span class="o">:</span> <span class="s2">&quot;underscore.js&quot;</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;jquery&quot;</span><span class="o">:</span> <span class="p">{</span>
+      <span class="s2">&quot;js&quot;</span><span class="o">:</span> <span class="s2">&quot;dist/jquery.min.js&quot;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+<p>Bowerとはフロントエンド用のパッケージマネージャ。jQueryやTwitterBootstrapなどの定番ライブラリを、サイトを巡回することなく下記のようなコマンドで集めてくることができる。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>bower install jquery</code></pre></div>
+
+<p>しかしbowerでインストールしたライブラリはbower_components以下の複雑な場所に配置されるため、それらを扱いやすい場所(assets/ lib/など)にコピーしたい。そこでGruntを使う。コピーの対象となるファイルをmain fileとして設定していないライブラリもあるので、コメント部のようにjs, cssファイルの場所を指定する必要がある。</p>
+
+<p><a href="http://yosuke-furukawa.hatenablog.com/entry/2013/06/01/173308">参考: Bower入門(基礎編) - from scratch</a></p>
+
+<h4 id="span-classlsfcodespan-gruntfilejs"><span class="lsf">code</span> Gruntfile.js</h4>
+
+<div class="highlight"><pre><code class="js"><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">grunt</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">initConfig</span><span class="p">({</span>
+
+    <span class="c1">// bowerでインストールしたライブラリをassets以下に置く</span>
+    <span class="nx">bower</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">install</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+          <span class="nx">targetDir</span><span class="o">:</span> <span class="s1">&#39;./assets&#39;</span><span class="p">,</span>
+          <span class="nx">layout</span><span class="o">:</span> <span class="s1">&#39;byType&#39;</span><span class="p">,</span>
+          <span class="nx">install</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+          <span class="nx">verbose</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="nx">cleanTargetDir</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+          <span class="nx">cleanBowerDir</span><span class="o">:</span> <span class="kc">false</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="c1">// sassのコンパイル</span>
+    <span class="nx">sass</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">compile</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">src</span><span class="o">:</span> <span class="s1">&#39;assets/_scss/*.scss&#39;</span><span class="p">,</span>
+        <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;assets/css/style.css&#39;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="c1">// coffeeのコンパイル</span>
+    <span class="nx">coffee</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">compile</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">src</span><span class="o">:</span> <span class="s1">&#39;assets/_coffee/*.coffee&#39;</span><span class="p">,</span>
+        <span class="nx">dest</span><span class="o">:</span> <span class="s1">&#39;assets/js/script.js&#39;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="c1">// sassとcoffeeの更新を監視する</span>
+    <span class="nx">watch</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">scss</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">files</span><span class="o">:</span> <span class="s1">&#39;assets/_scss/*.scss&#39;</span><span class="p">,</span>
+        <span class="nx">tasks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;sass&#39;</span><span class="p">]</span>
+      <span class="p">},</span>
+      <span class="nx">coffee</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">files</span><span class="o">:</span> <span class="s1">&#39;assets/_coffee/*.coffee&#39;</span><span class="p">,</span>
+        <span class="nx">tasks</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;coffee&#39;</span><span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+  <span class="p">});</span>
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-bower-task&#39;</span><span class="p">);</span>
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-watch&#39;</span><span class="p">);</span>
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-sass&#39;</span><span class="p">);</span>
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">loadNpmTasks</span><span class="p">(</span><span class="s1">&#39;grunt-contrib-coffee&#39;</span><span class="p">);</span>
+  <span class="nx">grunt</span><span class="p">.</span><span class="nx">registerTask</span><span class="p">(</span><span class="s1">&#39;default&#39;</span><span class="p">,</span>  <span class="p">[</span><span class="s1">&#39;sass&#39;</span><span class="p">,</span> <span class="s1">&#39;coffee&#39;</span><span class="p">,</span> <span class="s1">&#39;watch&#39;</span><span class="p">]);</span>
+<span class="p">};</span></code></pre></div>
+
+<p>grunt-bower-taskによってライブラリをコピーする。はじめの方にあるbower:installはそれに関する設定。grunt-contrib-watchによってsassとcoffeeの更新を検知して、sass:compile, coffee:compileタスクを実行するよう設定している。</p>
+
+<h4 id="section">5/11 追記</h4>
+
+<p><a href="http://d.hatena.ne.jp/naoya/20130504/1367640512">昨今の自分用Webアプリケーションひな形その2 - Grunt - naoyaのはてなダイアリー</a></p>
+
+<p>を参考に、Gruntfileをcoffeeに書きなおしました。また、Procfileを作成して</p>
+
+<div class="highlight"><pre><code class="bash">application: python main.py --port<span class="o">=</span>8000 --debug<span class="o">=</span>True
+grunt: grunt</code></pre></div>
+
+<p>foreman startでgruntとtornadoが起動するようにしました。</p>
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/updraft/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/updraft/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/updraft/" data-text="Grunt+BowerでつくるWebアプリケーションひな形">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/updraft/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
+<div class="article-body">
+    <div class="article-title">
         <a href="/blog/mac_tex/">2014年におけるMac TeX環境</a>
     </div>
     <div class="article-date">
@@ -200,58 +375,6 @@ sed -e <span class="s1">&#39;s/¥/\\/g&#39;</span> paper_utf8.tex &gt; paper_out
         <div class="fb-like" data-href="http://mrk1869.com/blog/quick_response/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
         <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/quick_response/" data-text="Quick Response">Tweet</a>
         <div class="hatena-star"><a href="http://mrk1869.com/blog/quick_response/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/book_shelf/">心に響いた一節を、いつでも読み返せるように。</a>
-    </div>
-    <div class="article-date">
-        28 April 2014
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/ReleaseNote/">ReleaseNote</a>
-        
-    </div>
-    <div class="article-content">
-        <p>Web上に自分用の本棚を作った。<a href="http://book-mrk1869.tumblr.com">self.bookShelf</a></p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/book_shelf.png" class="image-on-frame-medium" /></p>
-
-<p>作ったというと聞こえはいいけれど、投稿機能はTumblrがやってくれているので、実際のところCSSを書いただけです。</p>
-
-<h4 id="section">機能</h4>
-
-<ul>
-  <li>気に入った一節をTumblrから投稿する。後日いい感じに振り返ることができる。</li>
-  <li>ページ中央のシャッフルボタンを押すと、過去の投稿がランダムに表示される。</li>
-</ul>
-
-<h4 id="section-1">動機</h4>
-
-<p>本、読み終えると本棚にしまうんだけど、「あの一節が読みたい」といった衝動に駆られてあとから引っ張りだすことがよくある。内容を前後に行ったり来たりしながら目的の一節を探すので、本の内容に引き込まれてずいぶん時間を奪われる。気に入ったところだけスクラップしておいて、いつでも短時間で読み返せるようにしたいと考えた。</p>
-
-<p>また、先日I-siteなんばにある<a href="http://opu.is-library.jp/">まちライブラリー</a>を訪れたこともあって、自分が読んだ本の記録をどこかに残してみたいと思った。</p>
-
-<p>というのが建前で</p>
-
-<ul>
-  <li>少し休養をとっていた時期があって、その間にたくさんの本を読んだ。</li>
-  <li><a href="http://memo.sanographix.net/post/82160791768">大体いい感じになるKeynoteテンプレート「Azusa」作った</a>という記事を読んで、3色で構成されたWebページを作りたいと思っていた。</li>
-  <li><a href="http://pplog.net">pplog - ゆるふわインターネットにポエムを刻もう</a>を見てから、クリックしたりマウスオーバーしたときにぐるぐる回るボタンを使ってみたかった。</li>
-</ul>
-
-<p>という理由で作ってみた。</p>
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/book_shelf/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/book_shelf/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/book_shelf/" data-text="心に響いた一節を、いつでも読み返せるように。">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/book_shelf/" style="display: none;">hatena</a></div>
     </div>
 </div>
 
