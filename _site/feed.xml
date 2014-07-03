@@ -7,6 +7,33 @@
         <atom:link href="http://mrk1869.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>プロセスが完了しました</title>
+                <description>&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/terminal01.png&quot; class=&quot;image-on-frame-medium&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;section&quot;&gt;問題&lt;/h4&gt;
+
+&lt;p&gt;Macのターミナルが起動しない。起動するとすぐに[プロセスが完了しました]と表示される。&lt;/p&gt;
+
+&lt;h4 id=&quot;section-1&quot;&gt;原因&lt;/h4&gt;
+
+&lt;p&gt;ユーザ名が - から始まっている&lt;/p&gt;
+
+&lt;h4 id=&quot;section-2&quot;&gt;解決策&lt;/h4&gt;
+
+&lt;p&gt;ユーザ名を変更する(システム環境設定&amp;gt;ユーザとグループ&amp;gt;詳細オプション)。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ユーザ名の変更は多くのアプリケーションの動作に影響を及ぼす可能性があります。バックアップをとったのち、慎重に実行してください。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/terminal02.png&quot; class=&quot;image-on-frame-medium&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Macのターミナルが動かないという報告を受けたのだけれど、原因はユーザ名がマイナスから始まっていたことだった。-piyoのようなユーザ名はloginコマンドのプションとして認識されてしまうので(もちろんそんなオプションはない)ターミナルでログインできない。なんだそれ…&lt;/p&gt;
+</description>
+                <pubDate>Sat, 21 Jun 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/terminal_login/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/terminal_login/</guid>
+            </item>
+        
+            <item>
                 <title>クックパッドのデザイン講演会に参加しました</title>
                 <description>&lt;p&gt;京都のCAMPHOR-HOUSEにて、クックパッドのデザイン責任者・池田さんによる講演会が開催されました。「クックパッドのサービス開発とデザイン」というタイトルで、「決してインターネットに詳しいわけではない方にまでに幅広く支持されているデザインの裏側には、どういった工夫やこだわりがあるか」というお話をしていただきました。&lt;/p&gt;
 
@@ -521,37 +548,6 @@ http://eclipse-color-theme.github.com/update/
                 <pubDate>Sat, 12 Apr 2014 00:00:00 +0900</pubDate>
                 <link>http://mrk1869.com/blog/internet_black_market/</link>
                 <guid isPermaLink="true">http://mrk1869.com/blog/internet_black_market/</guid>
-            </item>
-        
-            <item>
-                <title>トランスメディアーレに行ってきました</title>
-                <description>&lt;p&gt;メディアアートの祭典、&lt;a href=&quot;http://www.transmediale.de/&quot;&gt;トランスメディアーレ&lt;/a&gt;に行ってきました。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/transmediale01.jpg&quot; class=&quot;image-on-frame-small&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;開催期間は1/30から2/2までの4日間。2/1の展示とトーク、2/2の&lt;a href=&quot;/blog/internet_black_market/&quot;&gt;インターネット闇市&lt;/a&gt;に参加しました。会場はHaus der Kultured der Welt(ドイツ・ベルリン)です。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/transmediale02.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/transmediale03.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;留学中2度目のベルリン。辺りは雪に包まれ、川が凍るほど寒い。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/transmediale11.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;測量器を覗きこんで、遠くの紙に書かれた小さな字を読む。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/transmediale12.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;48時間で作品を完成させるArt Hack Dayがプレイベントとして開催され、80人以上のArtistやHackerが参加したとのこと。Art Hack Dayで制作された作品や日本の&lt;a href=&quot;http://jmaf-promote.jp/global/18.html&quot;&gt;メディア芸術祭から出展された作品&lt;/a&gt;が展示されていました。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/transmediale21.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;アーティストトークの様子。トークは&lt;a href=&quot;https://www.youtube.com/channel/UC3enqTa8dIP9YhhMqNWZZ1A&quot;&gt;YouTubeで公開されています&lt;/a&gt;。&lt;/p&gt;
-</description>
-                <pubDate>Fri, 11 Apr 2014 00:00:00 +0900</pubDate>
-                <link>http://mrk1869.com/blog/transmediale/</link>
-                <guid isPermaLink="true">http://mrk1869.com/blog/transmediale/</guid>
             </item>
         
     </channel>

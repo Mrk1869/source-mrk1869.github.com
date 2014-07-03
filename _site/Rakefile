@@ -1,11 +1,11 @@
 require 'thread'
 require 'launchy'
 
-task :build do
+task :server do
   sh 'bundle exec jekyll server'
 end
 
-task :preview do
+task :watch do
   Thread.new do
     sleep 1
     Launchy.open "http://localhost:4000/"
