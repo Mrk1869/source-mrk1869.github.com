@@ -7,6 +7,96 @@
         <atom:link href="http://mrk1869.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>brew doctorのwarningを解決する</title>
+                <description>&lt;p&gt;brew doctorコマンドで表示されるWarningを順番に解決しました。基本的には指示通りに解決していけばよいのですが、Warning2 pyenvとの干渉が厄介でした。&lt;/p&gt;
+
+&lt;h4 id=&quot;warning1&quot;&gt;Warning1&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;Warning: Some directories in /usr/local/share/man aren&lt;span class=&quot;s1&quot;&gt;&amp;#39;t writable.&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;This can happen if you &amp;quot;sudo make install&amp;quot; software that isn&amp;#39;&lt;/span&gt;t managed
+by Homebrew. If a brew tries to add locale information to one of these
+directories, &lt;span class=&quot;k&quot;&gt;then &lt;/span&gt;the install will fail during the link step.
+You should probably &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;chown&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; them:
+
+    /usr/local/share/man/de
+    /usr/local/share/man/de/man1&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;一部のディレクトリの所有者がbrewを使うユーザになっていない問題。chownコマンドで所有者を変更します。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo chown -R &lt;span class=&quot;nv&quot;&gt;$USER&lt;/span&gt; /usr/local/share/man/de&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;warning2&quot;&gt;Warning2&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;Warning: &lt;span class=&quot;s2&quot;&gt;&amp;quot;config&amp;quot;&lt;/span&gt; scripts exist outside your system or Homebrew directories.
+&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;./configure&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt; scripts often look &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; *-config scripts to determine &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;
+software packages are installed, and what additional flags to use when
+compiling and linking.
+
+Having additional scripts in your path can confuse software installed via
+Homebrew &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;the config script overrides a system or Homebrew provided
+script of the same name. We found the following &lt;span class=&quot;s2&quot;&gt;&amp;quot;config&amp;quot;&lt;/span&gt; scripts:
+
+    /Users/shoya/.pyenv/shims/python-config
+    /Users/shoya/.pyenv/shims/python2-config
+    /Users/shoya/.pyenv/shims/python2.7-config&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;homebrewの管理外かつPATHが通っているところにconfigスクリプトが存在する問題。深刻な問題ではないようなので、このWarningが表示されないよう回避する方向で。brewコマンドを実行するときだけ~/.pyenv/shims/をPATHから取り除くエイリアスを.bashrcに追記した。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nb&quot;&gt;alias &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;brew&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;env PATH=${PATH/\/Users\/${USER}\/\.pyenv\/shims:?/} brew&amp;quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;参考:&lt;a href=&quot;http://qiita.com/takc923/items/45386905f70fde9af0e7&quot;&gt;phpenv入れてる時brew doctorしたら出るWarning消した&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;warning3&quot;&gt;Warning3&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;Warning: Some directories in your path end in a slash.
+Directories in your path should not end in a slash. This can &lt;span class=&quot;nb&quot;&gt;break &lt;/span&gt;other
+doctor checks. The following directories should be edited:
+    /Applications/MacVim.app/Contents/MacOS/    /Users/shoya/software/android-ndk/    /Users/shoya/software/android-sdk/platform-tools/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;PATHが/(スラッシュ)で終わるのはよくないらしい。.bashrcを編集してそれぞれ最後のスラッシュを取り除きました。&lt;/p&gt;
+
+&lt;h4 id=&quot;warning4&quot;&gt;Warning4&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;Warning: /usr/bin occurs before /usr/local/bin
+This means that system-provided programs will be used instead of those
+provided by Homebrew. The following tools exist at both paths:
+
+    git
+    git-cvsserver
+    git-receive-pack
+    git-shell
+    git-upload-archive
+    git-upload-pack
+
+Consider setting your PATH so that /usr/local/bin
+occurs before /usr/bin. Here is a one-liner:
+    &lt;span class=&quot;nb&quot;&gt;echo export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;PATH&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;/usr/local/bin:$PATH&amp;#39;&lt;/span&gt; &amp;gt;&amp;gt; ~/.bash_profile&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;PATHの順番がよくない。PATHは前方に書かれてあるものが優先されるので、bashrcを見てPATH=(追加するPATH):$PATHの形になっていないものを修正しました。&lt;/p&gt;
+
+&lt;h4 id=&quot;warning5&quot;&gt;Warning5&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;Warning: Your Homebrew is outdated.
+You haven&lt;span class=&quot;err&quot;&gt;&amp;#39;&lt;/span&gt;t updated &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;at least 24 hours, this is a long &lt;span class=&quot;nb&quot;&gt;time &lt;/span&gt;in brewland!
+To update Homebrew, run &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;brew update&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;homebrewをアップデートします。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew update&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;warning&quot;&gt;すべてのWarningを取り除いたので&lt;/h4&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew doctor
+&amp;gt;&amp;gt; Your system is ready to brew.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;診断結果が正常になりました。めでたい。&lt;/p&gt;
+</description>
+                <pubDate>Fri, 04 Jul 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/brew_doctor/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/brew_doctor/</guid>
+            </item>
+        
+            <item>
                 <title>プロセスが完了しました</title>
                 <description>&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/terminal01.png&quot; class=&quot;image-on-frame-medium&quot; /&gt;&lt;/p&gt;
 
@@ -489,65 +579,6 @@ http://eclipse-color-theme.github.com/update/
                 <pubDate>Thu, 17 Apr 2014 00:00:00 +0900</pubDate>
                 <link>http://mrk1869.com/blog/eclipse/</link>
                 <guid isPermaLink="true">http://mrk1869.com/blog/eclipse/</guid>
-            </item>
-        
-            <item>
-                <title>石と空気を買いにベルリンまで行った話[インターネット闇市]</title>
-                <description>&lt;blockquote&gt;
-  &lt;p&gt;自由の国インターネットとは名ばかり、ほらリジェクトだとか、ほら違法化だとか、&lt;br /&gt;
-あんまり自由じゃなくなって来ている今日このごろ。&lt;br /&gt;
-そこで、あえて人と人とが直接プロトコルする、そんなフリマを開催します！&lt;br /&gt;
-インターネットに病み（ヤミ）続けるぼくらに、手と手の触れ合う生あたたかいデータを直リンク！！&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;インターネットにまつわるあれこれを売買する「明るい闇市」としてネット上を賑わせた&lt;a href=&quot;http://idpw.org/fest/blackmarket/&quot;&gt;インターネット闇市&lt;/a&gt;が、なんと国境を超えてドイツ・ベルリンで開催されました。これは行くしかない。開催日は2/2, トランスメディアーレの最終日でした。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black01.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;鉄の骨組みむき出しの会場にところ狭しと並ぶ机。怪しげな商品。これは闇です。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black02.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;インターネットポルノ。画像データのバイナリ列を額に入れて販売している。(手作業で)正確に打ち込めば再生される。入力を間違えたらグリッチするのかな。高くて買えなかった…&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black03.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;インターネットくじ引き。1ユーロで5個のWebサイトが当たりました。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black04.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ドイツの著作権管理団体であるGEMAに対する抗議ステッカー。ドイツでは有名どころの楽曲の著作権をGEMAが管理していて、コンテンツを配信するにGEMAに対して使用料を払う必要がある。その値段がとても高く、YouTubeは支払いを拒否しているため、ドイツのYouTubeではこの画面が出て再生できない動画がたくさんある。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black05.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;通貨を買った。使い方がわからず、となりのギャンブルブースで全額賭けたらあっという間になくなってしまった。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black06.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;インターネット上に出回っているスパムメールを手紙で再現するという、Heartful SPAM。「ジェントルマン山下」とかありますね。&lt;/p&gt;
-
-&lt;blockquote class=&quot;twitter-tweet&quot; data-conversation=&quot;none&quot; lang=&quot;en&quot;&gt;&lt;p&gt;&lt;a href=&quot;https://twitter.com/Mrk1869&quot;&gt;@Mrk1869&lt;/a&gt; どもー！ヤミ市で会ったスパム売ってたあれです！まさかSPAM MUSEUMの人に会えるとは思ってなかったです！！&lt;/p&gt;&amp;mdash; ノガミカツキ (@z7z7z7z7z7z7z7) &lt;a href=&quot;https://twitter.com/z7z7z7z7z7z7z7/statuses/431362233981874176&quot;&gt;February 6, 2014&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;スパムメール収集家として、先越された！悔しい！っていう感じ。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black07.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;インターネットおじさんです。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black08.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;「&lt;a href=&quot;http://idpw.org/porto/w/000001/&quot;&gt;どうでもいいね！&lt;/a&gt;」の開発者さんから、MacBookAirAir(MBAから排出された空気(採取した位置情報付き)と大量のステッカーを買いました。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/black09.jpg&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;今回の目的はこれ。石を買うこと。そこらへんにある石を採取して、3Dスキャンしたデータモデルと一緒に販売している。「IPv6は枯渇しない。地上にあるすべての石にIPアドレスをふっても大丈夫らしい。」という話を聞いて思いついたとのこと。(&lt;a href=&quot;https://www.youtube.com/watch?v=mjWJsE7B1cs#t=290&quot;&gt;Back streets of the Internet - YouTube&lt;/a&gt;より) おもしろいなー&lt;/p&gt;
-
-&lt;p&gt;インターネット闇市、面白いものが買えるというよりは、それを思いついた経緯とかその人のインターネットに対する考え方とかを聞けるのが楽しい。次回は自分も出店してみたい。&lt;/p&gt;
-</description>
-                <pubDate>Sat, 12 Apr 2014 00:00:00 +0900</pubDate>
-                <link>http://mrk1869.com/blog/internet_black_market/</link>
-                <guid isPermaLink="true">http://mrk1869.com/blog/internet_black_market/</guid>
             </item>
         
     </channel>

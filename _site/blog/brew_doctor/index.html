@@ -4,18 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-        
-            <title>Shoya Ishimaru's Blog</title>
-        
+        <title>brew doctorのwarningを解決する</title>
     
     
-    <meta name="keywords" content="Shoya, Ishimaru, Mrk1869, Markovnikov Laboratory">
+    <meta name="keywords" content="homebrew, brew, doctor, pyenv">
     <meta name="author" href="https://plus.google.com/u/0/102413339779614193497/posts">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="google-site-verification" content="sFx-iJWT2iihts7-5wK7CnR03-MymfWXmn_7KNoyIz0" />
-    <meta property="og:title" content="index.html">
+    <meta property="og:title" content="brew doctorのwarningを解決する">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://mrk1869.com/index.html">
+    <meta property="og:url" content="http://mrk1869.com/blog/brew_doctor/">
     
         <meta property="og:image" content="http://mrk1869.com/assets/img/icon_laptop.png">
     
@@ -80,22 +78,23 @@
     </div>
 </div>
 
-
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/brew_doctor/">brew doctorのwarningを解決する</a>
-    </div>
-    <div class="article-date">
-        4 July 2014
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Infrastructure/">Infrastructure</a>
-        
-    </div>
-    <div class="article-content">
-        <p>brew doctorコマンドで表示されるWarningを順番に解決しました。基本的には指示通りに解決していけばよいのですが、Warning2 pyenvとの干渉が厄介でした。</p>
+            <div class="article-body">
+                <div class="article-title">
+                    <a href="/blog/brew_doctor/">brew doctorのwarningを解決する</a>
+                </div>
+                <div class="article-date">
+                    4 July 2014
+                </div>
+                
+                    <div class="article-tag">
+                    
+                        <span class="lsf">tag</span>
+                        <a href="/tag/Infrastructure/">Infrastructure</a>
+                    
+                    </div>
+                
+                <div class="article-content">
+                    <p>brew doctorコマンドで表示されるWarningを順番に解決しました。基本的には指示通りに解決していけばよいのですが、Warning2 pyenvとの干渉が厄介でした。</p>
 
 <h4 id="warning1">Warning1</h4>
 
@@ -178,107 +177,25 @@ To update Homebrew, run <span class="sb">`</span>brew update<span class="sb">`</
 
 <p>診断結果が正常になりました。めでたい。</p>
 
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/brew_doctor/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/brew_doctor/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/brew_doctor/" data-text="brew doctorのwarningを解決する">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/brew_doctor/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/terminal_login/">プロセスが完了しました</a>
-    </div>
-    <div class="article-date">
-        21 June 2014
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Infrastructure/">Infrastructure</a>
-        
-    </div>
-    <div class="article-content">
-        <p><img src="https://dl.dropboxusercontent.com/u/12208857/img/terminal01.png" class="image-on-frame-medium" /></p>
-
-<h4 id="section">問題</h4>
-
-<p>Macのターミナルが起動しない。起動するとすぐに[プロセスが完了しました]と表示される。</p>
-
-<h4 id="section-1">原因</h4>
-
-<p>ユーザ名が - から始まっている</p>
-
-<h4 id="section-2">解決策</h4>
-
-<p>ユーザ名を変更する(システム環境設定&gt;ユーザとグループ&gt;詳細オプション)。</p>
-
-<p><strong>ユーザ名の変更は多くのアプリケーションの動作に影響を及ぼす可能性があります。バックアップをとったのち、慎重に実行してください。</strong></p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/terminal02.png" class="image-on-frame-medium" /></p>
-
-<p>Macのターミナルが動かないという報告を受けたのだけれど、原因はユーザ名がマイナスから始まっていたことだった。-piyoのようなユーザ名はloginコマンドのプションとして認識されてしまうので(もちろんそんなオプションはない)ターミナルでログインできない。なんだそれ…</p>
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/terminal_login/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/terminal_login/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/terminal_login/" data-text="プロセスが完了しました">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/terminal_login/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/cookpad_design/">クックパッドのデザイン講演会に参加しました</a>
-    </div>
-    <div class="article-date">
-        14 June 2014
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Event/">Event</a>
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Note/">Note</a>
-        
-    </div>
-    <div class="article-content">
-        <p>京都のCAMPHOR-HOUSEにて、クックパッドのデザイン責任者・池田さんによる講演会が開催されました。「クックパッドのサービス開発とデザイン」というタイトルで、「決してインターネットに詳しいわけではない方にまでに幅広く支持されているデザインの裏側には、どういった工夫やこだわりがあるか」というお話をしていただきました。</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/cookpad_design.jpg" class="image-on-frame-medium" /></p>
-
-<h4 id="section">デザインの原則</h4>
-
-<p>クックパッドでは、サービス開発の軸がぶれないように、いくつかの「デザインの原則」を設けているとのこと。例えば<strong>全体最適の原則</strong>。各自が作ったデザインをライブラリ化して共有したり、アイコンをWebフォントにして、クックパッド全体のブランドデザインを保つためのルールです。<strong>無言語化の原則</strong>。機能を説明するのにできるだけ言葉を使わず、ぱっと見て分かるデザインを心がけるルールです。<strong>無言実行の原則</strong>。プロダクトの概念やコンセプトを利用者にいちいち説明するのではなく、利用者にはプロダクトそのもので評価してもらうべきというルールです。ほかにもBEST集中の原則、競合を知る原則、顧客中心の原則などがあり、勉強になりました。</p>
-
-<h4 id="ab">A/Bテストの指標</h4>
-
-<p>A/Bテストについての話がでたので、「定量的に評価できる数字とユーザ体験は時としてトレードオフの関係にあるが、どうやって折り合いをつけているか」という質問をしました。「例えばあるボタンを大きくすれば新規会員数は増えるとしても、もちろん大きすぎるボタンにはNGをだす」との回答でした。「その(大きすぎるなどの)感覚値的な指標はどうやって測っているか」という質問には、「私(池田さん)の主観で決めます」という回答をいただきました。(ここでデザインの原則に繋がると思っていたので少し残念。) 利用者や利用シーンを具体的に想定して、それぞれの人にとって馴染みやすいデザインを考えることで、良し悪しを決めるとのことでした。</p>
-
-<p>属人的になりがちなデザインの知見を社内でどうやって共有するかといった、興味深いお話を聞くことができました。ありがとうございました！</p>
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/cookpad_design/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/cookpad_design/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/cookpad_design/" data-text="クックパッドのデザイン講演会に参加しました">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/cookpad_design/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="pagenation">
-    
-        <div class="page-button"><a href="/page2"></a><span class="lsf">left</span> Previous</div>
-    
-    
-        <div class="page-button-disabled">Next <span class="lsf">right</span></div>
-    
-</div>
-
+                </div>
+                <div class="article-relations">
+                    
+                </div>
+                <div class="article-socialbox">
+                    <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/brew_doctor/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+                    <div class="fb-like" data-href="http://mrk1869.com/blog/brew_doctor/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/brew_doctor/" data-text="brew doctorのwarningを解決する">Tweet</a>
+                    <div class="hatena-star"><a href="http://mrk1869.com/blog/brew_doctor/" style="display: none;">hatena</a></div>
+                </div>
+            </div>
+            <div class="pagenation">
+                
+                    <div class="page-button"><a href="/blog/terminal_login/"></a><span class="lsf">left</span> Previous</div>
+                
+                
+                    <div class="page-button-disabled">Next <span class="lsf">right</span></div>
+                
+            </div>
         </section>
     </div> <!-- #main -->
 </div> <!-- #main-container -->

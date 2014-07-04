@@ -83,6 +83,63 @@
 
 <div class="article-body">
     <div class="article-title">
+        <a href="/blog/mongodb_json/">MongoDBのObjectID型をJSONに変換する[pymongo]</a>
+    </div>
+    <div class="article-date">
+        14 December 2013
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Programming/">Programming</a>
+        
+    </div>
+    <div class="article-content">
+        <p>MongoDBから条件に合うオブジェクトを取り出して, エンコードされたJSONを返すapiを作成しようとしたところ, つまずいたのでメモ.</p>
+
+<h4 id="section">問題</h4>
+
+<div class="highlight"><pre><code class="python"><span class="c"># DB接続確立</span>
+<span class="n">conn</span> <span class="o">=</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">)</span>
+<span class="n">db</span> <span class="o">=</span> <span class="n">conn</span><span class="p">[</span><span class="s">&quot;restaurant&quot;</span><span class="p">]</span>
+
+<span class="c"># 取り出しとエンコード</span>
+<span class="n">item</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">restaurant</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s">&quot;date&quot;</span><span class="p">:</span><span class="s">&quot;13.12.2013&quot;</span><span class="p">})</span>
+<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></code></pre></div>
+
+<p>実行結果:エラー</p>
+
+<div class="highlight"><pre><code class="python"><span class="ne">TypeError</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s">&#39;52aa539a86d00a0fac59fb10&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">JSON</span> <span class="n">serializable</span></code></pre></div>
+
+<p>MongoDBから得られたオブジェクトをjsonモジュールのdumpus関数に直接渡すとエラーが生じる.
+この問題は, PythonのJSONモジュールがMongoDBの特殊なObjectID型をJSONに変換する方法を知らないことによる.</p>
+
+<h4 id="section-1">解決策</h4>
+
+<p>JSONエンコードする前にディクショナリから_idキーを削除する.</p>
+
+<div class="highlight"><pre><code class="python"><span class="c"># 取り出しとエンコード</span>
+<span class="n">item</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">restaurant</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s">&quot;date&quot;</span><span class="p">:</span><span class="s">&quot;13.12.2013&quot;</span><span class="p">})</span>
+<span class="k">del</span> <span class="n">item</span><span class="p">[</span><span class="s">&quot;_id&quot;</span><span class="p">]</span>
+<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></code></pre></div>
+
+<p>実行結果:正しくエンコードされる.</p>
+
+<h4 id="section-2">参考文献</h4>
+
+<p><a href="http://www.oreilly.co.jp/books/9784873115764/">O’Reilly Japan - 概説Tornado</a> MongoDBドキュメントとJSON</p>
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/mongodb_json/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/mongodb_json/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/mongodb_json/" data-text="MongoDBのObjectID型をJSONに変換する[pymongo]">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/mongodb_json/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
+<div class="article-body">
+    <div class="article-title">
         <a href="/blog/frankfurt/">産業の中心地フランクフルト</a>
     </div>
     <div class="article-date">
@@ -625,47 +682,6 @@ Checking GitLab ... Finished
         <div class="fb-like" data-href="http://mrk1869.com/blog/gitlab_installation/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
         <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/gitlab_installation/" data-text="GitLab 6.0をインストールする">Tweet</a>
         <div class="hatena-star"><a href="http://mrk1869.com/blog/gitlab_installation/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/writing/">文章を書く習慣をつけようと思う</a>
-    </div>
-    <div class="article-date">
-        12 November 2013
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Note/">Note</a>
-        
-    </div>
-    <div class="article-content">
-        <h4 id="section">経緯</h4>
-
-<p>留学を始めて1ヶ月が経った。新しい文化に触れた諸々の気持ちを記録しておこうとエディタを起動するのだけれど、言葉が思うように出てこない。振り返ればこちらに渡ってから日本語の文章を書く機会がなかったし、脳が錆び付いてきたのかもしれない。これはまずいぞと思ったので、今日から文章を書く習慣をつけることにした。</p>
-
-<h4 id="section-1">取り組み</h4>
-
-<p>良い文章を書くための訓練として「<a href="http://www.amazon.co.jp/gp/product/4087200566/ref=as_li_qf_sp_asin_tl?ie=UTF8&amp;camp=247&amp;creative=1211&amp;creativeASIN=4087200566&amp;linkCode=as2&amp;tag=mrk1869-22">ホンモノの文章力 (集英社新書)</a><img src="http://ir-jp.amazon-adsystem.com/e/ir?t=mrk1869-22&amp;l=as2&amp;o=9&amp;a=4087200566" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />」を読む。僕が日本から持ってきた唯一の本だ。高校生の頃に出会って以来、志望理由書や科学論文を書くとき、プレゼンの構成を考えるときに度々この本を開いている。</p>
-
-<p>この本には綺麗な日本語とはなんたるやといった理論や考察が書かれているわけではない。記されているのは、「採点者の目を引く」「書き手の印象や個性を際立たせる」ための型やノウハウである。このような(いわゆる受験テクニックとも言える)邪道スキルを身につけていくうちに、気付けばホンモノの文章力がついているというのがこの本の面白さである。</p>
-
-<p>普段なら必要な項だけ探してさっと目を通すのだけれど、もう一度始めから読み返して、書きたい欲を高めてから、たくさん文章を書いていこうと思う。</p>
-
-<p>あと「<a href="http://mogmog.hateblo.jp/entries/2013/11/04">最近文章が書けなくて困ってる - インターネットもぐもぐ</a>」と同じ現象で、このごろ集中力が極端に落ちている。本をしっかり読もうと思う。Kindleがあれば何処にいたって日本語の本が読める。今日「山月記」を読んで、改めて活字っていいなぁと実感した。</p>
-
-<h4 id="section-2">ここまで書くまでに</h4>
-
-<p>時間がかかったけれど、自分の考えを文章にすることで、最近抱えていた靄々を解消することができた気がする。なるほど、変に気負わずにまず書き始めることが大事なんだ。</p>
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/writing/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/writing/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/writing/" data-text="文章を書く習慣をつけようと思う">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/writing/" style="display: none;">hatena</a></div>
     </div>
 </div>
 
