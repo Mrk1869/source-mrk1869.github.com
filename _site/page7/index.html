@@ -83,6 +83,88 @@
 
 <div class="article-body">
     <div class="article-title">
+        <a href="/blog/div_a_fade/">div全体をaタグで囲ってふんわりメニューをつくる</a>
+    </div>
+    <div class="article-date">
+        21 February 2014
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Programming/">Programming</a>
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Design/">Design</a>
+        
+    </div>
+    <div class="article-content">
+        <p>div全体にaタグをかぶせることでdivにボタンのような振る舞いを持たせることができる。さらにマウスが乗った時は背景色をゆっくり変えると高級感が増して良い。自分ではこれをふんわりメニューと呼んでいて、例えばこのブログでは<a href="/entries/">全記事一覧</a>ページで使っている。</p>
+
+<h4 id="section">用意するもの</h4>
+
+<p>色をフェードで変えるためにjQuery Colorを用いる。</p>
+
+<ul>
+  <li><a href="http://jquery.com/">jQuery</a></li>
+  <li><a href="https://github.com/jquery/jquery-color/">jQuery Color</a></li>
+</ul>
+
+<h4 id="span-classlsfcodespan-html"><span class="lsf">code</span> html</h4>
+
+<p>&lt;head&gt;でjquery.jsとjquery.color.jsをロードしておくこと。</p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>タイトル1<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>タイトル2<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;item&quot;</span><span class="nt">&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;#&quot;</span><span class="nt">&gt;&lt;/a&gt;</span>タイトル3<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<h4 id="span-classlsfcodespan-css"><span class="lsf">code</span> css</h4>
+
+<div class="highlight"><pre><code class="css"><span class="nc">.item</span><span class="p">{</span>
+  <span class="k">position</span><span class="o">:</span><span class="k">relative</span><span class="p">;</span>
+  <span class="k">background-color</span><span class="o">:</span><span class="m">#ffffff</span><span class="p">;</span>
+  <span class="k">color</span><span class="o">:</span><span class="s2">&quot;#333333&quot;</span><span class="p">;</span>
+  <span class="c">/* この辺りはお好みで */</span>
+  <span class="k">border</span><span class="o">-</span><span class="n">radius</span><span class="o">:</span><span class="m">3px</span><span class="p">;</span>
+  <span class="k">padding</span><span class="o">:</span> <span class="m">10px</span> <span class="m">20px</span> <span class="m">10px</span> <span class="m">20px</span><span class="p">;</span>
+  <span class="k">margin</span><span class="o">:</span> <span class="m">0px</span> <span class="m">0px</span> <span class="m">10px</span> <span class="m">0px</span><span class="p">;</span>
+  <span class="n">box</span><span class="o">-</span><span class="n">shadow</span><span class="o">:</span> <span class="m">0</span> <span class="m">0</span> <span class="m">10px</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,</span><span class="m">0</span><span class="o">,.</span><span class="m">1</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="nc">.item</span> <span class="nt">a</span><span class="p">{</span>
+  <span class="k">position</span><span class="o">:</span> <span class="k">absolute</span><span class="p">;</span>
+  <span class="k">display</span><span class="o">:</span> <span class="k">block</span><span class="p">;</span>
+  <span class="k">width</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+  <span class="k">height</span><span class="o">:</span> <span class="m">100</span><span class="o">%</span><span class="p">;</span>
+  <span class="k">left</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+  <span class="k">top</span><span class="o">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span></code></pre></div>
+
+<h4 id="span-classlsfcodespan-js"><span class="lsf">code</span> js</h4>
+
+<div class="highlight"><pre><code class="js"><span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.item&quot;</span><span class="p">).</span><span class="nx">hover</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">stop</span><span class="p">().</span><span class="nx">animate</span><span class="p">({</span><span class="nx">backgroundColor</span><span class="o">:</span><span class="s2">&quot;#386ca5&quot;</span><span class="p">,</span> <span class="nx">color</span><span class="o">:</span><span class="s2">&quot;#ffffff&quot;</span><span class="p">},</span> <span class="mi">150</span><span class="p">);</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">stop</span><span class="p">().</span><span class="nx">animate</span><span class="p">({</span><span class="nx">backgroundColor</span><span class="o">:</span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span> <span class="nx">color</span><span class="o">:</span><span class="s2">&quot;#333333&quot;</span><span class="p">},</span> <span class="mi">200</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">$</span><span class="p">(</span><span class="s2">&quot;.item&quot;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span>
+  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">stop</span><span class="p">().</span><span class="nx">animate</span><span class="p">({</span><span class="nx">backgroundColor</span><span class="o">:</span><span class="s2">&quot;#ffffff&quot;</span><span class="p">,</span> <span class="nx">color</span><span class="o">:</span><span class="s2">&quot;#333333&quot;</span><span class="p">},</span> <span class="mi">200</span><span class="p">);</span>
+<span class="p">});</span></code></pre></div>
+
+<p>ポイントはマウスオーバー以外にクリックした時にも色を戻す処理を書いておくことで、これがないとスマートフォンでアクセスした際に[リンクページへ移動]–&gt;[戻る]の動作を行った際にマウスオーバーが戻らない問題が発生する。</p>
+
+<p>カラーフェードにかける時間は、ハイライトは早く・戻すときは少し遅くくらいで設定するといい感じのふんわり感が出ると思う。</p>
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/div_a_fade/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/div_a_fade/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/div_a_fade/" data-text="div全体をaタグで囲ってふんわりメニューをつくる">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/div_a_fade/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
+<div class="article-body">
+    <div class="article-title">
         <a href="/blog/category_next/">Jekyllのカテゴリ内で「次の記事」ボタンを設置する</a>
     </div>
     <div class="article-date">
@@ -235,81 +317,6 @@ page.CATEGORYNAME_next</code></pre></div>
         <div class="fb-like" data-href="http://mrk1869.com/blog/hamburg/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
         <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/hamburg/" data-text="ハンブルクを観光しました">Tweet</a>
         <div class="hatena-star"><a href="http://mrk1869.com/blog/hamburg/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/berlin/">ベルリンを観光しました</a>
-    </div>
-    <div class="article-date">
-        26 December 2013
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Sightseeing/">Sightseeing</a>
-        
-    </div>
-    <div class="article-content">
-        <p>カイザースラウテルンからベルリンまでICEで6時間。トンネルが少なく平地を走ることがほとんどなので、外の景色を楽しみながら移動することが出来ました。</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/berlin31.JPG" class="image-on-frame-small" /></p>
-
-<h4 id="section">壁を巡る冒険</h4>
-
-<p>ドイツを訪れるからにはベルリンの壁の名残を見ておきたかったので、ガイドマップを参考に壁にまつわる場所を巡りました。地下鉄を利用すれば４時間ほどでひと通り見られると思います。</p>
-
-<p class="injection-center">イーストサイドギャラリー</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/berlin01.JPG" class="image-on-frame" /></p>
-
-<p>シュレー川沿いに約1.3kmに渡って残されたベルリンの壁の跡を利用したペイントアート。国内外のアーティスト118人によって自由や平和へのメッセージが描かれています。</p>
-
-<p class="injection-center">チェックポイント・チャーリー</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/berlin02.JPG" class="image-on-frame" /></p>
-
-<p>東西分断時に同盟所国外の人と西独外交官のための国境検問所があった場所。当時の検問所を再現した建物が立てられています。</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/berlin03.JPG" class="image-on-frame" /></p>
-
-<p>近くには壁博物館があり、陸海空いろいろなアプローチから国境超えを試みた人たちの写真や記録資料、その時に使われた道具が展示されています。スピーカーやスーツケースを改造してその中に入ったり、気球を使って空から超えたり、命を懸けた様々な工夫を知ることができて、今回の旅行では最も興味深い場所でした。</p>
-
-<p class="injection-center">トポグラフィー・オブ・テラー</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/berlin04.JPG" class="image-on-frame" /></p>
-
-<p>そして壁の跡。ナチス時代のゲシュタポ(国家警察)に関する博物館の近くには500mにわたって当時のベルリンの壁が保存されています。</p>
-
-<p class="injection-center">クリスマスマーケット</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/berlin11.JPG" class="image-on-frame" /></p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/berlin12.JPG" class="image-on-frame" /></p>
-
-<p>雪の上をソリで下るアトラクションを見たのは初めてでした。さすがベルリン、クリスマスマーケットの規模大きい。</p>
-
-<p class="injection-center">博物館島</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/berlin21.JPG" class="image-on-frame" /></p>
-
-<p>シュプレー川の中洲には5つの博物館が集まる「博物館島」があり、先史時代から19世紀まで、約6000年に渡る西洋文明史をたどることができます。それぞれ入場料は８ユーロから10ユーロほどですが、14ユーロの共通入場パスを買うのがおすすめです。今回はボーデ博物館、旧ナショナルギャラリー、ペルガモン博物館を見学しました。</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/berlin22.JPG" class="image-on-frame" /></p>
-
-<p>ペルガモン博物館のイシュタール門は特に圧巻。感動した。</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/berlin32.JPG" class="image-on-frame-small" /></p>
-
-<p>ベルリンには日本料理の店が多く、恋しくなったので寿司食べた。寿司最高。</p>
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/berlin/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/berlin/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/berlin/" data-text="ベルリンを観光しました">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/berlin/" style="display: none;">hatena</a></div>
     </div>
 </div>
 

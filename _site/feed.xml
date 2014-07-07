@@ -7,6 +7,114 @@
         <atom:link href="http://mrk1869.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>doctestを使ってpythonの簡単な単体テストを書く</title>
+                <description>&lt;p&gt;doctestはpythonに標準で搭載されているテストツールで、docstring(“&quot;”で囲まれたドキュメンテーション文字列)に書かれた対話実行例をテストとして実行します。入力と出力をコメントに記述するだけという非常にシンプルな仕組みなので、ちょっとした処理の確認に役立ちます。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;doctest&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;average&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    This method returns the average value of args.&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    &amp;gt;&amp;gt;&amp;gt; average(1, 2)&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    1.5&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;doctest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;testmod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;上記のコードを実行すると&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python hello.py
+**********************************************************************
+File &lt;span class=&quot;s2&quot;&gt;&amp;quot;hello.py&amp;quot;&lt;/span&gt;, line 6, in __main__.average
+Failed example:
+    average&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1, 2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Expected:
+    0.5
+Got:
+    1
+**********************************************************************
+1 items had failures:
+   1 of   1 in __main__.average
+***Test Failed*** 1 failures.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;テストが失敗しました。除算を用いるので引数を浮動小数点として扱うように修正します。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;doctest&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;average&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    This method returns the average value of args.&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    &amp;gt;&amp;gt;&amp;gt; average(1, 2)&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    1.5&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;doctest&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;testmod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python hello.py&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;実行結果が何も表示されません。すなわちテストが通ったことを意味します。通ったテストのログはオプション-vをつけることで表示することが可能です。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$python&lt;/span&gt; hello.py -v
+Trying:
+    average&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1, 2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Expecting:
+    1.5
+ok
+1 items had no tests:
+    __main__
+1 items passed all tests:
+   1 tests in __main__.average
+1 tests in 2 items.
+1 passed and 0 failed.
+Test passed.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Python2.6以降にはdoctest.testmod()を実行するコマンドラインショートカット(-m doctest)があり、doctest.testmod()をコード内に記述する必要がなくなりました。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;average&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;sd&quot;&gt;&amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    This method returns the average value of args.&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    &amp;gt;&amp;gt;&amp;gt; average(1, 2)&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    1.5&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;    &amp;quot;&amp;quot;&amp;quot;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;float&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;number&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;sum&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numbers&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;__name__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;main関数を空にしてコマンドラインからテストします。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;python -m doctest -v hello.py
+Trying:
+    average&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1, 2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Expecting:
+    1.5
+ok
+1 items had no tests:
+    hello
+1 items passed all tests:
+   1 tests in hello.average
+1 tests in 2 items.
+1 passed and 0 failed.
+Test passed.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;テストが実行されました。これは便利。&lt;/p&gt;
+
+&lt;p&gt;注意点として、doctestは入力と出力の完全一致を求めるので、スペースの有無や辞書の順序に気を配ってテストを書く必要があります。詳しくはドキュメントをご覧ください。&lt;/p&gt;
+
+&lt;p&gt;参考: &lt;a href=&quot;http://docs.python.jp/2/library/doctest.html&quot;&gt;25.2. doctest — 対話的な実行例をテストする&lt;/a&gt;&lt;/p&gt;
+</description>
+                <pubDate>Mon, 07 Jul 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/python_doctest/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/python_doctest/</guid>
+            </item>
+        
+            <item>
                 <title>brew doctorのwarningを解決する</title>
                 <description>&lt;p&gt;brew doctorコマンドで表示されるWarningを順番に解決しました。基本的には指示通りに解決していけばよいのですが、Warning2 pyenvとの干渉が厄介でした。&lt;/p&gt;
 
@@ -523,62 +631,6 @@ sed -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;s/¥/\\/g&amp;#39;&lt;/span&gt;
                 <pubDate>Mon, 28 Apr 2014 00:00:00 +0900</pubDate>
                 <link>http://mrk1869.com/blog/book_shelf/</link>
                 <guid isPermaLink="true">http://mrk1869.com/blog/book_shelf/</guid>
-            </item>
-        
-            <item>
-                <title>Eclipseの環境設定まとめ</title>
-                <description>&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/eclipse01.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;新しくWorkspaceを切ったあとにしている環境設定の備忘録です。EclipseでJavaを書く環境を想定して、Preference(環境設定) から行える設定を上から順に紹介します。&lt;/p&gt;
-
-&lt;h4 id=&quot;span-classlsfsetupspan-&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; カラースキームを変更する&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/eclipse02.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;定番のカラースキームが揃っているEclipse Color Themesプラグインが便利。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;[導入方法]&lt;/strong&gt;&lt;br /&gt;
-Help &amp;gt; Install New Softwareを開いてWork with: に以下を入力する。&lt;/p&gt;
-
-&lt;pre&gt;
-http://eclipse-color-theme.github.com/update/
-&lt;/pre&gt;
-
-&lt;p&gt;検索結果にEclipce Color Themeが表示されるので、チェックボックスをOnにして、画面の指示に従ってインストールする。&lt;/p&gt;
-
-&lt;h4 id=&quot;span-classlsfsetupspan-utf-8&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; 文字コードをUTF-8へ変更する&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/eclipse03.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;SJISで書いて残念な感じにならないように。&lt;/p&gt;
-
-&lt;h4 id=&quot;span-classlsfsetupspan--1&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; インデントをスペースに固定する&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/eclipse04.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Java &amp;gt; Code Style &amp;gt; Formatterより。デフォルトだとハードタブになっている。チームのコーディング規約に合わせて新しいProfileを作成する。&lt;/p&gt;
-
-&lt;h4 id=&quot;span-classlsfsetupspan--2&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; 補完機能を強調する&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/eclipse05.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Auto activation triggers for Javaの欄を&lt;/p&gt;
-
-&lt;pre&gt;
-.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_
-&lt;/pre&gt;
-
-&lt;p&gt;に変更して、”.”以外が入力された時も自動的に補完候補が表示されるようにする。また、Auto activation delay[ms]の値を小さくして、補完候補が表示されるまでの遅延時間を短くする。&lt;/p&gt;
-
-&lt;h4 id=&quot;span-classlsfsetupspan--3&quot;&gt;&lt;span class=&quot;lsf&quot;&gt;setup&lt;/span&gt; ファイル保存時にコードを整形する&lt;/h4&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://dl.dropboxusercontent.com/u/12208857/img/eclipse06.png&quot; class=&quot;image-on-frame&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;ファイル保存をトリガーにコードをフォーマットする。Organize importsにチェックを入れておくと不要なインポートを削除してくれてとっても便利。&lt;/p&gt;
-</description>
-                <pubDate>Thu, 17 Apr 2014 00:00:00 +0900</pubDate>
-                <link>http://mrk1869.com/blog/eclipse/</link>
-                <guid isPermaLink="true">http://mrk1869.com/blog/eclipse/</guid>
             </item>
         
     </channel>

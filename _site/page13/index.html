@@ -83,6 +83,63 @@
 
 <div class="article-body">
     <div class="article-title">
+        <a href="/blog/ranking_plugin/">Jekyllの記事を人気順にソートする</a>
+    </div>
+    <div class="article-date">
+        12 October 2013
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Programming/">Programming</a>
+        
+    </div>
+    <div class="article-content">
+        <p>各記事のはてなブックマーク数・Facebookいいね数・tweet数を取得してスコアの高い順にソートするプラグインを書いた。</p>
+
+<p><a href="https://github.com/Mrk1869/source-mrk1869.github.com/blob/master/_plugins/ranking.rb">ranking.rb</a></p>
+
+<p>それぞれ数値を取得するためのapiと取り出し方は以下のとおり。</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="nb">require</span> <span class="s1">&#39;net/http&#39;</span>
+<span class="nb">require</span> <span class="s1">&#39;json&#39;</span>
+
+<span class="n">url</span> <span class="o">=</span> <span class="no">URL_OF_YOUR_ENTRY</span>
+
+<span class="c1"># hatena 文字列で返ってくる. 0は&quot;&quot;.</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;http://api.b.st-hatena.com/entry.count?url=</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">body</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">uri</span><span class="p">))</span><span class="o">.</span><span class="n">body</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">body</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="p">?</span> <span class="n">body</span><span class="o">.</span><span class="n">to_i</span> <span class="p">:</span> <span class="mi">0</span>
+
+<span class="c1"># facebook jsonで返ってくる. 0は0.</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;http://graph.facebook.com/</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">body</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">uri</span><span class="p">))</span><span class="o">.</span><span class="n">body</span>
+<span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">json</span><span class="o">[</span><span class="s1">&#39;shares&#39;</span><span class="o">]</span> <span class="p">?</span> <span class="n">json</span><span class="o">[</span><span class="s1">&#39;shares&#39;</span><span class="o">]</span> <span class="p">:</span> <span class="mi">0</span>
+
+<span class="c1"># tweet jsonで返ってくる. 0は0.</span>
+<span class="n">uri</span> <span class="o">=</span> <span class="s2">&quot;http://urls.api.twitter.com/1/urls/count.json?url=</span><span class="si">#{</span><span class="n">url</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="n">body</span> <span class="o">=</span> <span class="no">Net</span><span class="o">::</span><span class="no">HTTP</span><span class="o">.</span><span class="n">get_response</span><span class="p">(</span><span class="no">URI</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">uri</span><span class="p">))</span><span class="o">.</span><span class="n">body</span>
+<span class="n">json</span> <span class="o">=</span> <span class="no">JSON</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">body</span><span class="p">)</span>
+<span class="n">score</span> <span class="o">=</span> <span class="n">json</span><span class="o">[</span><span class="s1">&#39;count&#39;</span><span class="o">]</span> <span class="p">?</span> <span class="n">json</span><span class="o">[</span><span class="s1">&#39;count&#39;</span><span class="o">]</span> <span class="p">:</span> <span class="mi">0</span></code></pre></div>
+
+<p>buildの度に取得すると記事を書く際に不便なので、jekyll server に –drafts オプションをつけているときは評価をスキップする。–draftsオプションが付いているかどうかは</p>
+
+<div class="highlight"><pre><code class="ruby"><span class="n">site</span><span class="o">.</span><span class="n">config</span><span class="o">[</span><span class="s1">&#39;show_drafts&#39;</span><span class="o">]</span></code></pre></div>
+
+<p>を確認すれば良い。</p>
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/ranking_plugin/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/ranking_plugin/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/ranking_plugin/" data-text="Jekyllの記事を人気順にソートする">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/ranking_plugin/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
+<div class="article-body">
+    <div class="article-title">
         <a href="/blog/delicious_pizza/">ピザを焼く</a>
     </div>
     <div class="article-date">
@@ -156,35 +213,6 @@
         <div class="fb-like" data-href="http://mrk1869.com/blog/asian_food/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
         <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/asian_food/" data-text="Asian Food">Tweet</a>
         <div class="hatena-star"><a href="http://mrk1869.com/blog/asian_food/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="article-body">
-    <div class="article-title">
-        <a href="/en/blog/hello_glass/">Hello, Glass.</a>
-    </div>
-    <div class="article-date">
-        10 October 2013
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Note/">Note</a>
-        
-    </div>
-    <div class="article-content">
-        <p>“OK, Glass. Take a picture.”</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/20131010_164456_360_1.jpg" class="image-on-frame image-fade" /></p>
-
-<p>This is the first picture taken by my glass.</p>
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/en/blog/hello_glass/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/en/blog/hello_glass/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/en/blog/hello_glass/" data-text="Hello, Glass.">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/en/blog/hello_glass/" style="display: none;">hatena</a></div>
     </div>
 </div>
 

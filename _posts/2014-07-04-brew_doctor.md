@@ -2,7 +2,7 @@
 layout: post
 categories: blog
 language: japanese
-room: coffee
+room: server
 name: brew doctorのwarningを解決する
 tags: Infrastructure
 keywords: homebrew, brew, doctor, pyenv
