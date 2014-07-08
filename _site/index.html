@@ -97,6 +97,8 @@
     <div class="article-content">
         <p>doctestはpythonに標準で搭載されているテストツールで、docstring(“"”で囲まれたドキュメンテーション文字列)に書かれた対話実行例をテストとして実行します。入力と出力をコメントに記述するだけという非常にシンプルな仕組みなので、ちょっとした処理の確認に役立ちます。</p>
 
+<h4 id="section">記述例</h4>
+
 <div class="highlight"><pre><code class="python"><span class="kn">import</span> <span class="nn">doctest</span>
 
 <span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">):</span>
@@ -160,6 +162,8 @@ ok
 1 passed and 0 failed.
 Test passed.</code></pre></div>
 
+<h4 id="python--m-doctest--v-">python -m doctest -v [ファイル名]</h4>
+
 <p>Python2.6以降にはdoctest.testmod()を実行するコマンドラインショートカット(-m doctest)があり、doctest.testmod()をコード内に記述する必要がなくなりました。</p>
 
 <div class="highlight"><pre><code class="python"><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">):</span>
@@ -190,11 +194,73 @@ ok
 1 passed and 0 failed.
 Test passed.</code></pre></div>
 
-<p>テストが実行されました。これは便利。</p>
+<p>テストが実行されました。</p>
 
-<p>注意点として、doctestは入力と出力の完全一致を求めるので、スペースの有無や辞書の順序に気を配ってテストを書く必要があります。詳しくはドキュメントをご覧ください。</p>
+<p>注意点として、doctestは出力の完全一致を求めるので、スペースの有無や辞書の順序に気を配ってテストを書く必要があります。詳しくはドキュメントをご覧ください。</p>
 
 <p>参考: <a href="http://docs.python.jp/2/library/doctest.html">25.2. doctest — 対話的な実行例をテストする</a></p>
+
+<h4 id="section-1">2014.07.08 追記</h4>
+
+<p>出力結果をTrue, Falseで判断することで、表記揺れによるテスト失敗を回避することができました。また、この方法では弾く(Failedを想定した)テストも書けるので便利です。</p>
+
+<div class="highlight"><pre><code class="python"><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method returns the average value of numbers.</span>
+<span class="sd">    &gt;&gt;&gt; average(0, 2) #failed</span>
+<span class="sd">    1</span>
+<span class="sd">    &gt;&gt;&gt; average(0, 2) #ok</span>
+<span class="sd">    1.0</span>
+<span class="sd">    &gt;&gt;&gt; average(0, 2) == 1 #ok</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; average(0, 2) == 1.0 #ok</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; average(0, 2) == 2.0 #ok</span>
+<span class="sd">    False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">pass</span></code></pre></div>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>python -m doctest -v hello.py
+Trying:
+    average<span class="o">(</span>0, 2<span class="o">)</span> <span class="c">#failed</span>
+Expecting:
+    1
+**********************************************************************
+File <span class="s2">&quot;hello.py&quot;</span>, line 4, in hello2.average
+Failed example:
+    average<span class="o">(</span>0, 2<span class="o">)</span> <span class="c">#failed</span>
+Expected:
+    1
+Got:
+    1.0
+Trying:
+    average<span class="o">(</span>0, 2<span class="o">)</span> <span class="c">#ok</span>
+Expecting:
+    1.0
+ok
+Trying:
+    average<span class="o">(</span>0, 2<span class="o">)</span> <span class="o">==</span> 1 <span class="c">#ok</span>
+Expecting:
+    True
+ok
+Trying:
+    average<span class="o">(</span>0, 2<span class="o">)</span> <span class="o">==</span> 1.0 <span class="c">#ok</span>
+Expecting:
+    True
+ok
+1 items had no tests:
+    hello2
+**********************************************************************
+1 items had failures:
+   1 of   4 in hello.average
+4 tests in 2 items.
+3 passed and 1 failed.
+***Test Failed*** 1 failures.</code></pre></div>
+
 
     </div>
     <div class="article-socialbox">
