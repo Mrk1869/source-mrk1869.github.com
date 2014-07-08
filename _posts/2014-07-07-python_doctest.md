@@ -160,7 +160,7 @@ Trying:
 Expecting:
     1
 **********************************************************************
-File "hello.py", line 4, in hello2.average
+File "hello2.py", line 4, in hello.average
 Failed example:
     average(0, 2) #failed
 Expected:
@@ -182,12 +182,17 @@ Trying:
 Expecting:
     True
 ok
+Trying:
+    average(0, 2) == 2.0 #ok
+Expecting:
+    False
+ok
 1 items had no tests:
     hello2
 **********************************************************************
 1 items had failures:
-   1 of   4 in hello.average
-4 tests in 2 items.
-3 passed and 1 failed.
+   1 of   5 in hello.average
+5 tests in 2 items.
+4 passed and 1 failed.
 ***Test Failed*** 1 failures.
 {% endhighlight %}

@@ -230,7 +230,7 @@ Trying:
 Expecting:
     1
 **********************************************************************
-File <span class="s2">&quot;hello.py&quot;</span>, line 4, in hello2.average
+File <span class="s2">&quot;hello2.py&quot;</span>, line 4, in hello.average
 Failed example:
     average<span class="o">(</span>0, 2<span class="o">)</span> <span class="c">#failed</span>
 Expected:
@@ -252,13 +252,18 @@ Trying:
 Expecting:
     True
 ok
+Trying:
+    average<span class="o">(</span>0, 2<span class="o">)</span> <span class="o">==</span> 2.0 <span class="c">#ok</span>
+Expecting:
+    False
+ok
 1 items had no tests:
     hello2
 **********************************************************************
 1 items had failures:
-   1 of   4 in hello.average
-4 tests in 2 items.
-3 passed and 1 failed.
+   1 of   5 in hello.average
+5 tests in 2 items.
+4 passed and 1 failed.
 ***Test Failed*** 1 failures.</code></pre></div>
 
 
