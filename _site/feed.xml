@@ -143,7 +143,7 @@ Trying:
 Expecting:
     1
 **********************************************************************
-File &lt;span class=&quot;s2&quot;&gt;&amp;quot;hello2.py&amp;quot;&lt;/span&gt;, line 4, in hello.average
+File &lt;span class=&quot;s2&quot;&gt;&amp;quot;hello.py&amp;quot;&lt;/span&gt;, line 4, in hello.average
 Failed example:
     average&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;0, 2&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;#failed&lt;/span&gt;
 Expected:
@@ -171,7 +171,7 @@ Expecting:
     False
 ok
 1 items had no tests:
-    hello2
+    hello
 **********************************************************************
 1 items had failures:
    1 of   5 in hello.average
