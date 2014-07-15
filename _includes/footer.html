@@ -1,11 +1,37 @@
 <!-- FOOTER  -->
-<div id="footer_wrap" class="outer" align="center">
-    <footer class="inner">
-        <a href = "https://github.com/shoya140/"><img src="/assets/img/icon_github.png" class="footer-icon"></a>
-        <a href = "https://twitter.com/shoya140/"><img src="/assets/img/icon_twitter.png" class="footer-icon"></a>
-        <a href = "https://docs.google.com/forms/d/1oEXmb1m7QMJeorhI99NFCTKlXcQ0O5AP4B9qoaDmcl8/viewform"><img src="/assets/img/icon_mail.png" class="footer-icon"></a>
-        <a href = "http://mrk1869.com/feed.xml"><img src="/assets/img/icon_rss.png" class="footer-icon"></a><br>
-        <p>© <a href="https://plus.google.com/102413339779614193497?rel=author" style="color:#f2f2f2">Shoya Ishimaru</a> 2013-2014</a></p>
+<div id="footer_wrap" class="outer">
+    <footer>
+        <div id="footer_navi">
+            <div id="new_posts" class="footer_navi_item">
+                <p><span class="lsf">list</span> New Posts</p>
+                <ul>
+                {% for post in site.posts limit:6 %}
+                    <li><a href="{{ post.url }}">{{ post.name }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div id="popular_posts" class="footer_navi_item">
+                <p><span class="lsf">crown</span> Popular Posts</p>
+                <ul>
+                {% for post in site.data.popular_posts limit:6 %}
+                    <li><a href="{{ post.url }}">{{ post.name }}</a></li>
+                {% endfor %}
+                </ul>
+            </div>
+            <div id="tags" class="footer_navi_item_mini">
+                <p><span class="lsf">tag</span> Tags</p>
+                {% for tag in site.tags %}
+                    [<a href="/tag/{{ tag | first }}/">{{ tag | first }}</a>]
+                {% endfor %}
+            </div>
+        </div>
+        <div id="footer_bio">
+            <a href = "https://github.com/shoya140/"><img src="/assets/img/icon_github.png" class="footer-icon"></a>
+            <a href = "https://twitter.com/shoya140/"><img src="/assets/img/icon_twitter.png" class="footer-icon"></a>
+            <a href = "https://docs.google.com/forms/d/1oEXmb1m7QMJeorhI99NFCTKlXcQ0O5AP4B9qoaDmcl8/viewform"><img src="/assets/img/icon_mail.png" class="footer-icon"></a>
+            <a href = "http://mrk1869.com/feed.xml"><img src="/assets/img/icon_rss.png" class="footer-icon"></a><br>
+            <p>© <a href="https://plus.google.com/102413339779614193497?rel=author" style="color:#f2f2f2">Shoya Ishimaru</a> 2013-2014</a></p>
+        </div>
     </footer>
 </div>
 <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>

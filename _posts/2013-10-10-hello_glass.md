@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: en/blog
+categories: blog
 language: english
 room: coffee
 name: Hello, Glass.

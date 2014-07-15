@@ -6,16 +6,13 @@ WEIGHT_OF_FACEBOOK = 1
 WEIGHT_OF_TWITTER = 1
 
 module Jekyll
+  class RankingGenerator < Generator
 
-  class RankingPage < Page
-    def initialize(site, base, dir)
-      @site, @base, @dir = site, base, dir
-      @name = 'index.html'
+    safe true
+    priority :high
+
+    def generate(site)
       @posts, @posts_with_score = [], []
-
-      self.process(@name)
-      raise 'name is null' unless @name
-      self.read_yaml(File.join(base, '_layouts'), 'entries.html')
 
       # 強引だけどここでオフライン検知
       begin
@@ -61,18 +58,8 @@ module Jekyll
         @posts = site.posts.reverse
       end
 
-      self.data['posts'] = @posts
-      self.data['page_name'] = "人気の記事"
-
+      site.data['popular_posts'] = @posts
     end
 
-  end
-
-  class RankingPageGenerator < Generator
-    safe true
-
-    def generate(site)
-      site.pages << RankingPage.new(site, site.source, 'ranking')
-    end
   end
 end

@@ -1,18 +1,5 @@
 $(function(){
 
-  // tag
-  var isTagOpened = false;
-  $(".tag-toggle").on("click", function(){
-    if(isTagOpened){
-      $(".tag-container").fadeOut("slow");
-      $(".tag-body").slideToggle();
-    }else{
-      $(".tag-container").fadeIn("slow");
-      $(".tag-body").slideToggle();
-    }
-    isTagOpened = !isTagOpened;
-  });
-
   // entry fade
   $(".entries-body").hover(function(){
     rollIn($(this));
@@ -71,4 +58,3 @@ function rollOut(body){
   body.stop().animate({backgroundColor:"#ffffff", color:"#333333"}, 200);
   body.children(".entries-title").stop().animate({color:"#007edf"}, 200);
 }
-

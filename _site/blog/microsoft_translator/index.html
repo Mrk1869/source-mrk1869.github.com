@@ -35,7 +35,7 @@
 <div id="header_wrap" class="outer">
     <header class="inner">
     <div id="title_container">
-    <a href = "/"><h1 id="project_title">Shoya Ishimaru's Blog</h1></a>
+        <a href = "/"><h1 id="project_title">Shoya Ishimaru's Blog</h1></a>
     <span id="sub_title">A weblog about <span style="color:#FF007E">Technology</span> and <span style="color:#9BE518">Daily Life</span></span>
     </div>
     </header>
@@ -47,7 +47,7 @@
     <div class="navbar-inner">
         <div class="inner">
             <ul class="nav">
-                <li  class="active"><a href="/entries/">Blog</a></li>
+                <li  class="active"><a href="/blog/">Blog</a></li>
                 <li ><a href="/applications/">Applications</a></li>
                 <li ><a href="/publications/">Publications</a></li>
                 <li ><a href="/aboutme/">About me</a></li>
@@ -57,27 +57,6 @@
 </div>
 
         <section id="main_content" class="inner">
-            <div class="sub_header"><p><span class="lsf">list</span> <a href="/entries/">全記事一覧</a>  <span class="lsf">crown</span> <a href="/ranking/">人気の記事</a>  <span class="lsf">tag</span> <a href="#" class="tag-toggle">タグ一覧</a></p></div>
-<div class="tag-body">
-    <div class="tag-container">
-        
-        [<a href="/tag/Event/">Event</a>]
-        
-        [<a href="/tag/Note/">Note</a>]
-        
-        [<a href="/tag/ReleaseNote/">ReleaseNote</a>]
-        
-        [<a href="/tag/Sightseeing/">Sightseeing</a>]
-        
-        [<a href="/tag/Programming/">Programming</a>]
-        
-        [<a href="/tag/Infrastructure/">Infrastructure</a>]
-        
-        [<a href="/tag/Design/">Design</a>]
-        
-    </div>
-</div>
-
             <div class="article-body">
                 <div class="article-title">
                     <a href="/blog/microsoft_translator/">PythonでMicrosoft Translator APIを使ってみる</a>
@@ -155,13 +134,71 @@
     </div> <!-- #main -->
 </div> <!-- #main-container -->
 <!-- FOOTER  -->
-<div id="footer_wrap" class="outer" align="center">
-    <footer class="inner">
-        <a href = "https://github.com/shoya140/"><img src="/assets/img/icon_github.png" class="footer-icon"></a>
-        <a href = "https://twitter.com/shoya140/"><img src="/assets/img/icon_twitter.png" class="footer-icon"></a>
-        <a href = "https://docs.google.com/forms/d/1oEXmb1m7QMJeorhI99NFCTKlXcQ0O5AP4B9qoaDmcl8/viewform"><img src="/assets/img/icon_mail.png" class="footer-icon"></a>
-        <a href = "http://mrk1869.com/feed.xml"><img src="/assets/img/icon_rss.png" class="footer-icon"></a><br>
-        <p>© <a href="https://plus.google.com/102413339779614193497?rel=author" style="color:#f2f2f2">Shoya Ishimaru</a> 2013-2014</a></p>
+<div id="footer_wrap" class="outer">
+    <footer>
+        <div id="footer_navi">
+            <div id="new_posts" class="footer_navi_item">
+                <p><span class="lsf">list</span> New Posts</p>
+                <ul>
+                
+                    <li><a href="/blog/github_academic/">GitHubの学割クーポンを延長する</a></li>
+                
+                    <li><a href="/blog/python_doctest/">doctestを使ってpythonの簡単な単体テストを書く</a></li>
+                
+                    <li><a href="/blog/brew_doctor/">brew doctorのwarningを解決する</a></li>
+                
+                    <li><a href="/blog/terminal_login/">プロセスが完了しました</a></li>
+                
+                    <li><a href="/blog/cookpad_design/">クックパッドのデザイン講演会に参加しました</a></li>
+                
+                    <li><a href="/blog/up/">Jawbone UPのちょっと変わった使い方</a></li>
+                
+                </ul>
+            </div>
+            <div id="popular_posts" class="footer_navi_item">
+                <p><span class="lsf">crown</span> Popular Posts</p>
+                <ul>
+                
+                    <li><a href="/blog/Paletta/">プログラマのためのカラーパレットツールを作りました</a></li>
+                
+                    <li><a href="/blog/life_in_germany/">こちらの生活にもずいぶん慣れた</a></li>
+                
+                    <li><a href="/blog/gitlab_installation/">GitLab 6.0をインストールする</a></li>
+                
+                    <li><a href="/blog/chef_prepare/">Chefのknife solo prepareで404</a></li>
+                
+                    <li><a href="/blog/updraft/">Grunt+BowerでつくるWebアプリケーションひな形</a></li>
+                
+                    <li><a href="/blog/karlsruhe/">司法の都カールスルーエ</a></li>
+                
+                </ul>
+            </div>
+            <div id="tags" class="footer_navi_item_mini">
+                <p><span class="lsf">tag</span> Tags</p>
+                
+                    [<a href="/tag/Event/">Event</a>]
+                
+                    [<a href="/tag/Note/">Note</a>]
+                
+                    [<a href="/tag/ReleaseNote/">ReleaseNote</a>]
+                
+                    [<a href="/tag/Sightseeing/">Sightseeing</a>]
+                
+                    [<a href="/tag/Programming/">Programming</a>]
+                
+                    [<a href="/tag/Infrastructure/">Infrastructure</a>]
+                
+                    [<a href="/tag/Design/">Design</a>]
+                
+            </div>
+        </div>
+        <div id="footer_bio">
+            <a href = "https://github.com/shoya140/"><img src="/assets/img/icon_github.png" class="footer-icon"></a>
+            <a href = "https://twitter.com/shoya140/"><img src="/assets/img/icon_twitter.png" class="footer-icon"></a>
+            <a href = "https://docs.google.com/forms/d/1oEXmb1m7QMJeorhI99NFCTKlXcQ0O5AP4B9qoaDmcl8/viewform"><img src="/assets/img/icon_mail.png" class="footer-icon"></a>
+            <a href = "http://mrk1869.com/feed.xml"><img src="/assets/img/icon_rss.png" class="footer-icon"></a><br>
+            <p>© <a href="https://plus.google.com/102413339779614193497?rel=author" style="color:#f2f2f2">Shoya Ishimaru</a> 2013-2014</a></p>
+        </div>
     </footer>
 </div>
 <script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>

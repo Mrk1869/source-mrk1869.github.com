@@ -17,7 +17,7 @@ module Jekyll
     safe true
 
     def generate(site)
-        site.pages << EntriesPage.new(site, site.source, 'entries')
+        site.pages << EntriesPage.new(site, site.source, 'blog')
     end
   end
 end
