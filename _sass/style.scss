@@ -498,6 +498,17 @@ Full-Width Styles
   padding-bottom: 50px;
 }
 
+.footer_navi_item{
+  li{
+    padding-left:0px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+  }
+}
+
 @media screen and (min-width: 900px) {
   #footer_navi {
     position: relative;
@@ -509,14 +520,6 @@ Full-Width Styles
   .footer_navi_item{
     float: left;
     width: 40%;
-    li{
-      padding-left:0px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      -webkit-text-overflow: ellipsis;
-      -o-text-overflow: ellipsis;
-    }
   }
 
   .footer_navi_item_right{
