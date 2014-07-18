@@ -10,7 +10,7 @@ keywords: GitHub, 学割, 学生, プライベートリポジトリ, academic
 
 GitHubにはプライベートリポジトリが無料で使える(billing planが1つ上がる)学割があります。
 
-[GitHub Edication](https://education.github.com/)
+[GitHub Education](https://education.github.com/)
 
 申し込んでから2年が経って「もうすぐクーポン切れるよ」という内容のメールが来ました。「今も学生なので学割クーポンを延長したい」と問い合わせたところ「有効期限が切れてからもう一度WebからアプライすればOKだよ。もし学割が反映される前に次の支払が発生したら連絡してね。」とのことでした。以下、回答です。
 

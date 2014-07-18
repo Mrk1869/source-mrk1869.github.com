@@ -9,8 +9,16 @@
         {% else %}
             <title>Page{{ paginator.page }} - Shoya Ishimaru's Blog</title>
         {% endif %}
-    {% elsif page.name == "entries" %}
-        <title>{{ page.page_name }} - Shoya Ishimaru's Blog</title>
+    {% elsif page.title == "entries" %}
+        <title>Blog | Shoya Ishimaru</title>
+    {% elsif page.title == "applications" %}
+        <title>Applications | Shoya Ishimaru</title>
+    {% elsif page.title == "publications" %}
+        <title>Publications | Shoya Ishimaru</title>
+    {% elsif page.title == "aboutme" %}
+        <title>About me | Shoya Ishimaru</title>
+    {% elsif page.title == "aboutme/jp" %}
+        <title>About me | 石丸 翔也</title>
     {% else %}
         <title>{{ page.name }}</title>
     {% endif %}
