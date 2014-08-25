@@ -4,8 +4,8 @@ categories: blog
 language: japanese
 room: server
 name: Nginxの静的ファイル配信でハマった
-tags: Note
-keywords: sample
+tags: Infrastructure
+keywords: Nginx, location, root, static
 ---
 
 静的ファイルに限った話ではないけれど、Nginxのlocationに応じたrootの設定でつまずいたのでメモ。[概説Tornado](http://www.oreilly.co.jp/books/9784873115764/)の中に「静的リソースはアプリケーションにリクエストをプロキシするのではなくNginxに捌かせるほうがアプリケーションの不要な負担を取り除けて有用」という説明があったので、staticディレクトリへのルーティング設定をNginxに書いた。
