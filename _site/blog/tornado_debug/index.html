@@ -4,18 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-        
-            <title>Shoya Ishimaru's Blog</title>
-        
+        <title>Tornadoのデバッグモードを有効にする</title>
     
     
-    <meta name="keywords" content="Shoya, Ishimaru, Mrk1869, Markovnikov Laboratory">
+    <meta name="keywords" content="Tornado, debug, デバッグ, リロード">
     <meta name="author" href="https://plus.google.com/u/0/102413339779614193497/posts">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="google-site-verification" content="sFx-iJWT2iihts7-5wK7CnR03-MymfWXmn_7KNoyIz0" />
-    <meta property="og:title" content="index.html">
+    <meta property="og:title" content="Tornadoのデバッグモードを有効にする">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://mrk1869.com/index.html">
+    <meta property="og:url" content="http://mrk1869.com/blog/tornado_debug/">
     
         <meta property="og:image" content="http://mrk1869.com/assets/img/icon_laptop.png">
     
@@ -59,22 +57,23 @@
 </div>
 
         <section id="main_content" class="inner">
-            
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/tornado_debug/">Tornadoのデバッグモードを有効にする</a>
-    </div>
-    <div class="article-date">
-        26 August 2014
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Programming/">Programming</a>
-        
-    </div>
-    <div class="article-content">
-        <p>Tornadoには多くのWebアプリフレームワーク同様にデバックモードがある。これを有効にすることで、pythonコードの更新をサーバの再起動なしに反映させたり、ファイルのキャッシュを無効にしたり、tracebackをブラウザ上に表示したりといった機能を利用することができる。</p>
+            <div class="article-body">
+                <div class="article-title">
+                    <a href="/blog/tornado_debug/">Tornadoのデバッグモードを有効にする</a>
+                </div>
+                <div class="article-date">
+                    26 August 2014
+                </div>
+                
+                    <div class="article-tag">
+                    
+                        <span class="lsf">tag</span>
+                        <a href="/tag/Programming/">Programming</a>
+                    
+                    </div>
+                
+                <div class="article-content">
+                    <p>Tornadoには多くのWebアプリフレームワーク同様にデバックモードがある。これを有効にすることで、pythonコードの更新をサーバの再起動なしに反映させたり、ファイルのキャッシュを無効にしたり、tracebackをブラウザ上に表示したりといった機能を利用することができる。</p>
 
 <p>デバッグモードを有効にするには、tornado.web.Applicationのインスタンス作成時にhandlersと一緒にdebug=Trueを付加すれば良い。</p>
 
@@ -108,137 +107,25 @@
     <span class="n">tornado</span><span class="o">.</span><span class="n">ioloop</span><span class="o">.</span><span class="n">IOLoop</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">start</span><span class="p">()</span></code></pre></div>
 
 
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/tornado_debug/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/tornado_debug/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/tornado_debug/" data-text="Tornadoのデバッグモードを有効にする">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/tornado_debug/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/nginx_root/">Nginxの静的ファイル配信でハマった</a>
-    </div>
-    <div class="article-date">
-        25 August 2014
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Infrastructure/">Infrastructure</a>
-        
-    </div>
-    <div class="article-content">
-        <p>静的ファイルに限った話ではないけれど、Nginxのlocationに応じたrootの設定でつまずいたのでメモ。<a href="http://www.oreilly.co.jp/books/9784873115764/">概説Tornado</a>の中に「静的リソースはアプリケーションにリクエストをプロキシするのではなくNginxに捌かせるほうがアプリケーションの不要な負担を取り除けて有用」という説明があったので、staticディレクトリへのルーティング設定をNginxに書いた。</p>
-
-<div class="highlight"><pre><code class="nginx"><span class="k">location</span> <span class="s">/static/</span> <span class="p">{</span>
-    <span class="kn">root</span> <span class="s">/path/to/app/static</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
-
-<p>上記のように書きたいところだがこれは間違いで</p>
-
-<div class="highlight"><pre><code class="nginx"><span class="k">location</span> <span class="s">/static/</span> <span class="p">{</span>
-    <span class="kn">root</span> <span class="s">/path/to/app</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
-
-<p>正しくはこちら。</p>
-
-<p>rootはstaticディレクトリのrootを指すのではなく、アプリケーションのroot。/static/はURLとして生きているので、/static/を含めたパスでファイルへ届くように書く必要がある。</p>
-
-<p>(備考)アプリケーション全体のnginx設定ファイルはこんな感じ。各アプリケーションごとに設定ファイルを分けてconf.d/以下に保存しておき、nginx.confでそれらをインポートしている。</p>
-
-<div class="highlight"><pre><code class="nginx"><span class="k">upstream</span> <span class="s">paletta</span><span class="p">{</span>
-    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8011</span><span class="p">;</span>
-    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8012</span><span class="p">;</span>
-    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8013</span><span class="p">;</span>
-    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8014</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">server</span> <span class="p">{</span>
-    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
-    <span class="kn">server_name</span> <span class="s">paletta.mrk1869.com</span><span class="p">;</span>
-
-    <span class="kn">access_log</span>  <span class="s">/home/web/log/nginx/paletta.mrk1869.com/access.log</span> <span class="s">ltsv</span><span class="p">;</span>
-    <span class="kn">location</span> <span class="s">/static/</span> <span class="p">{</span>
-        <span class="kn">root</span> <span class="s">/home/web/paletta/app</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
-        <span class="kn">proxy_pass_header</span> <span class="s">Server</span><span class="p">;</span>
-        <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$http_host</span><span class="p">;</span>
-        <span class="kn">proxy_redirect</span> <span class="no">off</span><span class="p">;</span>
-        <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
-        <span class="kn">proxy_set_header</span> <span class="s">X-Scheme</span> <span class="nv">$scheme</span><span class="p">;</span>
-        <span class="kn">proxy_pass</span> <span class="s">http://paletta</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/nginx_root/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/nginx_root/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/nginx_root/" data-text="Nginxの静的ファイル配信でハマった">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/nginx_root/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/github_academic/">GitHubの学割クーポンを延長する</a>
-    </div>
-    <div class="article-date">
-        12 July 2014
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Note/">Note</a>
-        
-    </div>
-    <div class="article-content">
-        <p>GitHubにはプライベートリポジトリが無料で使える(billing planが1つ上がる)学割があります。</p>
-
-<p><a href="https://education.github.com/">GitHub Education</a></p>
-
-<p>申し込んでから2年が経って「もうすぐクーポン切れるよ」という内容のメールが来ました。「今も学生なので学割クーポンを延長したい」と問い合わせたところ「有効期限が切れてからもう一度WebからアプライすればOKだよ。もし学割が反映される前に次の支払が発生したら連絡してね。」とのことでした。以下、回答です。</p>
-
-<blockquote>
-  <p>If you’re still a student, you’re welcome to reapply! Check out our shiny new Education page:</p>
-
-  <p>https://education.github.com/</p>
-
-  <p>You might get a message about not being able to apply the new coupon. That’s because you can’t have two simultaneous coupons on your account. Once your old coupon expires, you can apply the new coupon. There’s usually a “grace period” of a few days between the expiration and the first charge, but if you do get charged before you add your new coupon, just let us know! Please don’t hesitate to let us know if you have any questions or concerns.</p>
-</blockquote>
-
-<p>あと学割が切れても既に作成してあるプライベートリポジトリはプライベートのままらしい。</p>
-
-<blockquote class="twitter-tweet" lang="ja"><p><a href="https://twitter.com/alpaca_taichou">@alpaca_taichou</a> 突然勝手にpublicになるんですか?</p>&mdash; Kazuki Yoshida (@101kaz) <a href="https://twitter.com/101kaz/statuses/486756076776214528">2014, 7月 9</a></blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-<blockquote class="twitter-tweet" lang="ja"><p><a href="https://twitter.com/alpaca_taichou">@alpaca_taichou</a> <a href="https://twitter.com/101kaz">@101kaz</a> あれ切れてもプライベートリポジトリ保持されますよ、新しいのが作れないだけですね。</p>&mdash; Takehiro Adachi (@takehiro0740) <a href="https://twitter.com/takehiro0740/statuses/486901860544946176">2014, 7月 9</a></blockquote>
-<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/github_academic/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/github_academic/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/github_academic/" data-text="GitHubの学割クーポンを延長する">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/github_academic/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="pagenation">
-    
-        <div class="page-button"><a href="/page2"></a><span class="lsf">left</span> Previous</div>
-    
-    
-        <div class="page-button-disabled">Next <span class="lsf">right</span></div>
-    
-</div>
-
+                </div>
+                <div class="article-relations">
+                    
+                </div>
+                <div class="article-socialbox">
+                    <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/tornado_debug/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+                    <div class="fb-like" data-href="http://mrk1869.com/blog/tornado_debug/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/tornado_debug/" data-text="Tornadoのデバッグモードを有効にする">Tweet</a>
+                    <div class="hatena-star"><a href="http://mrk1869.com/blog/tornado_debug/" style="display: none;">hatena</a></div>
+                </div>
+            </div>
+            <div class="pagenation">
+                
+                    <div class="page-button"><a href="/blog/nginx_root/"></a><span class="lsf">left</span> Previous</div>
+                
+                
+                    <div class="page-button-disabled">Next <span class="lsf">right</span></div>
+                
+            </div>
         </section>
     </div> <!-- #main -->
 </div> <!-- #main-container -->

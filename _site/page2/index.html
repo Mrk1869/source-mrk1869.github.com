@@ -62,6 +62,201 @@
             
 <div class="article-body">
     <div class="article-title">
+        <a href="/blog/python_doctest/">doctestを使ってpythonの簡単な単体テストを書く</a>
+    </div>
+    <div class="article-date">
+        7 July 2014
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Programming/">Programming</a>
+        
+    </div>
+    <div class="article-content">
+        <p>doctestはpythonに標準で搭載されているテストツールで、docstring(“"”で囲まれたドキュメンテーション文字列)に書かれた対話実行例をテストとして実行します。入力と出力をコメントに記述するだけという非常にシンプルな仕組みなので、ちょっとした処理の確認に役立ちます。</p>
+
+<h4 id="section">記述例</h4>
+
+<div class="highlight"><pre><code class="python"><span class="kn">import</span> <span class="nn">doctest</span>
+
+<span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method returns the average value of args.</span>
+<span class="sd">    &gt;&gt;&gt; average(1, 2)</span>
+<span class="sd">    1.5</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span></code></pre></div>
+
+<p>上記のコードを実行すると</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>python hello.py
+**********************************************************************
+File <span class="s2">&quot;hello.py&quot;</span>, line 6, in __main__.average
+Failed example:
+    average<span class="o">(</span>1, 2<span class="o">)</span>
+Expected:
+    0.5
+Got:
+    1
+**********************************************************************
+1 items had failures:
+   1 of   1 in __main__.average
+***Test Failed*** 1 failures.</code></pre></div>
+
+<p>テストが失敗しました。除算を用いるので引数を浮動小数点として扱うように修正します。</p>
+
+<div class="highlight"><pre><code class="python"><span class="kn">import</span> <span class="nn">doctest</span>
+
+<span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method returns the average value of args.</span>
+<span class="sd">    &gt;&gt;&gt; average(1, 2)</span>
+<span class="sd">    1.5</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span></code></pre></div>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>python hello.py</code></pre></div>
+
+<p>実行結果が何も表示されません。すなわちテストが通ったことを意味します。通ったテストのログはオプション-vをつけることで表示することが可能です。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$python</span> hello.py -v
+Trying:
+    average<span class="o">(</span>1, 2<span class="o">)</span>
+Expecting:
+    1.5
+ok
+1 items had no tests:
+    __main__
+1 items passed all tests:
+   1 tests in __main__.average
+1 tests in 2 items.
+1 passed and 0 failed.
+Test passed.</code></pre></div>
+
+<h4 id="python--m-doctest--v-">python -m doctest -v [ファイル名]</h4>
+
+<p>Python2.6以降にはdoctest.testmod()を実行するコマンドラインショートカット(-m doctest)があり、doctest.testmod()をコード内に記述する必要がなくなりました。</p>
+
+<div class="highlight"><pre><code class="python"><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method returns the average value of args.</span>
+<span class="sd">    &gt;&gt;&gt; average(1, 2)</span>
+<span class="sd">    1.5</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">pass</span></code></pre></div>
+
+<p>main関数を空にしてコマンドラインからテストします。</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>python -m doctest -v hello.py
+Trying:
+    average<span class="o">(</span>1, 2<span class="o">)</span>
+Expecting:
+    1.5
+ok
+1 items had no tests:
+    hello
+1 items passed all tests:
+   1 tests in hello.average
+1 tests in 2 items.
+1 passed and 0 failed.
+Test passed.</code></pre></div>
+
+<p>テストが実行されました。</p>
+
+<p>注意点として、doctestは出力の完全一致を求めるので、スペースの有無や辞書の順序に気を配ってテストを書く必要があります。詳しくはドキュメントをご覧ください。</p>
+
+<p>参考: <a href="http://docs.python.jp/2/library/doctest.html">25.2. doctest — 対話的な実行例をテストする</a></p>
+
+<h4 id="section-1">2014.07.08 追記</h4>
+
+<p>出力結果をTrue, Falseで判断することで、表記揺れによるテスト失敗を回避することができました。また、この方法では弾く(Falseを想定した)テストも書けるので便利です。</p>
+
+<div class="highlight"><pre><code class="python"><span class="k">def</span> <span class="nf">average</span><span class="p">(</span><span class="o">*</span><span class="n">numbers</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method returns the average value of numbers.</span>
+<span class="sd">    &gt;&gt;&gt; average(0, 2) #failed</span>
+<span class="sd">    1</span>
+<span class="sd">    &gt;&gt;&gt; average(0, 2) #ok</span>
+<span class="sd">    1.0</span>
+<span class="sd">    &gt;&gt;&gt; average(0, 2) == 1 #ok</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; average(0, 2) == 1.0 #ok</span>
+<span class="sd">    True</span>
+<span class="sd">    &gt;&gt;&gt; average(0, 2) == 2.0 #ok</span>
+<span class="sd">    False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">]</span>
+    <span class="k">return</span> <span class="nb">sum</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">__name__</span> <span class="o">==</span> <span class="s">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="k">pass</span></code></pre></div>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>python -m doctest -v hello.py
+Trying:
+    average<span class="o">(</span>0, 2<span class="o">)</span> <span class="c">#failed</span>
+Expecting:
+    1
+**********************************************************************
+File <span class="s2">&quot;hello.py&quot;</span>, line 4, in hello.average
+Failed example:
+    average<span class="o">(</span>0, 2<span class="o">)</span> <span class="c">#failed</span>
+Expected:
+    1
+Got:
+    1.0
+Trying:
+    average<span class="o">(</span>0, 2<span class="o">)</span> <span class="c">#ok</span>
+Expecting:
+    1.0
+ok
+Trying:
+    average<span class="o">(</span>0, 2<span class="o">)</span> <span class="o">==</span> 1 <span class="c">#ok</span>
+Expecting:
+    True
+ok
+Trying:
+    average<span class="o">(</span>0, 2<span class="o">)</span> <span class="o">==</span> 1.0 <span class="c">#ok</span>
+Expecting:
+    True
+ok
+Trying:
+    average<span class="o">(</span>0, 2<span class="o">)</span> <span class="o">==</span> 2.0 <span class="c">#ok</span>
+Expecting:
+    False
+ok
+1 items had no tests:
+    hello
+**********************************************************************
+1 items had failures:
+   1 of   5 in hello.average
+5 tests in 2 items.
+4 passed and 1 failed.
+***Test Failed*** 1 failures.</code></pre></div>
+
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/python_doctest/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/python_doctest/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/python_doctest/" data-text="doctestを使ってpythonの簡単な単体テストを書く">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/python_doctest/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
+<div class="article-body">
+    <div class="article-title">
         <a href="/blog/brew_doctor/">brew doctorのwarningを解決する</a>
     </div>
     <div class="article-date">
@@ -209,46 +404,6 @@ To update Homebrew, run <span class="sb">`</span>brew update<span class="sb">`</
     </div>
 </div>
 
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/cookpad_design/">クックパッドのデザイン講演会に参加しました</a>
-    </div>
-    <div class="article-date">
-        14 June 2014
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Event/">Event</a>
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Note/">Note</a>
-        
-    </div>
-    <div class="article-content">
-        <p>京都のCAMPHOR-HOUSEにて、クックパッドのデザイン責任者・池田さんによる講演会が開催されました。「クックパッドのサービス開発とデザイン」というタイトルで、「決してインターネットに詳しいわけではない方にまでに幅広く支持されているデザインの裏側には、どういった工夫やこだわりがあるか」というお話をしていただきました。</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/cookpad_design.jpg" class="image-on-frame-medium" /></p>
-
-<h4 id="section">デザインの原則</h4>
-
-<p>クックパッドでは、サービス開発の軸がぶれないように、いくつかの「デザインの原則」を設けているとのこと。例えば<strong>全体最適の原則</strong>。各自が作ったデザインをライブラリ化して共有したり、アイコンをWebフォントにして、クックパッド全体のブランドデザインを保つためのルールです。<strong>無言語化の原則</strong>。機能を説明するのにできるだけ言葉を使わず、ぱっと見て分かるデザインを心がけるルールです。<strong>無言実行の原則</strong>。プロダクトの概念やコンセプトを利用者にいちいち説明するのではなく、利用者にはプロダクトそのもので評価してもらうべきというルールです。ほかにもBEST集中の原則、競合を知る原則、顧客中心の原則などがあり、勉強になりました。</p>
-
-<h4 id="ab">A/Bテストの指標</h4>
-
-<p>A/Bテストについての話がでたので、「定量的に評価できる数字とユーザ体験は時としてトレードオフの関係にあるが、どうやって折り合いをつけているか」という質問をしました。「例えばあるボタンを大きくすれば新規会員数は増えるとしても、もちろん大きすぎるボタンにはNGをだす」との回答でした。「その(大きすぎるなどの)感覚値的な指標はどうやって測っているか」という質問には、「私(池田さん)の主観で決めます」という回答をいただきました。(ここでデザインの原則に繋がると思っていたので少し残念。) 利用者や利用シーンを具体的に想定して、それぞれの人にとって馴染みやすいデザインを考えることで、良し悪しを決めるとのことでした。</p>
-
-<p>属人的になりがちなデザインの知見を社内でどうやって共有するかといった、興味深いお話を聞くことができました。ありがとうございました！</p>
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/cookpad_design/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/cookpad_design/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/cookpad_design/" data-text="クックパッドのデザイン講演会に参加しました">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/cookpad_design/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
 <div class="pagenation">
     
         <div class="page-button"><a href="/page3"></a><span class="lsf">left</span> Previous</div>
@@ -271,6 +426,8 @@ To update Homebrew, run <span class="sb">`</span>brew update<span class="sb">`</
                 <p><span class="lsf">list</span> New Posts</p>
                 <ul>
                 
+                    <li><a href="/blog/tornado_debug/">Tornadoのデバッグモードを有効にする</a></li>
+                
                     <li><a href="/blog/nginx_root/">Nginxの静的ファイル配信でハマった</a></li>
                 
                     <li><a href="/blog/github_academic/">GitHubの学割クーポンを延長する</a></li>
@@ -280,8 +437,6 @@ To update Homebrew, run <span class="sb">`</span>brew update<span class="sb">`</
                     <li><a href="/blog/brew_doctor/">brew doctorのwarningを解決する</a></li>
                 
                     <li><a href="/blog/terminal_login/">プロセスが完了しました</a></li>
-                
-                    <li><a href="/blog/cookpad_design/">クックパッドのデザイン講演会に参加しました</a></li>
                 
                 </ul>
             </div>
