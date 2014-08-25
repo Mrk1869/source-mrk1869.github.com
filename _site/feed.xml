@@ -7,6 +7,57 @@
         <atom:link href="http://mrk1869.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>Nginxの静的ファイル配信でハマった</title>
+                <description>&lt;p&gt;静的ファイルに限った話ではないけれど、Nginxのlocationに応じたrootの設定でつまずいたのでメモ。&lt;a href=&quot;http://www.oreilly.co.jp/books/9784873115764/&quot;&gt;概説Tornado&lt;/a&gt;の中に「静的リソースはアプリケーションにリクエストをプロキシするのではなくNginxに捌かせるほうがアプリケーションの不要な負担を取り除けて有用」という説明があったので、staticディレクトリへのルーティング設定をNginxに書いた。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;nginx&quot;&gt;&lt;span class=&quot;k&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/static/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/path/to/app/static&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;上記のように書きたいところだがこれは間違いで&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;nginx&quot;&gt;&lt;span class=&quot;k&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/static/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/path/to/app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;正しくはこちら。&lt;/p&gt;
+
+&lt;p&gt;rootはstaticディレクトリのrootを指すのではなく、アプリケーションのroot。/static/はURLとして生きているので、/static/を含めたパスでファイルへ届くように書く必要がある。&lt;/p&gt;
+
+&lt;p&gt;(備考)アプリケーション全体のnginx設定ファイルはこんな感じ。各アプリケーションごとに設定ファイルを分けてconf.d/以下に保存しておき、nginx.confでそれらをインポートしている。&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;nginx&quot;&gt;&lt;span class=&quot;k&quot;&gt;upstream&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;paletta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;127.0.0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8011&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;127.0.0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8012&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;127.0.0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8013&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;127.0.0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8014&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;listen&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;80&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;server_name&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;paletta.mrk1869.com&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;kn&quot;&gt;access_log&lt;/span&gt;  &lt;span class=&quot;s&quot;&gt;/home/web/log/nginx/paletta.mrk1869.com/access.log&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;ltsv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/static/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kn&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/home/web/paletta/app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;kn&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;kn&quot;&gt;proxy_pass_header&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Server&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kn&quot;&gt;proxy_set_header&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Host&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$http_host&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kn&quot;&gt;proxy_redirect&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;off&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kn&quot;&gt;proxy_set_header&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;X-Real-IP&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$remote_addr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kn&quot;&gt;proxy_set_header&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;X-Scheme&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$scheme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;kn&quot;&gt;proxy_pass&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;http://paletta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+</description>
+                <pubDate>Tue, 26 Aug 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/nginx_root/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/nginx_root/</guid>
+            </item>
+        
+            <item>
                 <title>GitHubの学割クーポンを延長する</title>
                 <description>&lt;p&gt;GitHubにはプライベートリポジトリが無料で使える(billing planが1つ上がる)学割があります。&lt;/p&gt;
 
@@ -666,36 +717,6 @@ sed -e &lt;span class=&quot;s1&quot;&gt;&amp;#39;s/¥/\\/g&amp;#39;&lt;/span&gt;
                 <pubDate>Sat, 03 May 2014 00:00:00 +0900</pubDate>
                 <link>http://mrk1869.com/blog/mac_tex/</link>
                 <guid isPermaLink="true">http://mrk1869.com/blog/mac_tex/</guid>
-            </item>
-        
-            <item>
-                <title>Quick Response</title>
-                <description>&lt;p&gt;メールをできるだけ早く返すように心がけている。そう思うようになったきっかけは「&lt;a href=&quot;http://book-mrk1869.tumblr.com/post/83999920951&quot;&gt;MITメディアラボ  魔法のイノベーション・パワー&lt;/a&gt;」という本のなかのこの一節。簡潔な返事が良い。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;ある日の午後、私はリハビリ・セッションを終えた母親に会うためにリハビリ病棟の食堂で待っているあいだ、ヒュー・ハーにメールを送った。「ヒュー、この高齢化社会で、お年寄りの転倒を減らすことができれば、これまでのがん研究なんかよりもずっと、人々の生活向上に貢献できると思うんだけれどね。ぜひその方法を考えるべきだ」&lt;br /&gt;
-すぐにヒューからメールが返ってきた。「今スキー中。あとで考えてみる」&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;時間のかかるタスクを含むメールが来た時を考える。タスクをすべて終わらせてか返信すると、時間がかかってよくない。こちらのメールが届くまで相手の作業を止めていることもあるので、自分がそれらにいつ取り掛かれるか、今どれくらい終えているのかを先に知らせるべきである。手がふさがっている場合は読んだことだけ伝えることも大切だと考えている。&lt;/p&gt;
-
-&lt;p&gt;また、返信が遅れるとこんなスパイラルに陥ってしまうことがある。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;メールが来る--&amp;gt;返信が遅れる--&amp;gt;遅れたぶん, きちんとした文章で返信しよう--&amp;gt;文面悩む--&amp;gt;返信が遅れる--&amp;gt;(繰り返し)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;進捗報告の遅延と同じである。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;進捗どうですか--&amp;gt;報告が遅れる--&amp;gt;遅れたぶん, 期待値を上回る成果を出してから報告しよう--&amp;gt;成果まだ足りない--&amp;gt;報告が遅れる--&amp;gt;(繰り返し)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;誰かを待たせることで、自分の中で(勝手に)期待値を上げてしまうのよくない。&lt;/p&gt;
-
-&lt;p&gt;一方で、最近は(物理的にも社会的にも)窓口が増えて、取りこぼしてしまう連絡も増えた。ということで、送ってから2日ほど経っても何の連絡がない場合は、見逃している可能性が高いので遠慮なく催促してください。&lt;/p&gt;
-</description>
-                <pubDate>Tue, 29 Apr 2014 00:00:00 +0900</pubDate>
-                <link>http://mrk1869.com/blog/quick_response/</link>
-                <guid isPermaLink="true">http://mrk1869.com/blog/quick_response/</guid>
             </item>
         
     </channel>

@@ -62,6 +62,53 @@
             
 <div class="article-body">
     <div class="article-title">
+        <a href="/blog/hatena_star/">Jekyllにはてなスター導入した</a>
+    </div>
+    <div class="article-date">
+        7 October 2013
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Programming/">Programming</a>
+        
+    </div>
+    <div class="article-content">
+        <p>承認欲求を満たすためにはてなスターを導入した。</p>
+
+<div class="hatena-star"><a href="http://mrk1869.com/blog/hatena_star/" style="display:none;">hatena</a></div>
+
+<p>手順は<a href="http://d.hatena.ne.jp/hatenastar/20070707">はてなスター日記</a>の通りで、headなど任意の場所で以下のコードを読み込む。</p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span> <span class="na">src=</span><span class="s">&quot;http://s.hatena.ne.jp/js/HatenaStar.js&quot;</span><span class="nt">&gt;&lt;/script&gt;</span>
+<span class="nt">&lt;script </span><span class="na">type=</span><span class="s">&quot;text/javascript&quot;</span><span class="nt">&gt;</span>
+    <span class="nx">Hatena</span><span class="p">.</span><span class="nx">Star</span><span class="p">.</span><span class="nx">Token</span> <span class="o">=</span> <span class="s1">&#39;YOUR_TOKEN&#39;</span><span class="p">;</span>
+    <span class="nx">Hatena</span><span class="p">.</span><span class="nx">Star</span><span class="p">.</span><span class="nx">EntryLoader</span><span class="p">.</span><span class="nx">headerTagAndClassName</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;div&#39;</span><span class="p">,</span><span class="s1">&#39;hatena-star&#39;</span><span class="p">];</span>
+<span class="nt">&lt;/script&gt;</span></code></pre></div>
+
+<p>EntryLoader.headerTagAndClassNameにaタグを内包するDOMを指定すると、その場所にリンク先のはてなスターが表示される。</p>
+
+<p>ページ内のどこでも設置できるようにしたかったので、ハイパーリンクを設置した上で文字はdisplay:none;で消すという黒魔術を使ってみた。</p>
+
+<div class="highlight"><pre><code class="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;hatena-star&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">&quot;PAGE_URL&quot;</span> <span class="na">style=</span><span class="s">&quot;display:none;&quot;</span><span class="nt">&gt;</span>hatena<span class="nt">&lt;/a&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<p>はてなスターがあるとどのエントリが盛り上がっているか視覚的に分かって便利。</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/ss_hatena_star.png" class="image-on-frame" /></p>
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/hatena_star/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/hatena_star/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/hatena_star/" data-text="Jekyllにはてなスター導入した">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/hatena_star/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
+<div class="article-body">
+    <div class="article-title">
         <a href="/blog/cologne/">ケルンを観光しました</a>
     </div>
     <div class="article-date">
@@ -124,79 +171,6 @@
     </div>
 </div>
 
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/imabari/">今治東中等教育学校で講演しました</a>
-    </div>
-    <div class="article-date">
-        30 September 2013
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Note/">Note</a>
-        
-    </div>
-    <div class="article-content">
-        <p>9/24(火)、愛媛県の今治東中等教育学校で、大学・高校の活動に関してお話しました。<br /><a href="http://imabarihigashi-s.esnet.ed.jp/08communication/250924-challengehighschool-kouen/250924-challengehighschool-kouen.html">「えひめ学力向上チャレンジハイスクール事業」講演会 -国際学会を経験した、同世代の若者から学ぶ-</a></p>
-
-<h4 id="section">発表内容</h4>
-
-<p>講演で使用したスライドを載せながら、話したことについて紹介します。</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/challenge003.jpg" class="image-on-frame" /></p>
-
-<p>発表のアウトラインです。高校生・大学生の頃に打ち込んだトピックを挙げて、自分がやってよかったと思うことについて話しました。前半は大学での活動(アプリ開発、研究、国際会議)を紹介して、後半は中学・高校でのどんな経験が今に繋がっているか、何をしたか、何をするべきかについて話しました。</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/challenge005.jpg" class="image-on-frame" /></p>
-
-<p>僕が取り組んでいるテーマは人工知能です。このテーマは広く面白く、様々な分野の研究者が脳で言うところの個々の部位に対する研究に取り組んでおり、それらが合わさることで、全体としての「人工知能」と呼ばれる研究が進んでいるといった印象です。</p>
-
-<p>僕はカメラを通して見える物体を認識する技術を研究していて、これが人間の脳では視覚野にあたります。より具体的に話すと、撮影画像に写っている人間の行動を識別する「行動認識」が現在の研究テーマです。</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/challenge016.jpg" class="image-on-frame" /></p>
-
-<p>研究成果をもって、今年9月に開催された国際会議(UBICOMP/ISWC)で発表しました。写真はISWCで行われたGadget Showの様子です。Gadget showでの発表が好評で、発表を見た多くの人がUbicompのDemo/Poster Sessionにも来てくださいました。デモや研究テーマに関する多くの質問が寄せられ、今後の課題も浮き彫りになる有意義な発表でした。</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/challenge045.jpg" class="image-on-frame" /></p>
-
-<p>聞き手が中学生・高校生だということで、後半は大学受験を軸にお話しました。この写真は「赤ファイル」と呼ばれる生活記録シートです。僕は高校生の頃、このシートを使って生活時間や目標、反省を毎日記録していました。当時の記録を順に見せながら、学年が上がるにつれて時間の使い方や学習計画の立て方が変化していく様子を伝えました。</p>
-
-<p>5年生(高校2年生)7月の記録を見ると、9時から12時の間で3時間の学習時間が規則的にとれていることが分かります。部活を終えて下校、夕食、入浴を済ませると9時。それから寝るまでの時間は3時間。自分が一日に使える時間がどれくらいかが分かるようになると、その週にどれだけ進められるか、学習計画が立てやすくなります。</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/challenge052.jpg" class="image-on-frame" /></p>
-
-<p>まとめのスライドです。今回の講演で伝えたいことはこの3つでした。</p>
-
-<h4 id="section-1">英語力がなければ始まらない</h4>
-
-<p>どんな分野どんな職種に進んでも、英語を扱うスキルは要求されます。僕の所属する研究グループではミーティングが英語で行われているし、研究を進めるには英語力が必須です。今回は特に大学生・研究者という立場で問われる英語力についてお話しました。</p>
-
-<p>また、英語力は海外に行けば自然に伸びるわけではなく、会話の間合いやとっさの一言は出やすくなるのですが、語彙や文法は勝手には身につきません。中学・高校の頃の英語の勉強は必ず生きるし、今の勉強を疎かにできないぞということを伝えました。</p>
-
-<h4 id="section-2">大学には面白いヤツがたくさんいる</h4>
-
-<p>次に、難関大と呼ばれる大学へ進学する価値について話しました。僕には「研究で世界中の人を幸せにする」という目標があり、その目標を達成するために大学へ進学しました。難易度の高い大学を受験したのは、目標を実現する可能性が少しでも高い方へ行きたいという理由からです。そこに行けば良い環境があり、指導者に恵まれ、そして面白いヤツに会えると考えました。</p>
-
-<p>実際に、僕がプログラミングを始めてアプリ開発に没頭しているのは周りの友人に触発された結果であり、このスキルは研究にも生きています。こうした経験は地元で暮らしていては得られなかったかもしれません。大学に行けばキャンパス、サークル、アルバイト、いろんな場面で面白いひとに会えるし、その可能性を高めるためにも難しいところへ挑戦するべきだと話しました。</p>
-
-<h4 id="section-3">プレッシャーのない人生はつまらない</h4>
-
-<p>新しいことを始めたり何かに挑戦するということにはリスクや責任が伴います。そしてそれをプレッシャーに感じることがあると思います。今回の講演では、生物学オリンピック、受験、アプリ開発コンテスト、国際学会といった経験を話して、自分の置かれた状況や圧力を楽しむことができるかが挑戦へのモチベーションを維持することができるかに関わっているということを話しました。</p>
-
-<h4 id="section-4">おわりに</h4>
-
-<p>準備不足感があり課題の残る講演でしたが、終わってからも質問が多く寄せられるなど、みんな真剣に聞いてくれてとても気持ちのよい体験でした。</p>
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/imabari/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/imabari/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/imabari/" data-text="今治東中等教育学校で講演しました">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/imabari/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
 <div class="pagenation">
     
         <div class="page-button"><a href="/page17"></a><span class="lsf">left</span> Previous</div>
@@ -219,6 +193,8 @@
                 <p><span class="lsf">list</span> New Posts</p>
                 <ul>
                 
+                    <li><a href="/blog/nginx_root/">Nginxの静的ファイル配信でハマった</a></li>
+                
                     <li><a href="/blog/github_academic/">GitHubの学割クーポンを延長する</a></li>
                 
                     <li><a href="/blog/python_doctest/">doctestを使ってpythonの簡単な単体テストを書く</a></li>
@@ -228,8 +204,6 @@
                     <li><a href="/blog/terminal_login/">プロセスが完了しました</a></li>
                 
                     <li><a href="/blog/cookpad_design/">クックパッドのデザイン講演会に参加しました</a></li>
-                
-                    <li><a href="/blog/up/">Jawbone UPのちょっと変わった使い方</a></li>
                 
                 </ul>
             </div>
@@ -245,9 +219,9 @@
                 
                     <li><a href="/blog/chef_prepare/">Chefのknife solo prepareで404</a></li>
                 
-                    <li><a href="/blog/updraft/">Grunt+BowerでつくるWebアプリケーションひな形</a></li>
-                
                     <li><a href="/blog/long_shadow/">5分で完成！イラレで作るロングシャドウアイコン</a></li>
+                
+                    <li><a href="/blog/updraft/">Grunt+BowerでつくるWebアプリケーションひな形</a></li>
                 
                 </ul>
             </div>
