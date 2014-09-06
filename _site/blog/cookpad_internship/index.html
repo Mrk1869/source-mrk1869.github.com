@@ -4,18 +4,18 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-        <title>MongoDBのObjectID型をJSONに変換する[pymongo]</title>
+        <title>クックパッドのサマーインターンシップに参加しました</title>
     
     
-    <meta name="keywords" content="MongoDB, Python, JSON">
+    <meta name="keywords" content="クックパド, サマーインターン">
     <meta name="author" href="https://plus.google.com/u/0/102413339779614193497/posts">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="google-site-verification" content="sFx-iJWT2iihts7-5wK7CnR03-MymfWXmn_7KNoyIz0" />
-    <meta property="og:title" content="MongoDBのObjectID型をJSONに変換する[pymongo]">
+    <meta property="og:title" content="クックパッドのサマーインターンシップに参加しました">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="http://mrk1869.com/blog/mongodb_json/">
+    <meta property="og:url" content="http://mrk1869.com/blog/cookpad_internship/">
     
-        <meta property="og:image" content="http://mrk1869.com/assets/img/icon_laptop.png">
+        <meta property="og:image" content="https://dl.dropboxusercontent.com/u/12208857/img/cookpad_internship01.jpg">
     
     <link rel="alternate" type="application/rss+xml" title="Shoya Ishimaru's Blog" href="http://mrk1869.com/feed.xml">
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
@@ -59,71 +59,88 @@
         <section id="main_content" class="inner">
             <div class="article-body">
                 <div class="article-title">
-                    <a href="/blog/mongodb_json/">MongoDBのObjectID型をJSONに変換する[pymongo]</a>
+                    <a href="/blog/cookpad_internship/">クックパッドのサマーインターンシップに参加しました</a>
                 </div>
                 <div class="article-date">
-                    14 December 2013
+                    7 September 2014
                 </div>
                 
                     <div class="article-tag">
                     
                         <span class="lsf">tag</span>
-                        <a href="/tag/Programming/">Programming</a>
+                        <a href="/tag/Note/">Note</a>
                     
                     </div>
                 
                 <div class="article-content">
-                    <p>MongoDBから条件に合うオブジェクトを取り出して, エンコードされたJSONを返すapiを作成しようとしたところ, つまずいたのでメモ.</p>
+                    <p>課題解決型の5-daysインターンシップに参加して、スマートフォンアプリを開発しました。</p>
 
-<h4 id="section">問題</h4>
+<blockquote class="twitter-tweet" lang="ja"><p>インターン修了しました。楽しかったー！ <a href="http://t.co/AmkZVaX4qs">pic.twitter.com/AmkZVaX4qs</a></p>&mdash; Shoya Ishimaru (@shoya140) <a href="https://twitter.com/shoya140/status/507864832872153088">2014, 9月 5</a></blockquote>
+<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-<div class="highlight"><pre><code class="python"><span class="c"># DB接続確立</span>
-<span class="n">conn</span> <span class="o">=</span> <span class="n">pymongo</span><span class="o">.</span><span class="n">Connection</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">,</span> <span class="mi">27017</span><span class="p">)</span>
-<span class="n">db</span> <span class="o">=</span> <span class="n">conn</span><span class="p">[</span><span class="s">&quot;restaurant&quot;</span><span class="p">]</span>
+<h4 id="span-classlsfrightspan-"><span class="lsf">right</span> 内容</h4>
 
-<span class="c"># 取り出しとエンコード</span>
-<span class="n">item</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">restaurant</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s">&quot;date&quot;</span><span class="p">:</span><span class="s">&quot;13.12.2013&quot;</span><span class="p">})</span>
-<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></code></pre></div>
+<p>初日の午前中に「クックパッドのサービス開発」に関する講義を受けて、それからディレクター+エンジニアの2人1組のチームを組み、5日間でテーマに沿ったアプリを開発するという内容でした。完成したアプリは個人でリリースできないので発表資料を載せておきます。</p>
 
-<p>実行結果:エラー</p>
+<script async="" class="speakerdeck-embed" data-id="42a7685017f40132350b2ae5b5e9153b" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
 
-<div class="highlight"><pre><code class="python"><span class="ne">TypeError</span><span class="p">:</span> <span class="n">ObjectId</span><span class="p">(</span><span class="s">&#39;52aa539a86d00a0fac59fb10&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">JSON</span> <span class="n">serializable</span></code></pre></div>
+<h4 id="span-classlsfrightspan--1"><span class="lsf">right</span> 課題解決駆動開発</h4>
 
-<p>MongoDBから得られたオブジェクトをjsonモジュールのdumpus関数に直接渡すとエラーが生じる.
-この問題は, PythonのJSONモジュールがMongoDBの特殊なObjectID型をJSONに変換する方法を知らないことによる.</p>
+<p>インターンの最初に言われたことは「<strong>クックパッドは課題解決の会社である</strong>」ということです。クックパッドは基盤技術力の高さで有名なことから技術至上主義な雰囲気の会社だと思っていたのですが、インターンを通じて感じた印象は少し異なっていて、技術を使いたいからサービスを作るのではなく、まずユーザの抱える課題があり、それを解決するための手段として技術がある、という文化をもっているようでした。</p>
+<pre>
+(ユーザ)は
+(欲求)したいが
+(課題)できないので
+(製品の特徴)ことに価値がある
+</pre>
+<p>という価値仮説シートをもとに、ユーザの欲求を満たせない理由である課題とその解決策を明確にし、課題解決のために技術を使います。</p>
 
-<h4 id="section-1">解決策</h4>
+<p>インターン期間中には定期的に進捗報告・フィードバックタイムがあるのですが、実装手段よりも、自分たちの考えた価値仮説について鋭い指摘や質問をいただき、課題解決について深く深く考えることができました。</p>
 
-<p>JSONエンコードする前にディクショナリから_idキーを削除する.</p>
+<h4 id="span-classlsfrightspan--2"><span class="lsf">right</span> いかに実装しないか</h4>
 
-<div class="highlight"><pre><code class="python"><span class="c"># 取り出しとエンコード</span>
-<span class="n">item</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">restaurant</span><span class="o">.</span><span class="n">menu</span><span class="o">.</span><span class="n">find_one</span><span class="p">({</span><span class="s">&quot;date&quot;</span><span class="p">:</span><span class="s">&quot;13.12.2013&quot;</span><span class="p">})</span>
-<span class="k">del</span> <span class="n">item</span><span class="p">[</span><span class="s">&quot;_id&quot;</span><span class="p">]</span>
-<span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">item</span><span class="p">)</span></code></pre></div>
+<p>今回のインターンでは<a href="http://mrk1869.com/blog/hatena_intern/">はてなインターン</a>(2年前！)で経験した技術力不足に対する悔しさをバネに、持てる技術力を出し惜しみなく発揮することができました。(時間に余裕をもって開発したり、レシピのレコメンドに自然言語処理を使ったり、操作性やUIを作りこんだり、チーム内でアプリの開発進捗をTestFlightで共有していた。)</p>
 
-<p>実行結果:正しくエンコードされる.</p>
+<p>一方で、技術的面白さを求めすぎて課題解決に直接関係ない機能を盛り込んでしまったという反省があります。最終日には「実装は可能な限り小さな労力と少ない時間でできるもの(MVP)に絞って、アプリの価値仮説検証をもっと練ればよかったのでは」という意見をいただきました。僕の開発スタイルは「とにかく作ってみたほうが早い」に寄りすぎている感じがあるので、インターンを通じて、できるだけ「実装しない」なかで仮説の検証を繰り返す大切さを認識しました。</p>
 
-<h4 id="section-2">参考文献</h4>
+<h4 id="span-classlsfrightspan--3"><span class="lsf">right</span> おわりに</h4>
 
-<p><a href="http://www.oreilly.co.jp/books/9784873115764/">O’Reilly Japan - 概説Tornado</a> MongoDBドキュメントとJSON</p>
+<p>クックパッドの短期インターンシップは「ユーザの課題を解決するとはどういうことか」を学ぶことができる濃い5日間でした。<strong>ものづくりが好きな人にはぜひ参加することをおすすめします！</strong>(技術的な刺激にはやや物足りなかった印象もあるので、バリバリ開発したい・技術的に成長したい人は<a href="http://staffblog.cookpad.com/entry/2014/07/01/184000">長期インターンシップやアルバイト</a>に応募すると良いかもしれません。)</p>
+
+<p>サポートしていただいた社員の方々、参加者のみんな、そしてチームメンバーの辻くん、5日間お世話になりました！ありがとうございました！</p>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/cookpad_internship02.jpg" class="image-on-frame-medium" /></p>
+
+<p>(おまけ)miyagawaさんに会えてテンション最高潮の<a href="http://rebuild.fm/">rebuild.fm</a>リスナーインターン</p>
 
                 </div>
                 <div class="article-relations">
                     
+                        <h5><span class="lsf">check</span> 関連記事</h5>
+                        <ul>
+                        
+                            <li><a href="/blog/cookpad_design/" class="linkedTitle">Now loading..</a></li>
+                        
+                            <li><a href="/blog/hatena_intern/" class="linkedTitle">Now loading..</a></li>
+                        
+                            <li><a href="/blog/paperboy/" class="linkedTitle">Now loading..</a></li>
+                        
+                        </ul>
+                    
                 </div>
                 <div class="article-socialbox">
-                    <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/mongodb_json/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-                    <div class="fb-like" data-href="http://mrk1869.com/blog/mongodb_json/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/mongodb_json/" data-text="MongoDBのObjectID型をJSONに変換する[pymongo]">Tweet</a>
-                    <div class="hatena-star"><a href="http://mrk1869.com/blog/mongodb_json/" style="display: none;">hatena</a></div>
+                    <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/cookpad_internship/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+                    <div class="fb-like" data-href="http://mrk1869.com/blog/cookpad_internship/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/cookpad_internship/" data-text="クックパッドのサマーインターンシップに参加しました">Tweet</a>
+                    <div class="hatena-star"><a href="http://mrk1869.com/blog/cookpad_internship/" style="display: none;">hatena</a></div>
                 </div>
             </div>
             <div class="pagenation">
                 
-                    <div class="page-button"><a href="/blog/frankfurt/"></a><span class="lsf">left</span> Previous</div>
+                    <div class="page-button"><a href="/blog/tornado_debug/"></a><span class="lsf">left</span> Previous</div>
                 
                 
-                    <div class="page-button"><a href="/blog/microsoft_translator/"></a>Next <span class="lsf">right</span></div>
+                    <div class="page-button-disabled">Next <span class="lsf">right</span></div>
                 
             </div>
         </section>
