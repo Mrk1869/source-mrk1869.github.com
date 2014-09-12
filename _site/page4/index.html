@@ -379,7 +379,7 @@ open <span class="nv">$filename</span>.pdf</code></pre></div>
 変換後は円マークをバックスラッシュに置換する必要がある。</p>
 
 <div class="highlight"><pre><code class="bash">iconv -s -f SHIFT_JIS -t UTF-8 paper.tex &gt; paper_utf8.tex
-sed -e <span class="s1">&#39;s/¥/\\/g&#39;</span> paper_utf8.tex &gt; paper_out.tex</code></pre></div>
+sed -e <span class="s1">&#39;s/¥/\\/g&#39;</span> -e <span class="s1">&#39;s/‾/~/g&#39;</span> paper_utf8.tex &gt; paper_out.tex</code></pre></div>
 
 <p><a href="http://mizchi.hatenablog.com/entry/2014/01/20/090957">参考: markdown-&gt;TeXの変換だけで卒論を仕上げるのに便利だったツール10個まとめ - mizchi’s blog</a></p>
 
@@ -434,6 +434,8 @@ sed -e <span class="s1">&#39;s/¥/\\/g&#39;</span> paper_utf8.tex &gt; paper_out
                 
                     <li><a href="/blog/Paletta/">プログラマのためのカラーパレットツールを作りました</a></li>
                 
+                    <li><a href="/blog/cookpad_internship/">クックパッドのサマーインターンシップに参加しました</a></li>
+                
                     <li><a href="/blog/life_in_germany/">こちらの生活にもずいぶん慣れた</a></li>
                 
                     <li><a href="/blog/gitlab_installation/">GitLab 6.0をインストールする</a></li>
@@ -441,8 +443,6 @@ sed -e <span class="s1">&#39;s/¥/\\/g&#39;</span> paper_utf8.tex &gt; paper_out
                     <li><a href="/blog/chef_prepare/">Chefのknife solo prepareで404</a></li>
                 
                     <li><a href="/blog/long_shadow/">5分で完成！イラレで作るロングシャドウアイコン</a></li>
-                
-                    <li><a href="/blog/updraft/">Grunt+BowerでつくるWebアプリケーションひな形</a></li>
                 
                 </ul>
             </div>
