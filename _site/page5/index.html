@@ -62,82 +62,6 @@
             
 <div class="article-body">
     <div class="article-title">
-        <a href="/blog/mac_tex/">2014年におけるMac TeX環境</a>
-    </div>
-    <div class="article-date">
-        3 May 2014
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Infrastructure/">Infrastructure</a>
-        
-    </div>
-    <div class="article-content">
-        <p>TeXの環境、あまりに情報が多すぎて、自分がどの設定でインストールしたのか忘れてしまう。
-特に古い情報だとソフトウェアのバージョンの違いでハマるので、2014年5月現在のTeX環境を記しておく。</p>
-
-<h4 id="mactex">1. MacTeX</h4>
-
-<p><a href="http://tug.org/mactex/">MacTeXをダウンロード</a>してインストール。コンパイルに使うコマンドや便利なGUIツールを一括してセットアップしてくれる。コマンドからTexファイルをコンパイルするための設定はこれで完了。</p>
-
-<h4 id="texshop">2. TeXShop</h4>
-
-<p>MacTex(2013)にパッケージされているTeXShopのバージョンは古いため、最新のものに置き換える必要がある。まず<a href="http://pages.uoregon.edu/koch/texshop/">TeXShop3をダウンロード</a>する。次に/Applications/TeX/に存在するTeXShopを削除して新しいものを置く。</p>
-
-<p>TexShopを起動したら、環境設定を行う。</p>
-
-<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/mac_tex.png" class="image-on-frame-medium" /></p>
-
-<p>左下の設定プロファイルをpTex(ptex2pdf)に変更する。(お好みで)エンコーディングのデフォルトをUTF-8にしておく。</p>
-
-<p>以上です。</p>
-
-<h4 id="section">おまけ</h4>
-
-<p>TexShopはタイプセットボタンで簡単に結果出力できるし、仕上がりと見比べなら執筆しやすい。一方で、集中してがっつり書きたいときは使い慣れたエディタが執筆に適していると思う。
-だからTeXで論文を書くときは、書き始めはVim、推敲はTeXShop、と使い分けている。</p>
-
-<p>Vimで書いているときはコマンドからコンパイルするので、一連の処理をまとめたスクリプトを用意している。</p>
-
-<div class="highlight"><pre><code class="bash"><span class="c">#!/bin/bash</span>
-
-<span class="c"># default file name</span>
-<span class="nv">filename</span><span class="o">=</span><span class="s2">&quot;paper&quot;</span>
-
-<span class="c"># get file name from parameter</span>
-<span class="k">if</span> <span class="o">[</span> <span class="nv">$1</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-<span class="k">    </span><span class="nv">filename</span><span class="o">=</span><span class="nv">$1</span>
-<span class="k">fi</span>
-
-<span class="c"># make .dvi and .pdf file</span>
-platex <span class="nv">$filename</span>.tex
-pbibtex <span class="nv">$filename</span>.aux
-platex <span class="nv">$filename</span>.tex
-dvipdfmx -p a4 <span class="nv">$filename</span>.dvi
-
-<span class="c"># preview</span>
-open <span class="nv">$filename</span>.pdf</code></pre></div>
-
-<p>あと研究室秘伝のテンプレートファイルは往々にしてShift-JISだったりするので、UTF-8に変換してから使っている。
-変換後は円マークをバックスラッシュに置換する必要がある。</p>
-
-<div class="highlight"><pre><code class="bash">iconv -s -f SHIFT_JIS -t UTF-8 paper.tex &gt; paper_utf8.tex
-sed -e <span class="s1">&#39;s/¥/\\/g&#39;</span> -e <span class="s1">&#39;s/‾/~/g&#39;</span> paper_utf8.tex &gt; paper_out.tex</code></pre></div>
-
-<p><a href="http://mizchi.hatenablog.com/entry/2014/01/20/090957">参考: markdown-&gt;TeXの変換だけで卒論を仕上げるのに便利だったツール10個まとめ - mizchi’s blog</a></p>
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/mac_tex/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/mac_tex/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/mac_tex/" data-text="2014年におけるMac TeX環境">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/mac_tex/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
-<div class="article-body">
-    <div class="article-title">
         <a href="/blog/quick_response/">Quick Response</a>
     </div>
     <div class="article-date">
@@ -234,6 +158,78 @@ sed -e <span class="s1">&#39;s/¥/\\/g&#39;</span> -e <span class="s1">&#39;s/�
     </div>
 </div>
 
+<div class="article-body">
+    <div class="article-title">
+        <a href="/blog/eclipse/">Eclipseの環境設定まとめ</a>
+    </div>
+    <div class="article-date">
+        17 April 2014
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Programming/">Programming</a>
+        
+    </div>
+    <div class="article-content">
+        <p><img src="https://dl.dropboxusercontent.com/u/12208857/img/eclipse01.png" class="image-on-frame" /></p>
+
+<p>新しくWorkspaceを切ったあとにしている環境設定の備忘録です。EclipseでJavaを書く環境を想定して、Preference(環境設定) から行える設定を上から順に紹介します。</p>
+
+<h4 id="span-classlsfsetupspan-"><span class="lsf">setup</span> カラースキームを変更する</h4>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/eclipse02.png" class="image-on-frame" /></p>
+
+<p>定番のカラースキームが揃っているEclipse Color Themesプラグインが便利。</p>
+
+<p><strong>[導入方法]</strong><br />
+Help &gt; Install New Softwareを開いてWork with: に以下を入力する。</p>
+
+<pre>
+http://eclipse-color-theme.github.com/update/
+</pre>
+
+<p>検索結果にEclipce Color Themeが表示されるので、チェックボックスをOnにして、画面の指示に従ってインストールする。</p>
+
+<h4 id="span-classlsfsetupspan-utf-8"><span class="lsf">setup</span> 文字コードをUTF-8へ変更する</h4>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/eclipse03.png" class="image-on-frame" /></p>
+
+<p>SJISで書いて残念な感じにならないように。</p>
+
+<h4 id="span-classlsfsetupspan--1"><span class="lsf">setup</span> インデントをスペースに固定する</h4>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/eclipse04.png" class="image-on-frame" /></p>
+
+<p>Java &gt; Code Style &gt; Formatterより。デフォルトだとハードタブになっている。チームのコーディング規約に合わせて新しいProfileを作成する。</p>
+
+<h4 id="span-classlsfsetupspan--2"><span class="lsf">setup</span> 補完機能を強調する</h4>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/eclipse05.png" class="image-on-frame" /></p>
+
+<p>Auto activation triggers for Javaの欄を</p>
+
+<pre>
+.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_
+</pre>
+
+<p>に変更して、”.”以外が入力された時も自動的に補完候補が表示されるようにする。また、Auto activation delay[ms]の値を小さくして、補完候補が表示されるまでの遅延時間を短くする。</p>
+
+<h4 id="span-classlsfsetupspan--3"><span class="lsf">setup</span> ファイル保存時にコードを整形する</h4>
+
+<p><img src="https://dl.dropboxusercontent.com/u/12208857/img/eclipse06.png" class="image-on-frame" /></p>
+
+<p>ファイル保存をトリガーにコードをフォーマットする。Organize importsにチェックを入れておくと不要なインポートを削除してくれてとっても便利。</p>
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/eclipse/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/eclipse/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/eclipse/" data-text="Eclipseの環境設定まとめ">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/eclipse/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
 <div class="pagenation">
     
         <div class="page-button"><a href="/page6"></a><span class="lsf">left</span> Previous</div>
@@ -256,8 +252,6 @@ sed -e <span class="s1">&#39;s/¥/\\/g&#39;</span> -e <span class="s1">&#39;s/�
                 <p><span class="lsf">list</span> New Posts</p>
                 <ul>
                 
-                    <li><a href="/blog/feeling_bad/">記録的5月病は6ヶ月目に突入</a></li>
-                
                     <li><a href="/blog/cookpad_internship/">クックパッドのサマーインターンシップに参加しました</a></li>
                 
                     <li><a href="/blog/tornado_debug/">Tornadoのデバッグモードを有効にする</a></li>
@@ -267,6 +261,8 @@ sed -e <span class="s1">&#39;s/¥/\\/g&#39;</span> -e <span class="s1">&#39;s/�
                     <li><a href="/blog/github_academic/">GitHubの学割クーポンを延長する</a></li>
                 
                     <li><a href="/blog/python_doctest/">doctestを使ってpythonの簡単な単体テストを書く</a></li>
+                
+                    <li><a href="/blog/brew_doctor/">brew doctorのwarningを解決する</a></li>
                 
                 </ul>
             </div>
