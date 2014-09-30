@@ -4,8 +4,8 @@ categories: blog
 language: japanese
 room: coffee
 name: クックパッドのサマーインターンシップに参加しました
-tags: Note
-keywords: クックパド, サマーインターン
+tags: Event Note
+keywords: クックパッド, サマーインターン
 eyecatch: https://dl.dropboxusercontent.com/u/12208857/img/cookpad_internship01.jpg
 relations:
   - cookpad_design
