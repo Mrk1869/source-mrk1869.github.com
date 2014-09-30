@@ -7,6 +7,26 @@
         <atom:link href="http://mrk1869.com/feed.xml" rel="self" type="application/rss+xml" />
         
             <item>
+                <title>記録的5月病は6ヶ月目に突入</title>
+                <description>&lt;p&gt;個人の日記です。&lt;/p&gt;
+
+&lt;p&gt;今年の5月に気が滅入ってしまって、それから5ヶ月が経過している。
+気持ちのつらさは体調にも表れてきていて、毎日胸焼けや動悸に悩まされている。
+これ以上引きずるわけにはいかないので、一刻も早く治したい。&lt;/p&gt;
+
+&lt;p&gt;こうなってしまったのには理由がある。
+始まりは多忙による疲れだった。
+そのうち生活リズムが乱れて、日中のパフォーマンスが低下していった。
+今の悩みは、終わりのない課題の山を前にして、それぞれに対して限られた時間内に満足のいく成果が出せない葛藤にある。&lt;/p&gt;
+
+&lt;p&gt;各方面では進捗とか返答が滞っていて申し訳ないです。少しずつ進めているので、もうしばらく気長に待ってくれると嬉しいです。&lt;/p&gt;
+</description>
+                <pubDate>Wed, 01 Oct 2014 00:00:00 +0900</pubDate>
+                <link>http://mrk1869.com/blog/feeling_bad/</link>
+                <guid isPermaLink="true">http://mrk1869.com/blog/feeling_bad/</guid>
+            </item>
+        
+            <item>
                 <title>クックパッドのサマーインターンシップに参加しました</title>
                 <description>&lt;p&gt;課題解決型の5-daysインターンシップに参加して、スマートフォンアプリを開発しました。&lt;/p&gt;
 
@@ -521,71 +541,6 @@ To update Homebrew, run &lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;brew upda
                 <pubDate>Fri, 16 May 2014 00:00:00 +0900</pubDate>
                 <link>http://mrk1869.com/blog/up/</link>
                 <guid isPermaLink="true">http://mrk1869.com/blog/up/</guid>
-            </item>
-        
-            <item>
-                <title>Chefのknife solo prepareで404</title>
-                <description>&lt;h4 id=&quot;section&quot;&gt;問題&lt;/h4&gt;
-
-&lt;p&gt;Chefでknife solo prepareがうまく実行されない。Chef 11.14.0.alpha.2のwgetで404が返ってくるのが問題。&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;shoya@tornado&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;knife solo prepare dev_debian
-Bootstrapping Chef...
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100 15934  100 15934    0     0   2238      0  0:00:07  0:00:07 --:--:--  9674
-Downloading Chef 11.14.0.alpha.2 &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;debian...
-downloading https://www.opscode.com/chef/metadata?v&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;11.14.0.alpha.2&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;prerelease&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;nightlies&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;debian&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;6&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;x86_64
-  to file /tmp/install.sh.2565/metadata.txt
-trying wget...
-ERROR 404
-Unable to retrieve a valid package!
-Please file a bug report at http://tickets.opscode.com
-Project: Chef
-Component: Packages
-Label: Omnibus
-Version: 11.14.0.alpha.2
-
-Please detail your operating system &lt;span class=&quot;nb&quot;&gt;type&lt;/span&gt;, version and any other relevant details
-Metadata URL: https://www.opscode.com/chef/metadata?v&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;11.14.0.alpha.2&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;prerelease&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;nightlies&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;debian&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;6&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;x86_64
-Generating node config &lt;span class=&quot;s1&quot;&gt;&amp;#39;nodes/dev_debian.json&amp;#39;&lt;/span&gt;...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;section-1&quot;&gt;解決&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/23591190/knife-solo-prepare-fails&quot;&gt;Knife-solo prepare fails - stackoverflow&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;opscode(version 11.14.0.alpha.2)側の問題なので、オプションでchefのバージョンを指定してあげるといいよとの回答。&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;shoya@tornado&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;knife solo prepare dev_debian --bootstrap-version 11.12.0
-Bootstrapping Chef...
-  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
-                                 Dload  Upload   Total   Spent    Left  Speed
-100 15934  100 15934    0     0   2345      0  0:00:06  0:00:06 --:--:-- 14026
-Downloading Chef 11.12.0 &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;debian...
-downloading https://www.opscode.com/chef/metadata?v&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;11.12.0&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;prerelease&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;nightlies&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;debian&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;6&lt;span class=&quot;p&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;x86_64
-  to file /tmp/install.sh.2608/metadata.txt
-trying wget...
-url    https://opscode-omnibus-packages.s3.amazonaws.com/debian/6/x86_64/chef_11.12.0-1_amd64.deb
-md5    e3cefe75258f5d737b729ed549cadfc5
-sha256    3707bb7781317ce2928378564b95675291b9c3daa10a879bc77bea1333c83a9b
-downloaded metadata file looks valid...
-downloading https://opscode-omnibus-packages.s3.amazonaws.com/debian/6/x86_64/chef_11.12.0-1_amd64.deb
-  to file /tmp/install.sh.2608/chef_11.12.0-1_amd64.deb
-trying wget...
-Comparing checksum with sha256sum...
-Installing Chef 11.12.0
-installing with dpkg...
-Selecting previously unselected package chef.
-&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Reading database ... 39953 files and directories currently installed.&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-Unpacking chef &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;from .../chef_11.12.0-1_amd64.deb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ...
-Setting up chef &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;11.12.0-1&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; ...
-Thank you &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;installing Chef!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-
-&lt;p&gt;新しいバージョンが提供されるまではこれが応急処置みたい。&lt;/p&gt;
-</description>
-                <pubDate>Tue, 13 May 2014 00:00:00 +0900</pubDate>
-                <link>http://mrk1869.com/blog/chef_prepare/</link>
-                <guid isPermaLink="true">http://mrk1869.com/blog/chef_prepare/</guid>
             </item>
         
     </channel>

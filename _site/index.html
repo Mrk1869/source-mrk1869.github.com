@@ -62,6 +62,42 @@
             
 <div class="article-body">
     <div class="article-title">
+        <a href="/blog/feeling_bad/">記録的5月病は6ヶ月目に突入</a>
+    </div>
+    <div class="article-date">
+        1 October 2014
+    </div>
+    <div class="article-tag">
+        
+        <span class="lsf">tag</span>
+        <a href="/tag/Note/">Note</a>
+        
+    </div>
+    <div class="article-content">
+        <p>個人の日記です。</p>
+
+<p>今年の5月に気が滅入ってしまって、それから5ヶ月が経過している。
+気持ちのつらさは体調にも表れてきていて、毎日胸焼けや動悸に悩まされている。
+これ以上引きずるわけにはいかないので、一刻も早く治したい。</p>
+
+<p>こうなってしまったのには理由がある。
+始まりは多忙による疲れだった。
+そのうち生活リズムが乱れて、日中のパフォーマンスが低下していった。
+今の悩みは、終わりのない課題の山を前にして、それぞれに対して限られた時間内に満足のいく成果が出せない葛藤にある。</p>
+
+<p>各方面では進捗とか返答が滞っていて申し訳ないです。少しずつ進めているので、もうしばらく気長に待ってくれると嬉しいです。</p>
+
+    </div>
+    <div class="article-socialbox">
+        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/feeling_bad/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
+        <div class="fb-like" data-href="http://mrk1869.com/blog/feeling_bad/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/feeling_bad/" data-text="記録的5月病は6ヶ月目に突入">Tweet</a>
+        <div class="hatena-star"><a href="http://mrk1869.com/blog/feeling_bad/" style="display: none;">hatena</a></div>
+    </div>
+</div>
+
+<div class="article-body">
+    <div class="article-title">
         <a href="/blog/cookpad_internship/">クックパッドのサマーインターンシップに参加しました</a>
     </div>
     <div class="article-date">
@@ -180,73 +216,6 @@
     </div>
 </div>
 
-<div class="article-body">
-    <div class="article-title">
-        <a href="/blog/nginx_root/">Nginxの静的ファイル配信でハマった</a>
-    </div>
-    <div class="article-date">
-        25 August 2014
-    </div>
-    <div class="article-tag">
-        
-        <span class="lsf">tag</span>
-        <a href="/tag/Infrastructure/">Infrastructure</a>
-        
-    </div>
-    <div class="article-content">
-        <p>静的ファイルに限った話ではないけれど、Nginxのlocationに応じたrootの設定でつまずいたのでメモ。<a href="http://www.oreilly.co.jp/books/9784873115764/">概説Tornado</a>の中に「静的リソースはアプリケーションにリクエストをプロキシするのではなくNginxに捌かせるほうがアプリケーションの不要な負担を取り除けて有用」という説明があったので、staticディレクトリへのルーティング設定をNginxに書いた。</p>
-
-<div class="highlight"><pre><code class="nginx"><span class="k">location</span> <span class="s">/static/</span> <span class="p">{</span>
-    <span class="kn">root</span> <span class="s">/path/to/app/static</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
-
-<p>上記のように書きたいところだがこれは間違いで</p>
-
-<div class="highlight"><pre><code class="nginx"><span class="k">location</span> <span class="s">/static/</span> <span class="p">{</span>
-    <span class="kn">root</span> <span class="s">/path/to/app</span><span class="p">;</span>
-<span class="p">}</span></code></pre></div>
-
-<p>正しくはこちら。</p>
-
-<p>rootはstaticディレクトリのrootを指すのではなく、アプリケーションのroot。/static/はURLとして生きているので、/static/を含めたパスでファイルへ届くように書く必要がある。</p>
-
-<p>(備考)アプリケーション全体のnginx設定ファイルはこんな感じ。各アプリケーションごとに設定ファイルを分けてconf.d/以下に保存しておき、nginx.confでそれらをインポートしている。</p>
-
-<div class="highlight"><pre><code class="nginx"><span class="k">upstream</span> <span class="s">paletta</span><span class="p">{</span>
-    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8011</span><span class="p">;</span>
-    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8012</span><span class="p">;</span>
-    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8013</span><span class="p">;</span>
-    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">8014</span><span class="p">;</span>
-<span class="p">}</span>
-
-<span class="k">server</span> <span class="p">{</span>
-    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
-    <span class="kn">server_name</span> <span class="s">paletta.mrk1869.com</span><span class="p">;</span>
-
-    <span class="kn">access_log</span>  <span class="s">/home/web/log/nginx/paletta.mrk1869.com/access.log</span> <span class="s">ltsv</span><span class="p">;</span>
-    <span class="kn">location</span> <span class="s">/static/</span> <span class="p">{</span>
-        <span class="kn">root</span> <span class="s">/home/web/paletta/app</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
-        <span class="kn">proxy_pass_header</span> <span class="s">Server</span><span class="p">;</span>
-        <span class="kn">proxy_set_header</span> <span class="s">Host</span> <span class="nv">$http_host</span><span class="p">;</span>
-        <span class="kn">proxy_redirect</span> <span class="no">off</span><span class="p">;</span>
-        <span class="kn">proxy_set_header</span> <span class="s">X-Real-IP</span> <span class="nv">$remote_addr</span><span class="p">;</span>
-        <span class="kn">proxy_set_header</span> <span class="s">X-Scheme</span> <span class="nv">$scheme</span><span class="p">;</span>
-        <span class="kn">proxy_pass</span> <span class="s">http://paletta</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span></code></pre></div>
-
-
-    </div>
-    <div class="article-socialbox">
-        <a href="http://b.hatena.ne.jp/entry/http://mrk1869.com/blog/nginx_root/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a>
-        <div class="fb-like" data-href="http://mrk1869.com/blog/nginx_root/" data-send="false" data-layout="button_count" data-width="120" data-show-faces="false" data-font="arial"></div>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://mrk1869.com/blog/nginx_root/" data-text="Nginxの静的ファイル配信でハマった">Tweet</a>
-        <div class="hatena-star"><a href="http://mrk1869.com/blog/nginx_root/" style="display: none;">hatena</a></div>
-    </div>
-</div>
-
 <div class="pagenation">
     
         <div class="page-button"><a href="/page2"></a><span class="lsf">left</span> Previous</div>
@@ -267,6 +236,8 @@
                 <p><span class="lsf">list</span> New Posts</p>
                 <ul>
                 
+                    <li><a href="/blog/feeling_bad/">記録的5月病は6ヶ月目に突入</a></li>
+                
                     <li><a href="/blog/cookpad_internship/">クックパッドのサマーインターンシップに参加しました</a></li>
                 
                     <li><a href="/blog/tornado_debug/">Tornadoのデバッグモードを有効にする</a></li>
@@ -276,8 +247,6 @@
                     <li><a href="/blog/github_academic/">GitHubの学割クーポンを延長する</a></li>
                 
                     <li><a href="/blog/python_doctest/">doctestを使ってpythonの簡単な単体テストを書く</a></li>
-                
-                    <li><a href="/blog/brew_doctor/">brew doctorのwarningを解決する</a></li>
                 
                 </ul>
             </div>
